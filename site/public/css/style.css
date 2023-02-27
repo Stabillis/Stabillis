@@ -64,7 +64,7 @@ body {
   align-items: center;
 }
 
-.tamanho-conteudo { 
+.tamanho-conteudo {
   height: fit-content !important;
 }
 
@@ -87,7 +87,7 @@ body {
   display: flex;
 }
 
-.social .container{
+.social .container {
   justify-content: center;
 }
 
@@ -122,22 +122,34 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
-  height: 150px;
+  background-color: #1D293F;
+  height: 25vw;
   color: #fff;
   display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
+  font-size: 17px;
+  display: flex;
   justify-content: center;
-  text-align: center;
 }
 
-.footer .container .version {
-  font-size: 12px;
+.footer .container .text {
+  margin-right: 13vw;
 }
 
+.footer .container a {
+  color: #ffff;
+  text-decoration: none;
+}
+
+.logo img {
+  width: 15vw;
+  margin-left: 10vw;
+  margin-top: 2rem;
+}
+
+.sociais img {
+  width: 3vw;
+  padding: 2px;
+}
 
 /* LOGIN */
 
@@ -175,7 +187,7 @@ button {
 
 /* FORMULARIO */
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -192,7 +204,7 @@ button {
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
