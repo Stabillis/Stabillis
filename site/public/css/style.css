@@ -4,7 +4,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+  background-color: white;
+}
+
+.vetores {
+  position: absolute;
 }
 
 .container {
@@ -13,17 +17,15 @@ body {
   display: flex;
 }
 
-.header {
-  border-bottom: 3px solid #32b9cd;
-}
-
 .header .container {
   justify-content: space-between;
+  /* border: 5px solid red; */
 }
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: black;
+  font-weight: 500;
 }
 
 .agora {
@@ -31,55 +33,245 @@ body {
 }
 
 .navbar {
-  width: 300px;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: black;
 }
 
 
 .titulo {
-  color: #32b9cd;
   width: fit-content;
-  font-weight: 500;
+  margin: 15px 0;
 }
 
+.titulo img {
+  width: 11%;
+}
+
+.navbar li .btn-login {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #22B0FC;
+  color: white;
+  padding: 8px 40px 9px 40px;
+  border-radius: 10px;
+}
 
 /* BANNER */
 
 .banner {
   height: fit-content;
-  padding: 40px 0;
-  color: white;
-  background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
-  background-size: cover;
-}
+  padding: 40px 0 20px 0;
+  margin: auto;
+  }
 
 .banner .container {
   height: 400px;
   font-size: 36px;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  /* border: 3px solid red; */
 }
 
 .tamanho-conteudo {
   height: fit-content !important;
 }
 
-.banner p {
+.banner .texto-banner {
   width: 50%;
+}
+
+.banner p {
+  font-size: 14px;
+  width: 48%;
+  text-align: justify;
+}
+
+.container .texto-banner .slogan {
+  width: 60%;
   margin: 0;
   padding: 0;
-  width: 280px;
   font-size: 36px;
+  font-weight: 700;
 }
 
-.banner .container span {
-  font-weight: 800;
+.foto-servidor  {
+  width: 25%;
+  position: relative;
 }
 
+#servidores {
+  position: absolute;
+  z-index: 0;
+}
+
+#circulo-servidor {
+  left: 81%;
+  bottom: 0;
+  z-index: 999;
+}
+
+.numeros {
+  color: black;
+}
+
+.numeros .container {
+  margin-left: 10.5%;
+  display: flex;
+  width: 30%;
+  justify-content: space-evenly;
+}
+
+.numeros p {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.numeros img {
+  width: 15%;
+}
+
+.avaliacao {
+  display: block;
+}
+.numeros .container p span {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.numero-avaliacao {
+  margin-bottom: 100px;
+}
+
+/* empresas */
+
+.empresas .container {
+  display: block;
+}
+
+.empresas .container h3 {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.imagens-empresas {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.produtividade .container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.produtividade .container h1{
+  margin-bottom: 0;
+  margin-top: 100px;
+  font-weight: 600;
+}
+
+/* cards */
+.link-card {
+  display: block;
+  padding: 30px 20px;
+  background-color: white;
+  box-shadow: 1px 3px 5px;
+  /* border: 5px solid red; */
+  overflow: hidden;
+
+  position: relative;
+}
+
+.link-card:hover,
+.link-card:hover .data-card {
+  text-decoration: none;
+  /* color: #FFF; */
+}
+
+/* IMPORTANTE */
+.ag-courses_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  padding: 50px 0;
+}
+
+.card {
+  -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px);
+
+  margin: 0 15px 30px;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+.link-card:hover .bg_card {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+} 
+.titulo-card {
+  min-height: 87px;
+  margin: 0 0 25px;
+
+  overflow: hidden;
+
+  font-weight: bold;
+  font-size: 30px;
+  color: #000;
+
+  z-index: 2;
+  position: relative;
+}
+
+.date-box-card {
+  font-size: 18px;
+  color: #FFF;
+
+  z-index: 2;
+  position: relative;
+}
+
+.data-card {
+  font-weight: bold;
+  color: #0d2137;
+
+  -webkit-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease
+}
+/* IMPORTANTE */
+.bg-card {
+  height: 128px;
+  width: 128px;
+  background-color: #0d2137;
+
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+/* fim cards */
 /* missao visao valores */
 
 .social {
@@ -351,14 +543,4 @@ input {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
-}
-
-/* pagina extra - simulador */
-.simulador {
-  color: white;
-
-}
-
-.simulador .container {
-  flex-direction: column
 }

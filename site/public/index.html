@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Página Inicial</title>
+    <title>Stabillis</title>
 
     <script src="./js/funcoes.js"></script>
 
-    <link rel="icon" href="./assets/icon/favicon2.ico">
+    <!-- <link rel="icon" href="./assets/icon/favicon2.ico"> -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- <link
@@ -21,18 +21,22 @@
 <body>
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <h1 class="titulo">
+                <img src="assets/logoStabilis.jpeg" alt="Logo da Staballis">
+            </h1>
             <ul class="navbar">
-                <li class="agora">Inicial</li>
+                <li class="agora">Home</li>
                 <li>
-                    <a href="./simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li>
-                    <a href="./login.html">Login</a>
+                    <a href="./simulador.html">Serviço</a>
                 </li>
                 <li>
-                    <a href="./cadastro.html">Cadastro</a>
+                    <a href="">Planos</a>
+                </li>
+                <li>
+                    <a href="./cadastro.html">Sobre nós</a>
+                </li>
+                <li>
+                    <a href="./login.html" class="btn-login">Login</a>
                 </li>
             </ul>
         </div>
@@ -40,38 +44,91 @@
 
     <div class="banner">
         <div class="container">
-            <p>
-                Preservando <span>hoje</span> para existirem <span>amanhã</span>.
-            </p>
+            <div class="texto-banner">
+                <p class="slogan">
+                    Solucionando o futuro, hoje.
+                    <br>
+                    Stabillis
+                <p>
+                <p>
+                    Nossa intenção é ajudar você a manter seus servidores sempre ativos para seus clientes terem a
+                    melhor experiencia como vendedores
+                </p>
+            </div>
+
+            <div class="foto-servidor">
+                <img src="assets/servidores.svg" alt="Foto de servidores" id="servidores
+                ">
+                <img class="vetores" id="circulo-servidor" src="assets/Ellipse 1.svg" alt="">
+            </div>
+
         </div>
     </div>
-
-    <div class="social">
+    <div class="numeros">
         <div class="container">
-            <div class="boxes">
-                <div class="box">
-                    <img src="./assets/imgs/planet-earth_color.png" alt="icone da missão">
-                    <h4>Missão</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="numero-avaliacao">
+                <p>
+                    <span>12k</span>
+                <div class="avaliacao">
+                    <img src="assets/hearts.svg" alt="">
+                    <img src="assets/hearts.svg" alt="">
+                    <img src="assets/hearts.svg" alt="">
+                    <img src="assets/hearts.svg" alt="">
+                    <img src="assets/hearts.svg" alt="">
                 </div>
-
-                <div class="box">
-                    <img src="./assets/imgs/lightbulb_color.png" alt="icone da visão">
-                    <h4>Visão</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                Usuários ativos
+                </p>
+            </div>
+            <div class="numero-avaliacao">
+                <p>
+                    <span>4.9</span>
+                <div class="avaliacao">
+                    <img src="assets/estrela.svg" alt="">
+                    <img src="assets/estrela.svg" alt="">
+                    <img src="assets/estrela.svg" alt="">
+                    <img src="assets/estrela.svg" alt="">
+                    <img src="assets/estrela-metade.svg" alt="">
                 </div>
-
-                <div class="box">
-                    <img src="./assets/imgs/growth_color.png" alt="icone dos valores">
-                    <h4>Valores</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
+                5.860 avaliações
+                </p>
             </div>
         </div>
-
-
+    </div>
+    <!-- empresas inicio -->
+    <div class="empresas">
+        <div class="container">
+            <h3>Empresas populares que trabalham com a gente</h3>
+            <div class="imagens-empresas">
+                <img src="assets/mercado-livre.svg" alt="">
+                <img src="assets/shopee.svg" alt="">
+                <img src="assets/ali-express.svg" alt="">
+                <img src="assets/amazon.svg" alt="">
+            </div>
+        </div>
     </div>
 
+    <div class="produtividade">
+        <div class="container">
+            <h1>Trabalhar juntos gera produtividade</h1>
+            <p>Tudo vai gerar em torno do seu negócio</p>
+            <div class="ag-courses_item">
+                <a  class="link-card">
+                    <div class="bg-card"></div>
+
+                    <div class="titulo-card">
+                        UI/Web&amp;Graph design for teenagers 11-17&#160;years old
+                    </div>
+
+                    <div class="date-box-card">
+                        Start:
+                        <span class="data-card">
+                            04.11.2022
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     <!--footer inicio-->
     <div class="footer">
         <div class="container">
@@ -90,12 +147,13 @@
                     Nos siga nas redes sociais
                 </h4>
                 <div class="sociais">
-                    <img src="assets/logotipo-do-github.png" alt="">
-                    <img src="https://toppng.com/uploads/preview/twitter-white-icon-social-media-icon-png-and-vector-twitter-app-icon-2017-11562896092tvpb2fle0q.png" alt="">
-                    <img src="assets/pngfind.com-facebook-icon-white-png-2902824.png" alt="">
+                    <img src="assets/logotipo-do-github.png" alt="Logo do GitHub">
+                    <img src="https://toppng.com/uploads/preview/twitter-white-icon-social-media-icon-png-and-vector-twitter-app-icon-2017-11562896092tvpb2fle0q.png"
+                        alt="">
+                    <img src="assets/pngfind.com-facebook-icon-white-png-2902824.png" alt="Logo do Facebook">
                 </div>
             </div>
-            
+
 
             <div class="text">
                 <h4>
@@ -116,9 +174,9 @@
             </div>
 
             <div class="logo">
-                <img src="assets/logoStabilis.jpeg" alt="">
+                <img src="assets/logoStabilis.jpeg" alt="Logo da Staballis">
             </div>
-            
+
 
 
         </div>
