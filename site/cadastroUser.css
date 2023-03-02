@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* tirar bordas dos input */
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+/* todas as tags (a) com fonte size abaixo*/
+
+a {
+    font-size: 1.rem;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(10, 160, 255);
+}
+
+
+
+/* estilizando login*/
+.container {
+    display: flex;
+    width: 800px;
+    height: 580px;
+    margin: 15vh 20vh 50vh 52vh;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 0 1rem rgb(9, 9, 9);
+    fill: #ffffff;
+    stroke: #000000;
+    z-index: 1;
+    position: absolute;
+    justify-items: center;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: rgb(10, 160, 255);
+    margin-bottom: 3px;
+}
+
+/* estilizando Formulário*/
+
+
+span,
+input {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+
+input {
+    /* border-bottom: 2px solid rgb(34,34,34);*/
+    padding: 10px;
+    height: 2.5em;
+    width: 30rem;
+    font-size: 1rem;
+    margin-top: 40px;
+    margin-left: 130px;
+    border-radius: 12px;
+    background-color: #F0F0F0;
+    border: none;
+}
+
+#ipt_nome::placeholder {
+    margin-left: 380px;
+}
+
+#ipt_email::placeholder {
+    margin-left: 380px;
+}
+
+#ipt_senha::placeholder {
+    margin-left: 380px;
+}
+
+#ipt_confirmSenha::placeholder {
+    margin-left: 300px;
+}
+
+
+input:focus {
+    border-bottom: 2px solid #22B0FC;
+}
+
+.input-icons i {
+    position: absolute;
+    display: flex;
+    justify-content: left;
+    margin-left: 120px;
+    margin-top: 43px;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.fa-solid {
+    padding: 20px;
+    min-width: 50px;
+    text-align: center;
+    color: #6A6A6A;
+}
+
+
+
+button {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 2rem;
+    width: 12rem;
+    border-radius: 12px;
+    margin-top: 20px;
+    background-color: #22B0FC;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+button:hover {
+    background-color: #1d87c0;
+    color: #000000;
+    transition: .4s;
+}
+
+/*circle*/
+.circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 4vw;
+    background-color: yellow;
+    clip-path: circle(45% at bottom left);
+    opacity: .5;
+    filter: blur(4px);
+}
+
+/* footer */
+
+footer {
+    
+    background-color: #1D293F;
+    color: #ffffff;
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+    width: 100%;
+    position: absolute;
+    margin-top: 49vw;
+}
+
+.container-footer {
+    max-width: 1400px;
+    padding: 0 4%;
+    margin: auto;
+    position: relative;
+}
+
+.row-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    justify-items: center;
+    margin-left: 4vw;
+
+}
+
+.caixa-footer,
+.caixa-footer2 {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.caixa-footer2 {
+    width: 25%;
+    padding: 0 15px;
+    margin-left: 10vw;
+}
+
+.caixa-footer h4 {
+    margin-top: 2vw;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.caixa-footer2 h4 {
+    margin-top: 2vw;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.caixa-footer2 a {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 300;
+    display: block;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.caixa-footer2 a:hover {
+    color: #cecdcd;
+    padding-left: 10px;
+    transition: all 0.3 ease;
+}
+
+.caixa-footer img {
+    width: 15vw;
+    margin-left: 1vw;
+    margin-top: 2vw;
+}
+
+.sociais img {
+    width: 30px;
+    margin-right: 1vw;
+}
+
+/* fim footer */
+
+/* circulo */
+.extra {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    background-color: #bbb;
+    border-radius: 50%;
+    color: #ABEEF7;
+    margin-bottom: 100px;
+    left: -80px;
+    bottom: -570px;
+}
+
+/* linha */
+.linha {
+    background-color: #80C8F0;
+    height: 1px;
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 3vw;
+}
