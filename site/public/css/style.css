@@ -176,6 +176,79 @@ body {
   font-weight: 600;
 }
 
+/* pilares */
+.pilares {
+  margin: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.pilares h1 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+font-weight: 600;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.valores {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.valores h3 {
+  margin-left: 4px;
+  color: white;
+}
+
+.box {
+  width: 33.3%;
+  margin-left: 30px;
+  background-color: #D4CCCB;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.box:hover {
+  transform: scale(1.03);
+  transition: 0.2s;
+  background-color: #a19c9c;
+}
+
+.box p {
+  font-size: 14pt;
+  color: white;
+  width: 100%;
+  margin: auto;
+  text-align: justify;
+  text-indent: 1.5em;
+}
+
+
+.icones {
+  width: 10%;
+  border: black;
+}
+
+.star {
+  width: 10%;
+  padding-bottom: 5px;
+}
+
+#azul{
+  background-color: #74C4F0;
+}
+
+#verm{
+background-color: #F80606;
+}
+
+#amar{
+background-color: #FBD246;
+}
+
 /* cards */
 .link-card {
   display: block;
