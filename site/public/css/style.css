@@ -67,7 +67,7 @@ body {
   height: fit-content;
   padding: 40px 0 20px 0;
   margin: auto;
-  }
+}
 
 .banner .container {
   height: 400px;
@@ -99,20 +99,20 @@ body {
   font-weight: 700;
 }
 
-.foto-servidor  {
-  width: 25%;
+.foto-servidor {
   position: relative;
 }
 
-#servidores {
+.circulo-servidor {
   position: absolute;
-  z-index: 0;
+  margin-top: 224px;
+  margin-left: 880px;
 }
 
-#circulo-servidor {
-  left: 81%;
-  bottom: 0;
-  z-index: 999;
+.retangulo-x-servidor {
+  position: absolute;
+  margin-bottom: 525px;
+  margin-left: 200px;
 }
 
 .numeros {
@@ -139,6 +139,7 @@ body {
 .avaliacao {
   display: block;
 }
+
 .numeros .container p span {
   font-weight: 700;
   font-size: 32px;
@@ -163,6 +164,17 @@ body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 15px;
+  padding: 0 10%;
+
+}
+
+.imagens-empresas2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 34%;
 }
 
 .produtividade .container {
@@ -170,7 +182,7 @@ body {
   align-items: center;
 }
 
-.produtividade .container h1{
+.produtividade .container h1 {
   margin-bottom: 0;
   margin-top: 100px;
   font-weight: 600;
@@ -186,7 +198,7 @@ body {
 .pilares h1 {
   padding-top: 20px;
   padding-bottom: 20px;
-font-weight: 600;
+  font-weight: 600;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -237,16 +249,16 @@ font-weight: 600;
   padding-bottom: 5px;
 }
 
-#azul{
+#azul {
   background-color: #74C4F0;
 }
 
-#verm{
-background-color: #F80606;
+#verm {
+  background-color: #F80606;
 }
 
-#amar{
-background-color: #FBD246;
+#amar {
+  background-color: #FBD246;
 }
 
 /* cards */
@@ -296,7 +308,8 @@ background-color: #FBD246;
   -webkit-transform: scale(10);
   -ms-transform: scale(10);
   transform: scale(10);
-} 
+}
+
 .titulo-card {
   min-height: 87px;
   margin: 0 0 25px;
@@ -327,6 +340,7 @@ background-color: #FBD246;
   -o-transition: color .5s ease;
   transition: color .5s ease
 }
+
 /* IMPORTANTE */
 .bg-card {
   height: 128px;
@@ -344,6 +358,7 @@ background-color: #FBD246;
   -o-transition: all .5s ease;
   transition: all .5s ease;
 }
+
 /* fim cards */
 /* missao visao valores */
 
