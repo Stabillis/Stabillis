@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
 
@@ -150,15 +151,64 @@ button:hover {
     height: 100%;
     margin-top: 4vw;
     background-color: yellow;
-    clip-path: circle(45% at bottom left);
-    opacity: .5;
+    clip-path: circle(40% at bottom left);
+    opacity: .6;
     filter: blur(4px);
 }
 
-/* footer */
+/* plus */
+.plus img {
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    margin-top: 10vw;
+    margin: 40vw 0 0 89vw;
+}
 
-footer {
+.plus2 img {
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    margin-top: 10vw;
+    margin: 15vw 0 0 12vw;
+}
+
+.plus3 img {
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    margin-top: 10vw;
+    margin: 0vw 0 0 2vw;
     
+}
+
+.plus4 img {
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    margin-top: 10vw;
+    margin: 15vw 0 0 35vw;
+}
+
+.plus5 img {
+    height: 2vw;
+    width: 2vw;
+    position: absolute;
+    margin-top: 10vw;
+    margin: 2vw 0 0 67vw;
+}
+/* fim */
+
+/* icone da lateral */
+.icone-lateral img {
+    position: absolute;
+    height: 20vw;
+    width: 20vw;
+    margin: 7vw 0 0 83vw;
+}
+
+/* footer */
+footer {
     background-color: #1D293F;
     color: #ffffff;
     padding-bottom: 2vw;
