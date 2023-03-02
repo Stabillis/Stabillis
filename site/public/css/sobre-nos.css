@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+
+.banner h1 {
+    font-size: 32px;
+    width: 50%;
+}
+
+.banner h2 {
+    width: 50%;
+
+    font-size: 32px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.banner {
+    margin-top: 30px;
+}
+.texto-sobre-nos {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    text-align: justify;
+    padding-left: 25px;
+}
+
+.texto-sobre-nos p {
+    margin: 0;
+}
+
+.imagem-sobre-nos {
+    /* border: 3px solid blue; */
+    width: 30%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.imagem-sobre-nos img {
+    width: 80%;
+}
+
+.retangulo-x {
+    position: absolute;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin-top: 389px;
+    margin-left: 337px;
+}
+
+.retangulo-azul-x {
+    position: absolute;
+    margin-bottom: 300px;
+    margin-left: 1000px;
+}
+
+.empresas {
+    margin-top: 75px;
+}
