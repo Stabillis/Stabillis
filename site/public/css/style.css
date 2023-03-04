@@ -99,7 +99,7 @@ body {
   font-weight: 700;
 }
 
-.container .texto-banner .slogan2{
+.container .texto-banner .slogan2 {
   font-size: 16px;
   width: 53%;
   text-align: left;
@@ -182,7 +182,8 @@ body {
   margin-bottom: 10%;
   padding: 0 34%;
 }
-.produtividade{
+
+.produtividade {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -199,12 +200,52 @@ body {
   margin-top: 100px;
   font-weight: 600;
 }
+/* Sobre nós */
+.sobre{
+  background-image: url(/site/public/assets/icon/bgsobre.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 50%;
+  width: 80%;
+  height: 500px;
+  margin-top: 10%;
+}
+.sobre h1{
+  display: flex;
+  justify-content: right;
+  width: 60%;
+  margin-left: 27%;
+  margin-top: 15%;
+}
+.sobre p{
+  display: flex;
+  justify-content: right;
+  width: 50%;
+  margin-left: 70%;
+  margin-top: 3%;
+}
+.sobre button{
+  margin-top: 5%;
+  margin-left: 70%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #22B0FC;
+  color: white;
+  padding: 15px 45px 15px 45px;
+  border-radius: 10px;
+  border: none;
 
+}
 /* pilares */
 .pilares {
   margin: auto;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  background-image: url(/site/public/assets/icon/bgpilares.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .pilares h1 {
@@ -218,27 +259,26 @@ body {
 
 .valores {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
 }
 
-.valores h3 {
+.valores h2 {
   margin-left: 4px;
   color: white;
 }
 
+
 .box {
-  width: 33.3%;
+  width: 27%;
   margin-left: 30px;
-  background-color: #D4CCCB;
   padding: 20px;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .box:hover {
   transform: scale(1.03);
   transition: 0.2s;
-  background-color: #a19c9c;
 }
 
 .box p {
@@ -246,14 +286,8 @@ body {
   color: white;
   width: 100%;
   margin: auto;
-  text-align: justify;
+  text-align: center;
   text-indent: 1.5em;
-}
-
-
-.icones {
-  width: 10%;
-  border: black;
 }
 
 .star {
@@ -262,17 +296,35 @@ body {
 }
 
 #azul {
-  background-color: #74C4F0;
+  background-color: #60c7ff;
 }
 
 #verm {
-  background-color: #F80606;
+  background-color: #f80606b7;
 }
 
 #amar {
-  background-color: #FBD246;
+  background-color: #1FBEC4;
+}
+/* Balão sobre o footer */
+.container-teste {
+  position: relative;
+  margin-bottom: 7%;
+  margin-left: 12%;
 }
 
+.top {
+  background-color: red;
+  height: 150px;
+  width: 80%;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 700;
+} 
 /* cards */
 .link-card {
   display: block;
@@ -414,17 +466,25 @@ body {
 /* FOOTER */
 
 .footer {
+  background-image: url(/site/public/assets/icon/footer.png);
+  background-repeat: no-repeat;
+  background-size: 95%;
+  background-position-y: 54%;
   background-color: #1D293F;
-  height: 25vw;
+  height: 33vw;
   color: #fff;
   display: flex;
   font-size: 17px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .footer .container .text {
   margin-right: 13vw;
+
 }
 
 .footer .container a {
@@ -434,9 +494,9 @@ body {
 }
 
 .logo img {
-  width: 20vw;
+  width: 15vw;
   margin-left: 10vw;
-  margin-top: 7rem;
+  margin-top: 2.5rem;
 }
 
 .sociais img {
@@ -654,10 +714,12 @@ figure {
   height: 350px;
   width: 360px;
 }
-figure > * {
+
+figure>* {
   grid-area: 1/1;
   transition: .4s;
 }
+
 figure figcaption {
   display: grid;
   align-items: flex-start;
@@ -666,18 +728,21 @@ figure figcaption {
   font-weight: bold;
   color: white;
   padding: .75rem;
-  background: var(--c,#0009);
-  clip-path: inset(0 var(--_i,100%) 0 0);
+  background: var(--c, #0009);
+  clip-path: inset(0 var(--_i, 100%) 0 0);
   -webkit-mask-composite: xor;
   -webkit-mask-clip: text, padding-box;
 }
-figure:hover figcaption{
+
+figure:hover figcaption {
   --_i: 0%;
 }
+
 figure:hover img {
   transform: scale(1.2);
 }
-figure p{
+
+figure p {
   font-size: 1rem;
   font-weight: 100;
   width: 50%;
