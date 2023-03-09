@@ -57,7 +57,7 @@ body {
   text-align: center;
   background-color: #22B0FC;
   color: white;
-  padding: 8px 40px 9px 40px;
+  padding: 8px 30px 9px 30px;
   border-radius: 10px;
 }
 
@@ -200,9 +200,10 @@ body {
   margin-top: 100px;
   font-weight: 600;
 }
+
 /* Sobre nós */
-.sobre{
-  background-image: url(/site/public/assets/icon/bgsobre.png);
+.sobre {
+  background-image: url(/assets/icon/bgsobre.png);
   background-repeat: no-repeat;
   background-position: left;
   background-size: 50%;
@@ -210,21 +211,24 @@ body {
   height: 500px;
   margin-top: 10%;
 }
-.sobre h1{
+
+.sobre h1 {
   display: flex;
   justify-content: right;
   width: 60%;
   margin-left: 27%;
   margin-top: 15%;
 }
-.sobre p{
+
+.sobre p {
   display: flex;
   justify-content: right;
   width: 50%;
   margin-left: 70%;
   margin-top: 3%;
 }
-.sobre button{
+
+.sobre button {
   margin-top: 5%;
   margin-left: 70%;
   display: flex;
@@ -237,9 +241,11 @@ body {
   border: none;
 
 }
+
 /* pilares */
 .pilares {
   margin: auto;
+
   padding-top: 150px;
   padding-bottom: 150px;
   background-image: url(/site/public/assets/icon/bgpilares.png);
@@ -295,17 +301,6 @@ body {
   padding-bottom: 5px;
 }
 
-#azul {
-  background-color: #60c7ff;
-}
-
-#verm {
-  background-color: #f80606b7;
-}
-
-#amar {
-  background-color: #1FBEC4;
-}
 /* Balão sobre o footer */
 .container-teste {
   position: relative;
@@ -314,17 +309,47 @@ body {
 }
 
 .top {
-  background-color: red;
-  height: 150px;
-  width: 80%;
+  display: flex;
+  align-items: center;
+  height: 170px;
+  width: 70%;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 2px;
+  left: 90px;
+  border: 3px solid white;
+  background-color: white;
+  background-image: url(/assets/icon/Ellipse\ 4.png);
+  background-size: 10%;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-Y: -10%;
   z-index: 2;
   border-radius: 15px;
   font-size: 20px;
   font-weight: 700;
-} 
+  -webkit-box-shadow: -8px -7px 85px -17px rgba(0, 0, 0, 0.71);
+  -moz-box-shadow: -8px -7px 85px -17px rgba(0, 0, 0, 0.71);
+  box-shadow: -8px -7px 85px -17px rgba(0, 0, 0, 0.71);
+}
+
+.top p {
+  justify-content: left;
+  margin-left: 7%;
+  font-size: larger;
+  width: 50%;
+}
+
+.bt-top {
+  text-align: center;
+  background-color: #22B0FC;
+  font-weight: 400;
+  color: white;
+  padding: 8px 30px 9px 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
 /* cards */
 .link-card {
   display: block;
@@ -462,11 +487,68 @@ body {
   align-items: center;
 }
 
+/* CARD PILARES */
+
+.card-pilar {
+  height: 110vh;
+  width: 100vw;
+  display: flex;
+  background-image: url(/assets/background/frufrus.png);
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: space-around;
+}
+
+
+.container-card-pilar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 500px;
+  margin-top: 10%;
+}
+
+.card-pilar-card {
+  box-shadow: 16px 16px 24px rgba(0, 0, 0, 0.25);
+  height: 367px;
+  width: 279px;
+  border-radius: 12px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.text-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 90%;
+}
+
+.teste {
+
+  transform: rotate(45deg);
+  z-index: 1;
+  margin-bottom: 364px;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  border: 15px solid white;
+}
+
 
 /* FOOTER */
 
 .footer {
-  background-image: url(/site/public/assets/icon/footer.png);
+  background-image: url(/assets/icon/footer.png);
   background-repeat: no-repeat;
   background-size: 95%;
   background-position-y: 54%;
