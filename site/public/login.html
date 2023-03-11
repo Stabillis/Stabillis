@@ -1,172 +1,116 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AquaTech | Login</title>
-
-    <script src="./js/funcoes.js"></script>
-
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
+    <title>Login</title>
 </head>
 
 <body>
-
-    <!--Header-->
-
     <div class="header">
         <div class="container">
-            <h1 class="titulo">AquaTech</h1>
+            <h1 class="titulo">
+                <img src="assets/icon/stabilis_main_above.png" alt="Logo da Staballis">
+            </h1>
             <ul class="navbar">
+                <li class="agora">Home</li>
                 <li>
-                    <a href="./index.html">
-                        Inicial
-                    </a>
+                    <a href="./simulador.html">Serviço</a>
                 </li>
                 <li>
-                    <a href="./simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="./login.html">Login</a>
+                    <a href="./sobre-nos.html">Sobre nós</a>
                 </li>
                 <li>
-                    <a href="./cadastro.html">Cadastro</a>
+                    <a href="./login.html" class="btn-login">Login</a>
                 </li>
             </ul>
         </div>
     </div>
 
-
     <div class="banner">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
-        </div>
         <div class="container">
             <div class="card">
-                <h2>Olá de volta!</h2>
-                <div class="formulario">
+                <img id="logo" src="assets/icon/stabilis_main_side.png" alt="">
+
+                <p>BEM-VINDO DE VOLTA</p>
+
+                <p>Faça seu login!</p>
 
 
-                    <span class="tipo_campo">E-mail:</span>
-                    <input id="email_input" type="text" placeholder="Login">
+                    <div class="inputs">
+                        <input type="text" placeholder="E-mail">
+                        
+                    </div>
 
-                    <span class="tipo_campo">Senha:</span>
-                    <input id="senha_input" type="password" placeholder="******">
+                    <div class="inputs">
+                        <input type="text" placeholder="Senha">
+                    
+                    </div>
 
-                    <button class="btn" onclick="entrar()">Entrar</button>
+                <button class="btn">Cadastrar</button>
 
-
-                </div>
-
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
-
-                <div id="div_erros_login">
-
-                </div>
             </div>
         </div>
     </div>
 
     <!--footer inicio-->
-    <div class="footer">
+        
+    
+
+    <footer class="footer">
         <div class="container">
-            <h4>Feito com amor por um aluno &hearts; SPTech &copy; 2022
-                <br>
-                <span class="version">
-                    v1.0.0
-                </span>
-            </h4>
+            <div class="text">
+                <p>
+                    <b>Entre em contato com a gente</b>
+                    <br><br><br>
+                    Rua hadock Lobo 595 - Cerqueira César
+                    <br>
+                    São Paulo - SP, 01414-001
+                    <br>
+                    Telefone: +55 (11) 0000-0000
+                    <br>
+                    Email: stabillis@outlook.com
+                    <br><br>
+                    Nos siga nas redes sociais
+                </p>
+                <div class="sociais">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4494/4494749.png" alt="Logo do GitHub">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="Logo do Twitter">
+                    <img src="https://cdn-icons-png.flaticon.com/512/179/179319.png?w=740&t=st=1677862376~exp=1677862976~hmac=90a709bee67957d0a7ab8daf335c1c708fe05163b572bbf6f4f08f37b54eb05f"
+                        alt="Logo do Facebook">
+                </div>
+            </div>
+
+            <div class="text">
+                <h4>
+                    <b>Site</b>
+                    <br><br><br>
+                    <a href="">Home</a>
+                    <br>
+                    <a href="">Serviços</a>
+                    <br>
+                    <a href="">Sobre nós</a>
+                    <br>
+                    <a href="">Login</a>
+                    <br>
+                    <a href="">Cadastro</a>
+                </h4>
+            </div>
+
+            <div class="logo">
+                <img src="assets/icon/stabilis_white_above.png" alt="Logo da Staballis">
+            </div>
+
         </div>
     </div>
-    <!--footer fim-->
+    </footer>
+
+<!--footer fim-->
 
 </body>
 
 </html>
-
-<script>
-
-
-    function entrar() {
-        aguardar();
-
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-
-        if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
-            return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
-
-</script>
