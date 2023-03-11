@@ -5,94 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="cadastroUser.css">
     <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Cadastro</title>
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="./assets/logoStabilis.jpeg" alt="imagem">
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">
+                <img src="assets/icon/stabilis_main_above.png" alt="Logo da Staballis">
+            </h1>
+            <ul class="navbar">
+                <li class="agora">Home</li>
+                <li>
+                    <a href="./simulador.html">Serviço</a>
+                </li>
+                <li>
+                    <a href="./sobre-nos.html">Sobre nós</a>
+                </li>
+                <li>
+                    <a href="./login.html" class="btn-login">Login</a>
+                </li>
+            </ul>
         </div>
-        <ul>
-            <li>Home</li>
-            <li>Serviços</li>
-            <li>Planos</li>
-            <li>Sobre nós</li>
-            <li class="logBottom">Login</li>
-        </ul>
-    </header>
-    <div class="container">
-        <div class="card">
-            <h2>Criar uma conta</h2>
-            <div class="form">
-            </div>
-            <div class="input-icons">
-                <i class="fa-solid fa-user"></i>
-                <input class="input-field" id="ipt_nome" type="text" placeholder="Nome">
-            </div>
+    </div>
 
-            <div class="input-icons">
-                <i class="fa-solid fa-envelope"></i>
-                <input class="input-field" id="ipt_email" type="email" placeholder="Email">
-            </div>
+    <div class="banner">
+        <div class="container">
+            <div class="card">
+                <img id="logo" src="assets/icon/stabilis_main_side.png" alt="">
 
-            <div class="input-icons">
-                <i class="fa-solid fa-lock"></i>
-                <input class="input-field" id="ipt_senha" type="password" placeholder="Senha">
-            </div>
+                <p>Faça parte do time e cadastre sua empresa</p>
 
-            <div class="input-icons">
-                <i class="fa-solid fa-lock"></i>
-                <input class="input-field" id="ipt_confirmSenha" type="password" placeholder="Confirmar senha">
-            </div>
-            <button class="btn" onclick="cadastrar()">Continuar</button>
+                <div class="box">
+                    <div class="inputs1">
+                        <input type="text" placeholder="Nome da empresa">
+                        <input type="text" placeholder="Telefone">
+                        <input type="text" placeholder="CEP">
+                        <input type="text" placeholder="Complemento">
+                        <input type="text" placeholder="Cidade">
+                    </div>
 
+                    <div class="inputs2">
+                        <input type="text" placeholder="CNPJ">
+                        <input type="text" placeholder="E-mail">
+                        <input type="text" placeholder="Logradouro">
+                        <input type="text" placeholder="Bairro">
+                        <input type="text" placeholder="Estado">
+                    </div>
+                </div>
+
+                <button class="btn">Cadastrar</button>
+
+            </div>
         </div>
-
     </div>
-    </div>
-    </div>
-    </div>
-
-    <div class="icone-lateral">
-        <img src="assets/icone-lateral.svg" alt="">
-    </div>
-
-    <div class="plus">
-        <img src="assets/plus.png" alt="">
-    </div>
-
-    <div class="plus2">
-        <img src="assets/plus.png" alt="">
-    </div>
-
-
-    <section class="circle"></section>
-
-    <!--footer inicio-->
-
-    <footer>
-        <div class="plus3">
-            <img src="assets/plus.png" alt="">
-        </div>
-
-        <div class="plus4">
-            <img src="assets/plus.png" alt="">
-        </div>
-
-        <div class="plus5">
-            <img src="assets/plus.png" alt="">
-        </div>
-
 
     <!--footer inicio-->
     <div class="footer">
-        <div class="container-footer">
-            <div class="row-footer">
-            <div class="caixa-footer">
+        <div class="container">
+            <div class="text">
                 <p>
                     <b>Entre em contato com a gente</b>
                     <br><br><br>
@@ -108,22 +81,19 @@
                 </p>
                 <div class="sociais">
                     <img src="https://cdn-icons-png.flaticon.com/512/4494/4494749.png" alt="Logo do GitHub">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png"
-                        alt="Logo do Twitter">
-                    <img src="https://cdn-icons-png.flaticon.com/512/179/179319.png?w=740&t=st=1677862376~exp=1677862976~hmac=90a709bee67957d0a7ab8daf335c1c708fe05163b572bbf6f4f08f37b54eb05f" alt="Logo do Facebook">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="Logo do Twitter">
+                    <img src="https://cdn-icons-png.flaticon.com/512/179/179319.png?w=740&t=st=1677862376~exp=1677862976~hmac=90a709bee67957d0a7ab8daf335c1c708fe05163b572bbf6f4f08f37b54eb05f"
+                        alt="Logo do Facebook">
                 </div>
             </div>
 
-
-            <div class="caixa-footer2">
+            <div class="text">
                 <h4>
                     <b>Site</b>
                     <br><br><br>
                     <a href="">Home</a>
                     <br>
                     <a href="">Serviços</a>
-                    <br>
-                    <a href="">Planos</a>
                     <br>
                     <a href="">Sobre nós</a>
                     <br>
@@ -134,15 +104,16 @@
             </div>
 
             <div class="logo">
-                <img src="assets/icon/stabilis_white_side.png" alt="Logo da Staballis">
+                <img src="assets/icon/stabilis_white_above.png" alt="Logo da Staballis">
             </div>
-
-
 
         </div>
     </div>
     </div>
     <!--footer fim-->
+
+
+
 </body>
 
 </html>

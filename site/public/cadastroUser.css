@@ -1,319 +1,192 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    box-sizing: border-box;
+    border: none;
 }
 
-
-/* tirar bordas dos input */
-textarea:focus,
-input:focus {
-    outline: none;
-}
-
-/* todas as tags (a) com fonte size abaixo*/
-
-a {
-    font-size: 1.rem;
-    text-decoration: none;
-}
-
-a:hover {
-    color: rgb(10, 160, 255);
-}
-
-
-
-/* estilizando login*/
-.container {
-    display: flex;
-    width: 800px;
-    height: 580px;
-    margin: 15vh 20vh 50vh 52vh;
-    padding: 20px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 0 1rem rgb(9, 9, 9);
-    fill: #ffffff;
-    stroke: #000000;
-    z-index: 1;
+/* .vetores {
     position: absolute;
-    justify-items: center;
+  } */
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+/* NAVBAR */
+.header .container {
+    justify-content: space-between;
+    /* border: 5px solid red; */
+}
+
+.header a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.agora {
+    font-weight: 800;
+}
+
+.navbar {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: black;
+}
+
+
+.titulo {
+    width: fit-content;
+    margin: 15px 0;
+}
+
+.titulo img {
+    width: 11%;
+}
+
+.navbar li .btn-login {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: #22B0FC;
+    color: white;
+    padding: 8px 30px 9px 30px;
+    border-radius: 10px;
+}
+
+/* FIM NAVBAR */
+
+/* FORM CADASTRO */
+.banner {
+    background-image: url(assets/icon/vetor-cadastro.png);
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position-y: 5vw;
+    background-position-x: -10vw;
+    height: 60vw;
+    color: #fff;
+    display: flex;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    width: 70vw;
+    height: 45vw;
+    border-radius: 25px;
+    margin-left: 6vw;
+    justify-self: center;
+    fill: #fff;
+    background-color: rgba(240, 248, 255, 0.596);
+    -webkit-box-shadow: -2px 33px 64px 0px rgba(138, 138, 138, 1);
+    -moz-box-shadow: -2px 33px 64px 0px rgba(138, 138, 138, 1);
+    box-shadow: -2px 33px 64px 0px rgba(138, 138, 138, 1);
+    flex-direction: column;
 }
 
-h2 {
-    font-size: 1.5rem;
-    color: rgb(10, 160, 255);
-    margin-bottom: 3px;
+#logo {
+    width: 200px;
+    padding-top: 2vw;
+    align-self: center;
 }
 
-/* estilizando Formulário*/
-
-
-span,
-input {
-    display: block;
-    width: 100%;
+.card p {
+    color: #22B0FC;
+    font-weight: 700;
     text-align: center;
+    text-transform: uppercase;
+    font-size: 25px;
 }
 
-
-input {
-    /* border-bottom: 2px solid rgb(34,34,34);*/
-    padding: 10px;
-    height: 2.5em;
-    width: 30rem;
-    font-size: 1rem;
-    margin-top: 40px;
-    margin-left: 130px;
-    border-radius: 12px;
-    background-color: #F0F0F0;
-    border: none;
-}
-
-#ipt_nome::placeholder {
-    margin-left: 380px;
-}
-
-#ipt_email::placeholder {
-    margin-left: 380px;
-}
-
-#ipt_senha::placeholder {
-    margin-left: 380px;
-}
-
-#ipt_confirmSenha::placeholder {
-    margin-left: 300px;
-}
-
-
-input:focus {
-    border-bottom: 2px solid #22B0FC;
-}
-
-.input-icons i {
-    position: absolute;
+.card .box {
     display: flex;
-    justify-content: left;
-    margin-left: 120px;
-    margin-top: 43px;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 3vw;
 }
 
-.input-icons {
-    width: 100%;
-    margin-bottom: 20px;
+.card input {
+    display: flex;
+    border: none;
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    height: 35px;
+    width: 21rem;
+    justify-content: space-around;
+    padding: 5px;
+    justify-items: center;
+    margin-top: 1vw;
 }
 
+input::placeholder {}
 
-.fa-solid {
-    padding: 20px;
-    min-width: 50px;
-    text-align: center;
-    color: #6A6A6A;
-}
-
-
-
-button {
+.card .btn {
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     border: none;
-    height: 2rem;
+    height: 40px;
     width: 12rem;
     border-radius: 12px;
-    margin-top: 20px;
+    margin-top: 4vw;
     background-color: #22B0FC;
     cursor: pointer;
     color: #ffffff;
+    align-self: center;
 }
 
-button:hover {
-    background-color: #1d87c0;
-    color: #000000;
-    transition: .4s;
-}
+/* FIM BANNER */
 
-/*circle*/
-.circle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    margin-top: 4vw;
-    background-color: yellow;
-    clip-path: circle(40% at bottom left);
-    opacity: .6;
-    filter: blur(4px);
-}
+/* FOOTER */
 
-/* plus */
-.plus img {
-    height: 2vw;
-    width: 2vw;
-    position: absolute;
-    margin-top: 10vw;
-    margin: 40vw 0 0 89vw;
-}
-
-.plus2 img {
-    height: 2vw;
-    width: 2vw;
-    position: absolute;
-    margin-top: 10vw;
-    margin: 15vw 0 0 12vw;
-}
-
-.plus3 img {
-    height: 2vw;
-    width: 2vw;
-    position: absolute;
-    margin-top: 10vw;
-    margin: 0vw 0 0 2vw;
-    
-}
-
-.plus4 img {
-    height: 2vw;
-    width: 2vw;
-    position: absolute;
-    margin-top: 10vw;
-    margin: 15vw 0 0 35vw;
-}
-
-.plus5 img {
-    height: 2vw;
-    width: 2vw;
-    position: absolute;
-    margin-top: 10vw;
-    margin: 2vw 0 0 67vw;
-}
-/* fim */
-
-/* icone da lateral */
-.icone-lateral img {
-    position: absolute;
-    height: 20vw;
-    width: 20vw;
-    margin: 7vw 0 0 83vw;
-}
-
-/* footer */
-footer {
+.footer {
+    background-image: url(assets/icon/footer.png);
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position-y: 54%;
     background-color: #1D293F;
-    color: #ffffff;
-    padding-bottom: 2vw;
-    padding-top: 2vw;
-    width: 100%;
-    position: absolute;
-    margin-top: 49vw;
-}
-
-.container-footer {
-    max-width: 1400px;
-    padding: 0 4%;
-    margin: auto;
-    position: relative;
-}
-
-.row-footer {
+    height: 33vw;
+    color: #fff;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    justify-items: center;
-    margin-left: 4vw;
-
-}
-
-.caixa-footer,
-.caixa-footer2 {
-    width: 25%;
-    padding: 0 15px;
-}
-
-.caixa-footer2 {
-    width: 25%;
-    padding: 0 15px;
-    margin-left: 10vw;
-}
-
-.caixa-footer h4 {
-    margin-top: 2vw;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    font-weight: 500;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
-    text-transform: uppercase;
+    z-index: 1;
 }
 
-.caixa-footer2 h4 {
-    margin-top: 2vw;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    font-weight: 500;
-    position: relative;
-    text-transform: uppercase;
+.footer .container .text {
+    margin-right: 13vw;
 }
 
-.caixa-footer2 a {
-    font-size: 16px;
+.footer .container a {
+    color: #ffff;
     text-decoration: none;
-    font-weight: 300;
-    display: block;
-    margin-top: 10px;
-    color: #ffffff;
+    font-weight: 100;
 }
 
-.caixa-footer2 a:hover {
-    color: #cecdcd;
-    padding-left: 10px;
-    transition: all 0.3 ease;
-}
-
-.caixa-footer img {
+.logo img {
     width: 15vw;
-    margin-left: 1vw;
-    margin-top: 2vw;
+    margin-left: 10vw;
+    margin-top: 2.5rem;
 }
 
 .sociais img {
-    width: 30px;
-    margin-right: 1vw;
-}
-
-/* fim footer */
-
-/* circulo */
-.extra {
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    background-color: #bbb;
-    border-radius: 50%;
-    color: #ABEEF7;
-    margin-bottom: 100px;
-    left: -80px;
-    bottom: -570px;
-}
-
-/* linha */
-.linha {
-    background-color: #80C8F0;
-    height: 1px;
-    width: 70%;
-    display: flex;
-    margin: 0 auto;
-    margin-top: 3vw;
+    width: 3vw;
+    padding: 2px;
 }
