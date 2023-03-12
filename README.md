@@ -1,7 +1,7 @@
 
 # STABILLIS
 
-![Logo](assets/icon/stabilis_white_above.png)
+![Logo](assets/icon/stabilis_main_above.png)
 
 Empresa de monitoramento e análise dados em servidores de E-commerce de livros.
 
