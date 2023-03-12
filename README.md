@@ -1,6 +1,8 @@
 
 # STABILLIS
 
+![Logo](assets/icon/stabilis_white_above.png)
+
 Empresa de monitoramento e análise dados em servidores de E-commerce de livros.
 
 A Stabillis é uma empresa de tecnologia da informação fundada em 2023, visando lidar com a coleta e processamento de dados para nossos clientes: SysAdmin's e empresas que ultilizam servidores.
