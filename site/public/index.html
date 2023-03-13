@@ -1,309 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/nav&fotter.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <title>Stabillis</title>
-
-    <script src="./js/funcoes.js"></script>
-
-    <!-- <link rel="icon" href="./assets/icon/favicon2.ico"> -->
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+  <title>STABILLIS</title>
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">
-                <img src="assets/icon/stabilis_main_above.png" alt="Logo da Staballis">
-            </h1>
-            <ul class="navbar">
-                <li class="agora">Home</li>
-                <li>
-                    <a href="./simulador.html">Serviço</a>
-                </li>
-                <li>
-                    <a href="./sobre-nos.html">Sobre nós</a>
-                </li>
-                <li>
-                    <a href="./login.html" class="btn-login">Login</a>
-                </li>
-            </ul>
-        </div>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <img style="height: 40px;" src="assets/icon/stabilis_main_side.png" alt="">
+
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
     </div>
 
-    <div class="banner">
-        <div class="container">
-            <div class="texto-banner">
-                <p class="slogan">
-                    Solucionando o futuro, hoje.
-                    <br>
-                    Stabillis
-                <p>
-                <p class="slogan2">
-                    A nossa intenção é ajudar você a manter seus servidores sempre ativos para seus clientes terem a
-                    melhor experiencia como vendedores!
-                </p>
-            </div>
-
-            <div class="circulo-servidor">
-                <img class="vetores" src="assets/Ellipse 1.svg" alt="">
-
-            </div>
-
-            <div class="retangulo-x-servidor">
-                <img class="vetores" src="assets/retangulo-x.svg" alt="">
-            </div>
-
-            <div class="foto-servidor">
-                <img src="assets/servidores.svg" alt="Foto de servidores">
-            </div>
-
-        </div>
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./sobre-nos.html">Sobre nós</a>
+      <a href="./login.html"> <span id="login">Login</span></a>
     </div>
-
-    <div class="numeros">
-        <div class="container">
-            <div class="numero-avaliacao">
-                <p>
-                    <span>12k</span>
-                <div class="avaliacao">
-                    <img src="assets/hearts.svg" alt="">
-                    <img src="assets/hearts.svg" alt="">
-                    <img src="assets/hearts.svg" alt="">
-                    <img src="assets/hearts.svg" alt="">
-                    <img src="assets/hearts.svg" alt="">
-                </div>
-                Usuários ativos
-                </p>
-            </div>
-            <div class="numero-avaliacao">
-                <p>
-                    <span>4.9</span>
-                <div class="avaliacao">
-                    <img src="assets/estrela.svg" alt="">
-                    <img src="assets/estrela.svg" alt="">
-                    <img src="assets/estrela.svg" alt="">
-                    <img src="assets/estrela.svg" alt="">
-                    <img src="assets/estrela-metade.svg" alt="">
-                </div>
-                5.860 avaliações
-                </p>
-            </div>
-        </div>
-    </div>
-    <!-- empresas inicio -->
-    <div class="empresas">
-        <div class="container">
-            <h1>Empresas populares que trabalham com a gente</h1>
-            <div class="imagens-empresas">
-                <img src="assets/mercado-livre.svg" alt="Logo Mercado Livre">
-                <img src="assets/shopee.svg" alt="Logo Shopee">
-                <img src="assets/ali-express.svg" alt="Logo Ali Express">
-                <img src="assets/amazon.svg" alt="Logo Amazon">
-            </div>
-            <div class="imagens-empresas2">
-                <img src="assets/magalu.svg" alt="Logo Magazine Luiza">
-                <img src="assets/americanas.svg" alt="Logo Lojas Americanas">
-            </div>
-        </div>
-    </div>
-
-    <div class="produtividade">
-        <h1>Trabalhar juntos gera produtividade</h1>
-        <p>Aqui tudo vai girar em torno do seu negócio!</p>
-        <div class="container">
-            <figure style="--c:#22b0fc">
-                <img src="assets/estabilidade.jpg" alt="Estabilidade" style="height: 350px;">
-                <figcaption>
-                    <h2>Estabilidade continua</h2> <br>
-                    <p>A estabilidade é uma das características mais importantes que uma empresa de servidores pode
-                        oferecer aos seus clientes. Quando se trata de hospedar um site, aplicativo ou outro serviço
-                        online, a estabilidade é essencial para garantir que seus usuários possam acessar e utilizar seu
-                        conteúdo sem interrupções.</p>
-                </figcaption>
-            </figure>
-            <figure style="--c:#22b0fc">
-                <img src="assets/monitoramento.jpg" alt="Monitoramento" style="height: 350px;">>
-                <figcaption>
-                    <h2>Monitoramento online</h2> <br>
-                    <p>A resolução rápida de problemas é uma das características mais valorizadas por nossos clientes.
-                        Sabemos que qualquer interrupção em seus serviços online pode resultar em perda de receita,
-                        danos à reputação e insatisfação do cliente. Por isso, aqui em nossa empresa de servidores,
-                        temos um compromisso com a rápida resolução de problemas.</p>
-                </figcaption>
-            </figure>
-            <figure style="--c:#22b0fc">
-                <img src="assets/resolucao.jpg" alt="Resolução" style="height: 350px;">>
-                <figcaption>
-                    <h2>Resoluções rápidas</h2> <br>
-                    <p>O monitoramento online é uma das ferramentas mais importantes que uma empresa de servidores pode
-                        oferecer a seus clientes. Aqui em nossa empresa, temos um sistema de monitoramento altamente
-                        avançado que nos permite monitorar seus serviços online em tempo real e garantir que eles
-                        estejam funcionando de maneira adequada.
-                    </p>
-                </figcaption>
-            </figure>
-        </div>
-    </div>
-    <!-- Sobre nós -->
+  </div>
+  <div class="main">
     <div class="container">
-        <div class="sobre">
-
-
-            <h1>Sobre nós</h1>
-            <p>
-                Uma empresa de tecnologia que foi criada em 2023 para um projeto em grupo da faculade SPtech em São
-                Paulo. <br>
-                Nosso foco é monitorar e ajudar as pessoas que utilizam e tranalham com servidores, para assim evitar
-                perdas e erros na hora do monitoramento.
-            </p>
-            <button class="btn-login">Saiba mais!</button>
-        </div>
-
-    </div>
-
-
-
-    <!-- Fim sobre nós -->
-
-    <!-- Pilares -->
-    <div class="card-pilar">
-        <div style="width: 70%; display: flex; align-items: center; justify-content: space-around;">
+      <div class="slogan">
+        <h1>Solucionando o futuro, hoje. <br>
+          Stabillis</h1>
+        <p>
+          Nossa intenção é ajudar você a manter seus servidores sempre ativos para seus clientes terem a melhor
+          experiencia como vendedores
+        </p>
+        <div class="critic-container">
+          <div style="margin-right: 100px;" class="critic">
+            <div class="averange">
+              <h1>12k</h1>
+            </div>
             <div>
-                <div class="container-card-pilar">
-                    <div style="background-color: #53baf1;" class="teste">
-    
-                    </div>
-                <div style="background-color: #53baf1;" class="card-pilar-card">
-    
-                    <div class="text-card">
-                        <h1>
-                            Missão
-                        </h1>
-                        <p>Garantir a disponibilidade, segurança e eficiência dos serviços online de nossos clientes. Nós nos dedicamos a fornecer um monitoramento contínuo e confiável de todos os aspectos do serviço, desde a rede até os aplicativos, identificando rapidamente quaisquer problemas e tomando medidas imediatas para resolvê-los.</p>
-    
-                    </div>
-                </div>
-                </div>
+              <img src="assets/icon/hearts.png" alt="">
             </div>
-    
-    
+            <h3>
+              Usuários ativos
+            </h3>
+
+          </div>
+
+          <div class="critic">
+            <div class="averange">
+              <h1>4.9</h1>
+            </div>
             <div>
-                <div class="container-card-pilar">
-                    <div style="background-color: #ff6262;" class="teste">
-    
-                    </div>
-                <div style="background-color: #ff6262;" class="card-pilar-card">
-    
-                    <div class="text-card">
-                        <h1>
-                            Visão
-                        </h1>
-                        <p>Ser reconhecida como líder em soluções de monitoramento de serviços online, fornecendo a nossos clientes a melhor experiência possível. Nosso objetivo é continuar investindo em tecnologia de ponta e em uma equipe técnica altamente capacitada para oferecer soluções inovadoras e personalizadas </p>
-    
-                    </div>
-                </div>
-                </div>
+              <img src="assets/icon/stars.png" alt="">
             </div>
-    
-    
-            <div>
-                <div class="container-card-pilar">
-                    <div style="background-color: #5be6ebd5;" class="teste">
-    
-                    </div>
-                <div style="background-color: #5be6ebd5;" class="card-pilar-card">
-    
-                    <div class="text-card">
-                        <h1>
-                            Valores
-                        </h1>
-                        <p>Nossa empresa de monitoramento de servidores é guiada por valores fundamentais que orientam nossas ações e decisões diárias. São eles: <br>
+            <h3>
+              5.680 Avaliações
+            </h3>
 
-                        Confiança, Excelência, Inovação e Responsabilidade
-                            </p>
-    
-                    </div>
-                </div>
-                </div>
-            </div>
+          </div>
         </div>
-        
+      </div>
+
+      <div>
+        <div class="image-first-div">
+          <img src="assets/background/hallway-main.png" alt="">
         </div>
-    <div class="container-teste">
-        <div class="top">
-            <p>
-                Seus clientes merecem um <br> e-commerce sempre disponível. <br>
-                Junte-se a gente.
-            </p>
-            <div class="bt-top"> 
-                <a class="btn-top">Entre em contato!</a>
-            </div>
-        </div>
+      </div>
     </div>
 
+  </div>
 
+  <div class="disclaimer">
+    <h1>
+      Empresas populares que trabalham com a gente
+    </h1>
+  </div>
 
-    <!--footer inicio-->
-    <div class="footer">
-        <div class="container">
-            <div class="text">
-                <p>
-                    <b>Entre em contato com a gente</b>
-                    <br><br><br>
-                    Rua hadock Lobo 595 - Cerqueira César
-                    <br>
-                    São Paulo - SP, 01414-001
-                    <br>
-                    Telefone: +55 (11) 0000-0000
-                    <br>
-                    Email: stabillis@outlook.com
-                    <br><br>
-                    Nos siga nas redes sociais
-                </p>
-                <div class="sociais">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4494/4494749.png" alt="Logo do GitHub">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="Logo do Twitter">
-                    <img src="https://cdn-icons-png.flaticon.com/512/179/179319.png?w=740&t=st=1677862376~exp=1677862976~hmac=90a709bee67957d0a7ab8daf335c1c708fe05163b572bbf6f4f08f37b54eb05f"
-                        alt="Logo do Facebook">
-                </div>
-            </div>
+  <div class="emprises">
+    <div class="emprises-container">
+      <div class="emprise">
+        <img src="assets/emprises/amazon.png" alt="">
 
+      </div>
+      <div class="emprise">
+        <img src="assets/emprises/mercado-livre.png" alt="">
+      </div>
+      <div class="emprise">
+        <img src="assets/emprises/shopee.png" alt="">
+      </div>
+      <div class="emprise">
+        <img src="assets/emprises/americanas.png" alt="">
+      </div>
+      <div class="emprise">
+        <img src="assets/emprises/magalu.png" alt="">
+      </div>
+      <div class="emprise">
+        <img src="assets/emprises/aliexpress.png" alt="">
+      </div>
+    </div>
+  </div>
 
-            <div class="text">
-                <h4>
-                    <b>Site</b>
-                    <br><br><br>
-                    <a href="">Home</a>
-                    <br>
-                    <a href="">Serviços</a>
-                    <br>
-                    <a href="">Sobre nós</a>
-                    <br>
-                    <a href="">Login</a>
-                    <br>
-                    <a href="">Cadastro</a>
-                </h4>
-            </div>
+  <div class="disclaimer">
+    <h1>
+      Trabalhando juntos geramos produtividade
+    </h1>
+  </div>
 
-            <div class="logo">
-                <img src="assets/icon/stabilis_white_above.png" alt="Logo da Staballis">
-            </div>
-
-
-
+  <div class="produtividade">
+    <article class="card">
+      <img class="card__background" src="assets/estabilidade.jpg"
+        alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
+        height="2193" />
+      <div class="card__content | flow">
+        <div class="card__content--container | flow">
+          <h2 class="card__title">Estabilidade</h2>
+          <p class="card__description">
+            Quando se trata de hospedar um site, aplicativo ou outro serviço online,
+            a estabilidade é essencial para garantir que seus usuários possam acessar e utilizar seu conteúdo sem
+            interrupções.
+          </p>
         </div>
+        <button class="card__button">Saiba mais</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="card__background" src="assets/monitoramento.jpg"
+        alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
+        height="2193" />
+      <div class="card__content | flow">
+        <div class="card__content--container | flow">
+          <h2 class="card__title">Monitoramento</h2>
+          <p class="card__description">
+            Temos um sistema de monitoramento altamente avançado que nos permite monitorar seus serviços em tempo real e
+            garantir o funcionamento de maneira adequada.
+          </p>
+        </div>
+        <button class="card__button">Saiba mais</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <img class="card__background" src="assets/resolucao.jpg"
+        alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
+        height="2193" />
+      <div class="card__content | flow">
+        <div class="card__content--container | flow">
+          <h2 class="card__title">Resolução rápida</h2>
+          <p class="card__description">
+            Sabemos que qualquer interrupção em seus serviços online pode resultar em perda de receita, danos à
+            reputação e insatisfação do cliente.
+            Por isso, aqui na Stabillis, temos um compromisso com a rápida resolução de problemas.
+          </p>
+        </div>
+        <button class="card__button">Saiba mais</button>
+      </div>
+    </article>
+  </div>
+  <div class="about-us">
+    <div class="about-us-container">
+      <div class="image">
+        <img src="assets/background/about-us.png" alt="">
+      </div>
+
+      <div class="text-about">
+        <h1>Sobre nos</h1>
+        <p>
+          Uma empresa de tecnologia que foi criada em 2023 para um projeto em grupo da faculade SPtech em São
+          Paulo. <br>
+          Nosso foco é monitorar e ajudar as pessoas que utilizam e tranalham com servidores, para assim evitar
+          perdas e erros na hora do monitoramento.
+        </p>
+        <a class="know-more" href="sobre-nos.html">Saiba mais</a>
+      </div>
     </div>
+  </div>
+
+  </div>
+
+  <footer class="padding_3x">
+
+    <div class="flex">
+      <section class="flex-content padding_1x">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Mapa do site</h3>
+        <a href="index.html">Home</a>
+        <a href="sobre-nos.html">Sobre nós</a>
+        <a href="login.html">Login</a>
+        <a href="cadastroEmpresa.html">Cadastro</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Quick Links</h3>
+        <a href="#">Jobs</a>
+        <a href="#">Brand Assets</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">Terms of Service</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Contatos</h3>
+        <a href="#">Stabillis@outlook.com.br</a>
+        <a
+          href="https://www.google.com/maps/dir/-23.4848464,-46.6995227/Rua+Haddock+Lobo,+593+-+Cerqueira+C%C3%A9sar,+S%C3%A3o+Paulo+-+SP,+01414-001/@-23.5213493,-46.7075957,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x94ce59d2b0377801:0x852c06561ff8743d!2m2!1d-46.6615654!2d-23.5580366">Rua
+          Haddock Lobo - 593 - São Paulo SP</a>
+        <a href="#">Telefone: (11) 4002-8922</a>
+      </section>
+      <section class="flex-content image-logo">
+        <img src="assets/icon/stabilis_white_above.png" alt="">
+      </section>
+
     </div>
-    <!--footer fim-->
+    <div class="flex">
+
+
+    </div>
+  </footer>
 </body>
 
 </html>

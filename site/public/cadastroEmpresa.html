@@ -6,31 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/cadastroEmpresa.css">
+    <link rel="stylesheet" href="css/nav&fotter.css">
     <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
     <title>Cadastro</title>
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-            <h1 class="titulo">
-                <img src="assets/icon/stabilis_main_above.png" alt="Logo da Staballis">
-            </h1>
-            <ul class="navbar">
-                <li>
-                    <a href="./index.html">Home</a>
-                </li>
-                    <a href="./simulador.html">Serviço</a>
-                </li>
-                <li>
-                    <a href="./sobre-nos.html">Sobre nós</a>
-                </li>
-                <li>
-                    <a href="./login.html" class="btn-login">Login</a>
-                </li>
-            </ul>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <img style="height: 40px;" src="assets/icon/stabilis_main_side.png" alt="">
+          
         </div>
-    </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+    
+        <div class="nav-links">
+          <a href="./index.html">Home</a>
+          <a href="./sobre-nos.html">Sobre nós</a>
+          <a href="./login.html"> <span id="login">Login</span></a>
+        </div>
+      </div>
+    
 
     <div class="banner">
         <div class="container">
@@ -66,11 +68,6 @@
                         <input type="text" placeholder="Estado">
                     </div>
 
-                    <div class="inputs">
-                        <input type="text" placeholder="Senha">
-                        <input type="text" placeholder="Confirmar Senha">
-                    </div>
-
 
 
 
@@ -83,55 +80,46 @@
     <!--footer inicio-->
         
     
+    footer class="padding_3x">
 
-    <footer class="footer">
-        <div class="container">
-            <div class="text">
-                <p>
-                    <b>Entre em contato com a gente</b>
-                    <br><br><br>
-                    Rua hadock Lobo 595 - Cerqueira César
-                    <br>
-                    São Paulo - SP, 01414-001
-                    <br>
-                    Telefone: +55 (11) 0000-0000
-                    <br>
-                    Email: stabillis@outlook.com
-                    <br><br>
-                    Nos siga nas redes sociais
-                </p>
-                <div class="sociais">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4494/4494749.png" alt="Logo do GitHub">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670151.png" alt="Logo do Twitter">
-                    <img src="https://cdn-icons-png.flaticon.com/512/179/179319.png?w=740&t=st=1677862376~exp=1677862976~hmac=90a709bee67957d0a7ab8daf335c1c708fe05163b572bbf6f4f08f37b54eb05f"
-                        alt="Logo do Facebook">
-                </div>
-            </div>
+    <div class="flex">
+      <section class="flex-content padding_1x">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Mapa do site</h3>
+        <a href="index.html">Home</a>
+        <a href="sobre-nos.html">Sobre nós</a>
+        <a href="login.html">Login</a>
+        <a href="cadastroEmpresa.html">Cadastro</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Quick Links</h3>
+        <a href="#">Jobs</a>
+        <a href="#">Brand Assets</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">Terms of Service</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Contatos</h3>
+        <a href="#">Stabillis@outlook.com.br</a>
+        <a
+          href="https://www.google.com/maps/dir/-23.4848464,-46.6995227/Rua+Haddock+Lobo,+593+-+Cerqueira+C%C3%A9sar,+S%C3%A3o+Paulo+-+SP,+01414-001/@-23.5213493,-46.7075957,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x94ce59d2b0377801:0x852c06561ff8743d!2m2!1d-46.6615654!2d-23.5580366">Rua
+          Haddock Lobo - 593 - São Paulo SP</a>
+        <a href="#">Telefone: (11) 4002-8922</a>
+      </section>
+      <section class="flex-content image-logo">
+        <img src="assets/icon/stabilis_white_above.png" alt="">
+      </section>
 
-            <div class="text">
-                <h4>
-                    <b>Site</b>
-                    <br><br><br>
-                    <a href="">Home</a>
-                    <br>
-                    <a href="">Serviços</a>
-                    <br>
-                    <a href="">Sobre nós</a>
-                    <br>
-                    <a href="">Login</a>
-                    <br>
-                    <a href="">Cadastro</a>
-                </h4>
-            </div>
-
-            <div class="logo">
-                <img src="assets/icon/stabilis_white_above.png" alt="Logo da Staballis">
-            </div>
-
-        </div>
     </div>
-    </footer>
+    <div class="flex">
 
+
+    </div>
+  </footer>
 <!--footer fim-->
 
 </body>

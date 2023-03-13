@@ -1,56 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-.header {
-    width: 100%;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    /* background-color: white; */
-    backdrop-filter: blur(7px);
-}
-
-.header a {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-}
-
-.agora {
-    font-weight: 800;
-}
-
-.navbar {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    color: black;
-}
-
-.navbar li {
-    padding: 0 10px;
-    
-}
-.titulo {
-    width: fit-content;
-    margin: 15px 0;
-}
-
-.titulo img {
-    width: 11%;
-}
-
-.navbar li .btn-login {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: #22B0FC;
-    color: white;
-    padding: 8px 30px 9px 30px;
-    border-radius: 10px;
-}
-
 /* FIM NAVBAR */
 
 
@@ -64,6 +12,13 @@ body {
     border: none;
 }
 
+#login{
+    padding: 20%;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    background-color: #22B0FC;
+  }
 /* .vetores {
     position: absolute;
   } */
@@ -74,31 +29,6 @@ body {
     display: flex;
 }
 
-/* NAVBAR */
-.header .container {
-    justify-content: space-between;
-    /* border: 5px solid red; */
-}
-
-.header a {
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
-}
-
-.agora {
-    font-weight: 800;
-}
-
-.navbar {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    list-style: none;
-    color: black;
-}
-
 
 .titulo {
     width: fit-content;
@@ -107,16 +37,6 @@ body {
 
 .titulo img {
     width: 11%;
-}
-
-.navbar li .btn-login {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    background-color: #22B0FC;
-    color: white;
-    padding: 8px 30px 9px 30px;
-    border-radius: 10px;
 }
 
 /* FIM NAVBAR */
@@ -185,7 +105,7 @@ body {
     justify-content: space-around;
     padding: 5px;
     justify-items: center;
-    margin: 10px 0px 20px;
+    margin: 10px;
 }
 
 .inputs {
@@ -193,13 +113,6 @@ body {
     justify-content: space-evenly;
     width: 500px;
     margin: auto;
-}
-
-.select{
-    width: 50%;
-    border-radius: 5px;
-    margin: auto;
-    
 }
 
 
@@ -216,75 +129,11 @@ body {
     cursor: pointer;
     color: #ffffff;
     align-self: center;
-}
-
-.card .botao {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 30px 0px 30px;
-
-}
-
-.card .btn2 {
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    border: none;
-    height: 40px;
-    width: 12rem;
-    border-radius: 12px;
-    background-color: #22B0FC;
-    cursor: pointer;
-    color: #ffffff;
-    align-self: center;
+    margin: 45px;
 }
 
 .btn:hover{
     background-color: #5088f1;
 }
 
-.btn2:hover{
-    background-color: #5088f1;
-}
-
 /* FIM BANNER */
-
-/* FOOTER */
-
-.footer {
-    background-image: url(../assets/icon/footer.png);
-    background-repeat: no-repeat;
-    background-size: 95%;
-    background-position-y: 54%;
-    background-color: #1D293F;
-    height: auto;
-    color: #fff;
-    display: flex;
-    font-size: 17px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    z-index: 1;
-}
-
-.footer .container .text {
-    margin-right: 13vw;
-}
-
-.footer .container a {
-    color: #ffff;
-    text-decoration: none;
-    font-weight: 100;
-}
-
-.logo img {
-    width: 15vw;
-    margin-left: 10vw;
-    margin-top: 2.5rem;
-}
-
-.sociais img {
-    width: 3vw;
-    padding: 2px;
-}
