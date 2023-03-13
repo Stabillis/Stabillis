@@ -115,7 +115,19 @@ body {
     margin: auto;
 }
 
+.select{
+    width: 50%;
+    border-radius: 5px;
+    margin: auto;
 
+}
+
+.card .botao {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0px 30px;
+
+}
 
 .card .btn {
     text-align: center;
@@ -129,10 +141,27 @@ body {
     cursor: pointer;
     color: #ffffff;
     align-self: center;
-    margin: 45px;
+}
+
+.card .btn2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    width: 12rem;
+    border-radius: 12px;
+    background-color: #22B0FC;
+    cursor: pointer;
+    color: #ffffff;
+    align-self: center;
 }
 
 .btn:hover{
+    background-color: #5088f1;
+}
+
+.btn2:hover{
     background-color: #5088f1;
 }
 
