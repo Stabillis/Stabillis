@@ -31,9 +31,9 @@ body {
   display: flex;
 }
 
-#login{
-  padding: 20%;
-  border-radius: 3px;
+#login {
+  padding: 20% 50%;
+  border-radius: 5px;
   color: white;
   font-weight: bold;
   background-color: #22B0FC;

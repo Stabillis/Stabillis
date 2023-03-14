@@ -13,8 +13,8 @@ body {
 }
 
 #login{
-  padding: 20%;
-  border-radius: 3px;
+  padding: 20% 50%;
+  border-radius: 5px;
   color: white;
   font-weight: bold;
   background-color: #22B0FC;
