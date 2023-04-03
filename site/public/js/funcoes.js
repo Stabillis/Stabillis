@@ -52,3 +52,4 @@ function fecharModal() {
     divModal.style.display = "none";
 }
 
+    
