@@ -6,43 +6,78 @@
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
 
-CREATE DATABASE aquatech;
+create database Stabillis;
 
-USE aquatech;
+use Stabillis;
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+create table Empresa (
+idEmpresa int primary key auto_increment,
+NomeEmpresa varchar(45),
+CNPJ char(14),
+TelefoneFixo char(10),
+CEP char(8),
+Logradouro varchar(45),
+Complemento varchar(45),
+Bairro varchar(45),
+Cidade varchar(45),
+Estado varchar(45)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+create table Colaborador (
+idColaborador int primary key auto_increment,
+NomeColaborador varchar(45),
+TipoColaborador varchar(45),
+email varchar(45),
+TelefoneCelular varchar(45),
+Senha varchar(45),
+FK_Empresa int,
+foreign key (FK_Empresa) references Empresa(idEmpresa)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300)
+create table Maquina (
+idMaquina int primary key auto_increment,
+NomeMaquina varchar(45),
+SerialMaquina varchar(45),
+IpMaquina varchar(45),
+Localizacao varchar(45),
+Departamento varchar(45),
+Servidor varchar(45),
+ProcessadorMaquina varchar(45),
+MemoriaMaquina varchar(45),
+DiscoMemoria varchar(45),
+PlacaRede varchar(45),
+SistemaOP varchar(45),
+FK_Empresa int,
+foreign key (FK_Empresa) references Empresa(idEmpresa)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+create table Componente (
+idComponente int primary key auto_increment,
+UsoProcessador int,
+FrequenciaProcessador double(10,2),
+PacoteFísico int,
+Download varchar(45),
+Upload varchar(45),
+DNS varchar(45),
+VelocidadeConexao double(10,2),
+NomeRede varchar(45),
+EmUso varchar(45),
+Disponível varchar(45),
+TotalMemoria varchar(45),
+NomeDisco varchar(45),
+NumeroSerial varchar(45),
+TempoDeTransferencia decimal(10,2),
+TotalDisponivel varchar(45),
+TotalDisco int,
+SistemaOperacional varchar(45),
+Arquitetura varchar(45),
+FabricanteSistema varchar(45),
+FabricanteProcessador varchar(45),
+DataInicializado datetime,
+TempoAtividade varchar(45),
+Permissoes varchar(45),
+Fk_Maquina int,
+foreign key (FK_Maquina) references Maquina(idMaquina)
 );
 
 
