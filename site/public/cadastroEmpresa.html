@@ -2,85 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cadastroEmpresa.css">
-    <link rel="stylesheet" href="css/nav&fotter.css">
-    <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
-    <title>Cadastro</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/cadastroEmpresa.css">
+  <link rel="stylesheet" href="css/nav&fotter.css">
+  <script src="js/funcoes.js"></script>
+  <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
+  <title>Cadastro</title>
 </head>
 
 <body>
-    <div class="nav">
-        <input type="checkbox" id="nav-check">
-        <div class="nav-header">
-          <img style="height: 40px;" src="assets/icon/stabilis_main_side.png" alt="">
-          
-        </div>
-        <div class="nav-btn">
-          <label for="nav-check">
-            <span></span>
-            <span></span>
-            <span></span>
-          </label>
-        </div>
-    
-        <div class="nav-links">
-          <a href="./index.html">Home</a>
-          <a href="./sobre-nos.html">Sobre nós</a>
-          <a href="./login.html"> <span id="login">Login</span></a>
-        </div>
-      </div>
-    
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <img style="height: 40px;" src="assets/icon/stabilis_main_side.png" alt="">
 
-    <div class="banner">
-        <div class="container">
-            <div class="card">
-                <img id="logo" src="assets/icon/stabilis_main_side.png" alt="">
-
-                <p>Faça parte do time e cadastre sua empresa</p>
-
-
-                    <div class="inputs">
-                        <input type="text" placeholder="Nome da empresa">
-                        <input type="text" placeholder="Telefone">
-                    </div>
-
-                    <div class="inputs">
-                        <input type="text" placeholder="CEP">
-                        <input type="text" placeholder="Complemento">
-
-                    </div>
-
-                    <div class="inputs">
-                        <input type="text" placeholder="Cidade">
-                        <input type="text" placeholder="CNPJ">
-                    </div>
-
-                    <div class="inputs">
-                        <input type="text" placeholder="E-mail">
-                        <input type="text" placeholder="Logradouro">
-                    </div>
-
-                    <div class="inputs">
-                        <input type="text" placeholder="Bairro">
-                        <input type="text" placeholder="Estado">
-                    </div>
-
-
-
-
-                <button class="btn">Cadastrar</button>
-
-            </div>
-        </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
     </div>
 
-    <!--footer inicio-->
-        
-    
-    <footer class="padding_3x">
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./sobre-nos.html">Sobre nós</a>
+      <a href="./login.html"> <span id="login">Login</span></a>
+    </div>
+  </div>
+
+
+  <div class="banner">
+    <div class="container">
+      <div class="card">
+        <img id="logo" src="assets/icon/stabilis_main_side.png" alt="">
+
+        <p>Faça parte do time e cadastre sua empresa</p>
+
+
+        <div class="inputs">
+          <input type="text" placeholder="Nome da empresa" id="ipt_nomeempresa">
+          <input type="text" placeholder="Telefone" id="ipt_telefone" maxlength="10">
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="CEP" id="ipt_cep" maxlength="8">
+          <input type="text" placeholder="Complemento" id="ipt_complemento">
+
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="Cidade" id="ipt_cidade">
+          <input type="text" placeholder="CNPJ" id="ipt_cnpj" maxlength="14">
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="E-mail" id="ipt_email">
+          <input type="text" placeholder="Logradouro" id="ipt_logradouro">
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="Bairro" id="ipt_bairro">
+          <input type="text" placeholder="Estado" id="ipt_estado">
+        </div>
+
+
+
+
+        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+
+      </div>
+    </div>
+  </div>
+
+  <!--footer inicio-->
+
+
+  <footer class="padding_3x">
 
     <div class="flex">
       <section class="flex-content padding_1x">
@@ -120,8 +121,86 @@
 
     </div>
   </footer>
-<!--footer fim-->
+  <!--footer fim-->
 
 </body>
 
 </html>
+
+<script>
+  function cadastrar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeEmpresaVar = ipt_nomeempresa.value;
+    var emailVar = ipt_email.value;
+    var telefoneVar = ipt_telefone.value;
+    var cepVar = ipt_cep.value;
+    var complementoVar = ipt_complemento.value;
+    var cidadeVar = ipt_cidade.value;
+    var cnpjVar = ipt_cnpj.value;
+    var logradouroVar = ipt_logradouro.value;
+    var bairroVar = ipt_bairro.value;
+    var estadoVar = ipt_estado.value;
+
+
+    if (nomeEmpresaVar == "" || emailVar == "" || telefoneVar == "" || cepVar == ""
+      || complementoVar == "" || cidadeVar == "" || cnpjVar == "" || logradouroVar == ""
+      || bairroVar == "" || cepVar == "") {
+      alert("Preencha todos os campos para finalizar o cadastro!")
+
+      // finalizarAguardar();
+      return false;
+    }
+    else {
+      setInterval(sumirMensagem(), 5000)
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeEmpresaServer: nomeEmpresaVar,
+        emailServer: emailVar,
+        telefoneServer: telefoneVar,
+        cepServer: cepVar,
+        complementoServer: complementoVar,
+        cidadeServer: cidadeVar,
+        cnpjServer: cnpjVar,
+        logradouroServer: logradouroVar,
+        bairroServer: bairroVar,
+        estadoServer: estadoVar
+      })
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+
+
+        setTimeout(() => {
+          window.location = "login.html";
+        }, "2000")
+
+        // limparFormulario();
+        // finalizarAguardar();
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      // finalizarAguardar();
+    });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    // cardErro.style.display = "none"
+  }
+</script>
