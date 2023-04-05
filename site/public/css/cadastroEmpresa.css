@@ -164,7 +164,20 @@ body {
     cursor: pointer;
     color: #ffffff;
     align-self: center;
-    margin: 45px;
+    margin: 25px;
 }
 
+.card .select{
+    display: flex;
+    border: none;
+    background-color: #F0F0F0;
+    border-radius: 5px;
+    height: 35px;
+    width: 21rem;
+    justify-content: space-around;
+    padding: 5px;
+    justify-items: center;
+    margin: 10px;
+
+}
 /* FIM BANNER */

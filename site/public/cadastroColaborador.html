@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/cadastroEmpresa.css">
+  <link rel="stylesheet" href="css/nav&fotter.css">
+  <script src="js/funcoes.js"></script>
+  <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
+  <title>Cadastro de Colaborador</title>
+</head>
+
+<body>
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <img style="height: 40px;" src="assets/icon/stabilis_main_side.png" alt="">
+
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav-links">
+      <a href="./index.html">Home</a>
+      <a href="./sobre-nos.html">Sobre nós</a>
+      <a href="./login.html"> <span id="login">Login</span></a>
+    </div>
+  </div>
+
+
+  <div class="banner">
+    <div class="container">
+      <div class="card">
+        <img id="logo" src="assets/icon/stabilis_main_side.png" alt="">
+
+        <p>Cadastre seu Colaborador</p>
+
+
+        <div class="inputs">
+          <input type="text" placeholder="Nome Completo" id="ipt_nome_colaborador">
+          <input type="text" placeholder="Nome da Empresa" id="ipt_nome_empresa" maxlength="10">
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="E-mail" id="ipt_email" maxlength="8">
+          <input type="text" placeholder="Telefone Celular" id="ipt_telefone_celular">
+
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="Senha" id="ipt_senha">
+          <input type="text" placeholder="Confirmar Senha" id="ipt_confirmar_senha" maxlength="14">
+        </div>
+
+        <div class="inputs">
+          <select class="select" name="" id="">
+            <option value="#">--Selecione uma opção--</option>
+            <option value="0">Colaborador Usual</option>
+            <option value="1">Colaborador Administrador</option>
+          </select>
+        </div>
+
+    
+
+
+
+
+        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+
+      </div>
+    </div>
+  </div>
+
+  <!--footer inicio-->
+
+
+  <footer class="padding_3x">
+
+    <div class="flex">
+      <section class="flex-content padding_1x">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Mapa do site</h3>
+        <a href="index.html">Home</a>
+        <a href="sobre-nos.html">Sobre nós</a>
+        <a href="login.html">Login</a>
+        <a href="cadastroEmpresa.html">Cadastro</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Quick Links</h3>
+        <a href="#">Jobs</a>
+        <a href="#">Brand Assets</a>
+        <a href="#">Investor Relations</a>
+        <a href="#">Terms of Service</a>
+      </section>
+      <section class="flex-content padding_1x">
+        <h3>Contatos</h3>
+        <a href="#">Stabillis@outlook.com.br</a>
+        <a
+          href="https://www.google.com/maps/dir/-23.4848464,-46.6995227/Rua+Haddock+Lobo,+593+-+Cerqueira+C%C3%A9sar,+S%C3%A3o+Paulo+-+SP,+01414-001/@-23.5213493,-46.7075957,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x94ce59d2b0377801:0x852c06561ff8743d!2m2!1d-46.6615654!2d-23.5580366">Rua
+          Haddock Lobo - 593 - São Paulo SP</a>
+        <a href="#">Telefone: (11) 4002-8922</a>
+      </section>
+      <section class="flex-content image-logo">
+        <img src="assets/icon/stabilis_white_above.png" alt="">
+      </section>
+
+    </div>
+    <div class="flex">
+
+
+    </div>
+  </footer>
+  <!--footer fim-->
+
+</body>
+
+</html>
+
+<script>
+  function cadastrar() {
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeEmpresaVar = ipt_nomeempresa.value;
+    var emailVar = ipt_email.value;
+    var telefoneVar = ipt_telefone.value;
+    var cepVar = ipt_cep.value;
+    var complementoVar = ipt_complemento.value;
+    var cidadeVar = ipt_cidade.value;
+    var cnpjVar = ipt_cnpj.value;
+    var logradouroVar = ipt_logradouro.value;
+    var bairroVar = ipt_bairro.value;
+    var estadoVar = ipt_estado.value;
+
+
+    if (nomeEmpresaVar == "" || emailVar == "" || telefoneVar == "" || cepVar == ""
+      || complementoVar == "" || cidadeVar == "" || cnpjVar == "" || logradouroVar == ""
+      || bairroVar == "" || cepVar == "") {
+      alert("Preencha todos os campos para finalizar o cadastro!")
+
+      // finalizarAguardar();
+      return false;
+    }
+    else {
+      setInterval(sumirMensagem(), 5000)
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeEmpresaServer: nomeEmpresaVar,
+        emailServer: emailVar,
+        telefoneServer: telefoneVar,
+        cepServer: cepVar,
+        complementoServer: complementoVar,
+        cidadeServer: cidadeVar,
+        cnpjServer: cnpjVar,
+        logradouroServer: logradouroVar,
+        bairroServer: bairroVar,
+        estadoServer: estadoVar
+      })
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+
+
+        setTimeout(() => {
+          window.location = "login.html";
+        }, "2000")
+
+        // limparFormulario();
+        // finalizarAguardar();
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      // finalizarAguardar();
+    });
+
+    return false;
+  }
+
+  function sumirMensagem() {
+    // cardErro.style.display = "none"
+  }
+</script>
