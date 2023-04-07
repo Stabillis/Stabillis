@@ -1,9 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+}
+
+/* pesquisa */
+.containerPesquisa {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 50px;
+  background-color: #70C0EC;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.containerPesquisa p {
+  color: #ffff;
+  font-size: 30px;
+  padding-left: 60px;
+}
+
+.containerPesquisa input {
+  height: 40px;
+  width: 150px;
+  font-size: 20px;
+  text-decoration: none;
+  border: none;
+  color: #000000;
+  background-color: #ffffff;
+  border-radius: 11px;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.containerPesquisa button {
+  height: 40px;
+  width: 100px;
+  border-radius: 11px;
+  border: none;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  background-color: #1D293F;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+::placeholder {
+  color: #000000;
+  text-align: center;
+}
+
+.input-btn {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 60px;
+}
+
+/* fim */
+
+/* add */
+.containerAdicionar {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 50px;
+  background-color: #ffff;
+}
+
+.containerAdicionar p {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 35px;
+  /* margin-left: 40px; */
+}
+
+.containerAdicionar img {
+  width: 40px;
+  padding: 12px 0 0 40px
+}
+
+/* fim */
+
+/* tabela */
 .containerLista {
   display: flex;
   margin: auto;
   margin-bottom: 10%;
   height: 500px;
   width: 80%;
+  -webkit-box-shadow: 55px 52px 112px 4px rgba(150, 150, 150, 0.6);
+  -moz-box-shadow: 55px 52px 112px 4px rgba(150, 150, 150, 0.6);
+  box-shadow: 55px 52px 112px 4px rgba(150, 150, 150, 0.6);
 }
 
 table {
@@ -12,24 +106,32 @@ table {
   width: 100%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
+td,
+th {
+  border: none;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+th {
+  background-color: #70C0EC;
 }
 
-#iconesColuna{
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+#iconesColuna {
   display: flex;
   justify-content: space-around;
   height: 61px;
   align-items: center;
 }
-#colunaEdicao{
+
+#colunaEdicao {
   display: flex;
   justify-content: center;
 
 }
+
+/* fim tabela */
