@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/nav&fotter.css">
   <link rel="stylesheet" href="css/listaColaborador.css">
+  <script src="js/colab.js" defer></script>
   <title>Colaboradores</title>
 </head>
 
@@ -46,7 +47,7 @@
   <!-- adicionar -->
   <div class="containerAdicionar">
     <a href="#">
-      <img
+      <img id="addColab"
         src="https://cdn-icons-png.flaticon.com/512/845/845630.png?w=740&t=st=1680896121~exp=1680896721~hmac=aeb2a168c952acf12dd77a0f485a697418e73473c5f141e5ba510e55ee4431b9"
         alt="">
     </a>
@@ -163,9 +164,25 @@
         </td>
       </tr>
     </table>
-
   </div>
-
+  <div class="modal" id="modal">
+    <div class="modal-content">
+        <header class="modal-header">
+            <h2>Novo Colaborador</h2>
+            <span class="modal-close" id="modalClose">&#10006;</span>
+        </header>
+        <form class="modal-form">
+            <input type="text" class="modal-field" placeholder="Identificação do colaborador">
+            <input type="text" class="modal-field" placeholder="Nome do Colaborador">
+            <input type="text" class="modal-field" placeholder="Cargo do colaborador">
+            <input type="text" class="modal-field" placeholder="Permissão do colaborador">
+        </form>
+        <footer class="modal-footer">
+            <button class="saveButton">Salvar</button>
+            <button class="cancelButton">Cancelar</button>
+        </footer>
+    </div>
+</div>
   <!--footer inicio-->
 
 
