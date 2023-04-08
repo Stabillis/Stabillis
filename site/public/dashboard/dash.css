@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+/*body cobrindo 100% da tela  */
+body{
+    height: 100vh;
+    width: 100vh;
+    overflow-x: hidden;
+}
+/*estilizando a navbar */
+
+nav.side-menu{
+
+    width: 80px;
+    max-width: 80px;
+    height: 100%;
+    background-color: rgb(52, 52, 52);
+    padding: 40px 0 40px 1%;
+    box-shadow: 3px 0 0 #70c0ec ;/*criando uma linha na lateral da sidebar*/
+    position: fixed; /*mantendo a sidebar fixa */
+    top: 0;
+    left: 0;
+    overflow: hidden;/*escondendo o texto do menu */
+    transition: 0.5s;
+    
+}
+/*animação da sidebar ao passa o mouse */
+nav.side-menu:hover{
+    width: 250px;
+    max-width: 250px;
+    
+}
+
+/*estilizando a UL da side bar */
+ul{
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.itens-menu{
+   transition: 0.5s; /*definindo o delay da passada do mouse */
+}
+
+
+ul li.itens-menu:hover{
+    background-color:#70c0ec;
+}
+
+/*estilizando os li da  da side bar, todos itens do menu */
+ul li.itens-menu a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;/*cima e baixo 20px e laterais 4% */
+    margin-bottom: 20px;
+    display: flex;
+    line-height: 40px; /*alinhar texto*/
+}
+/*estilizando texto do menu*/
+ul li.itens-menu a .txt{
+margin-left: 3rem;
+}
+
+/*Estilizando os icones da sidebar */
+ul li.itens-menu a .icon > i{
+    font-size: 30px;
+}
+
+/*estilizando tela principal*/
+
+h1{
+    margin-top: 0.5rem;
+}
+
+main{
+    margin-left: 90px;
+    
+}
+main .data{
+    display: inline-block;
+    background-color: #70c0ec;
+    border-radius: 8px;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+main .data input[type="date"]{
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+main .columns-dash{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem;
+}
+
+
+main .columns-dash > div{
+    background-color: white;
+    padding: 1.8rem;
+    width: 300px;
+    border-radius: 10px;
+    margin-top: 1rem;
+    box-shadow:0 1rem 1rem #70c0ec;
+    transition: 1s;
+    margin-left: 1.5rem;
+}
+main .columns-dash > div:hover{
+    box-shadow: none;
+}
+
