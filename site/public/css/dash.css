@@ -73,6 +73,7 @@ ul li.itens-menu a .icon > i{
 
 h1{
     margin-top: 0.5rem;
+    margin-left: 1.5rem;
 }
 
 main{
@@ -85,6 +86,7 @@ main .data{
     border-radius: 8px;
     margin-top: 1rem;
     padding: 0.5rem;
+    margin-left: 1.5rem;
 }
 
 main .data input[type="date"]{
@@ -95,7 +97,7 @@ main .data input[type="date"]{
 
 main .columns-dash{
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.6rem;
 }
 
@@ -114,4 +116,36 @@ main .columns-dash > div{
 main .columns-dash > div:hover{
     box-shadow: none;
 }
+
+/*estilizando KPI*/
+
+.coluna-kpi {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin-top: 0.5rem;
+    width: 55vw;
+    height: 30vh;
+    margin-left: 1.5rem;
+  }
+  
+  .card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    height: 90%;
+
+  }
+  
+  
+  
+  .coluna-kpi h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .coluna-kpi p {
+    font-size: 16px;
+  }
 
