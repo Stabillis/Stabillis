@@ -95,20 +95,21 @@ main .data input[type="date"]{
 
 main .columns-dash{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 1.6rem;
 }
 
 
 main .columns-dash > div{
     background-color: white;
-    padding: 1.8rem;
-    width: 300px;
+    padding: 2.8rem;
+    width: 400px;
     border-radius: 10px;
     margin-top: 1rem;
     box-shadow:0 1rem 1rem #70c0ec;
     transition: 1s;
     margin-left: 1.5rem;
+    margin-bottom: 1rem;
 }
 main .columns-dash > div:hover{
     box-shadow: none;
