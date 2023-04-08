@@ -45,7 +45,7 @@
 
         <div class="inputs">
           <input type="text" placeholder="Nome da empresa" id="ipt_nomeempresa">
-          <input type="text" placeholder="Telefone" id="ipt_telefone" maxlength="10">
+          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="10">
         </div>
 
         <div class="inputs">
@@ -69,7 +69,10 @@
           <input type="text" placeholder="Estado" id="ipt_estado">
         </div>
 
-
+        <div class="inputs">
+          <input type="password" placeholder="Senha" id="ipt_senha">
+          <input type="password" placeholder="Confirmação de senha" id="ipt_confirmar_senha">
+        </div>
 
 
         <button class="btn" onclick="cadastrar()">Cadastrar</button>
@@ -128,6 +131,7 @@
 </html>
 
 <script>
+
   function cadastrar() {
 
     //Recupere o valor da nova input pelo nome do id
@@ -142,11 +146,12 @@
     var logradouroVar = ipt_logradouro.value;
     var bairroVar = ipt_bairro.value;
     var estadoVar = ipt_estado.value;
+    var senhaVar = ipt_senha.value
 
 
     if (nomeEmpresaVar == "" || emailVar == "" || telefoneVar == "" || cepVar == ""
       || complementoVar == "" || cidadeVar == "" || cnpjVar == "" || logradouroVar == ""
-      || bairroVar == "" || cepVar == "") {
+      || bairroVar == "" || estadoVar == "" || senhaVar == "") {
       alert("Preencha todos os campos para finalizar o cadastro!")
 
       // finalizarAguardar();
@@ -174,7 +179,8 @@
         cnpjServer: cnpjVar,
         logradouroServer: logradouroVar,
         bairroServer: bairroVar,
-        estadoServer: estadoVar
+        estadoServer: estadoVar,
+        senhaServer: senhaVar
       })
     }).then(function (resposta) {
 
@@ -184,7 +190,7 @@
 
 
         setTimeout(() => {
-          window.location = "login.html";
+          window.location = "loginEmpresa.html";
         }, "2000")
 
         // limparFormulario();
