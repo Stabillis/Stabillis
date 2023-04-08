@@ -72,6 +72,7 @@ function cadastrar(req, res) {
     var logradouro = req.body.logradouroServer;
     var bairro = req.body.bairroServer;
     var estado = req.body.estadoServer;
+    var senha = req.body.senhaServer;
 
 
     // Faça as validações dos valores
@@ -95,9 +96,11 @@ function cadastrar(req, res) {
         res.status(400).send("Seu bairro está undefined!");
     } else if (estado == undefined) {
         res.status(400).send("Seu estado está undefined!");
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
     } else {
         // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
-        empresaModel.cadastrar(nome, email, telefoneFixo, cep, complemento, cidade, cnpj, logradouro, bairro, estado)
+        empresaModel.cadastrar(nome, email, telefoneFixo, cep, complemento, cidade, cnpj, logradouro, bairro, estado, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
