@@ -50,8 +50,8 @@
 
 .modal-close {
   position: absolute;
-  right: 25%;
-  top: 15%;
+  right: 0;
+  /*top: 15%;*/
   display: block;
   width: 40px;
   height: 40px;
@@ -115,4 +115,8 @@
   border-radius: 10px;
   background-color: #ff8585;
   cursor: pointer;
+}
+
+input{
+  margin: 5px;
 }
