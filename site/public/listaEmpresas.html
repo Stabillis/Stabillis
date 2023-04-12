@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/nav&fotter.css">
   <link rel="stylesheet" href="css/listaColaborador.css">
+  <link rel="stylesheet" href="css/modalEmp.css">
+  <script src="js/emp.js" defer></script>
   <title>Empresas</title>
 </head>
 
@@ -46,7 +48,7 @@
   <!-- adicionar -->
   <div class="containerAdicionar">
     <a href="#">
-      <img
+      <img id="addEmp"
         src="https://cdn-icons-png.flaticon.com/512/845/845630.png?w=740&t=st=1680896121~exp=1680896721~hmac=aeb2a168c952acf12dd77a0f485a697418e73473c5f141e5ba510e55ee4431b9"
         alt="">
     </a>
@@ -177,12 +179,50 @@
         </td>
       </tr>
     </table>
-
   </div>
 
+  <!-- INICIO MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h2>Nova empresa</h2>
+      </header>
+      <span class="modal-close" id="modalClose">&#10006;</span>
+
+      <form class="modal-form">
+        <input type="text" class="modal-field" placeholder="Nome empresa">
+        <input type="text" class="modal-field" placeholder="CNPJ">
+      </form>
+
+      <form class="modal-form2">
+        <input type="text" class="modal-field" placeholder="Telefone">
+        <input type="text" class="modal-field" placeholder="E-mail">
+      </form>
+
+      <form class="modal-form2">
+        <input type="text" class="modal-field" placeholder="CEP">
+        <input type="text" class="modal-field" placeholder="Logradouro">
+      </form>
+
+      <form class="modal-form2">
+        <input type="text" class="modal-field" placeholder="Complemento">
+        <input type="text" class="modal-field" placeholder="Bairro">
+      </form>
+
+      <form class="modal-form2">
+        <input type="text" class="modal-field" placeholder="Cidade">
+        <input type="text" class="modal-field" placeholder="Estado">
+      </form>
+
+      <footer class="modal-footer">
+        <button class="saveButton">Salvar</button>
+        <button class="cancelButton">Cancelar</button>
+      </footer>
+    </div>
+  </div>
+  <!-- FIM MODAL -->
+
   <!--footer inicio-->
-
-
   <footer class="padding_3x">
 
     <div class="flex">

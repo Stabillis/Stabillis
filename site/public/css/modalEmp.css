@@ -97,13 +97,14 @@
 
 .modal-footer {
   background-color: inherit;
-  text-align: center;
+  text-align:center;
   padding: 0 20px;
 }
 
 .saveButton {
   border-style: none;
-  padding: 6px 12px;
+  padding: 6px 22px;
+  margin-right: 8%;
   border-radius: 10px;
   background-color: #66f1a5;
   cursor: pointer;
