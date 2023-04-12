@@ -30,6 +30,7 @@
   padding-bottom: 20px;
   background-color: white;
   box-shadow: 1px 1px 10px black;
+  border-radius: 11px;
 }
 
 .modal-header {
@@ -40,6 +41,8 @@
   line-height: 40px;
   font-size: 1rem;
   background-color: #70C0EC;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
 }
 
 .modal-header h2 {
@@ -63,6 +66,7 @@
 .modal-close:hover {
   background-color: #FF4949;
   color: white;
+  border-radius: 4px;
 }
 
 .modal-content .modal-form2 {
@@ -117,6 +121,6 @@
   cursor: pointer;
 }
 
-input{
+input {
   margin: 5px;
 }
