@@ -104,20 +104,18 @@
                 <span><i class="bi bi-file-bar-graph-fill"></i></span>
                 <div class="conteudo">
                 <div class="legenda">
-                    <h3>Definir</h3>
-                    <h1>Definir</h1>
+                    <h3>Uso de RAM e CPU das máquinas no mês</h3>
+                    
                 </div>
                 <div class="status">
                     <div>
-                        <canvas id="grafico" style="width: 100px; height: 100px;"></canvas>
+                        <canvas id="grafico" style="width: 1000px; height: 450px;"></canvas>
                     </div>
                     
-                    <div class="percentual">
-                        <p>80%</p>
-                    </div>
+                    
                 </div>
                 </div>
-                <small class="mini-legenda">Últimas 24 Horas</small>
+                <small class="mini-legenda">Último mês</small>
             </div>
             
             <!--fim do 1º coluna-->
@@ -126,19 +124,17 @@
                 <span><i class="bi bi-pie-chart-fill"></i></span>
                 <div class="conteudo">
                 <div class="legenda">
-                    <h3>Definir</h3>
-                    <h1>Definir</h1>
+                    <h3>Total de uso de Disco em cada semana</h3>
+                    
                 </div>
                 <div class="status">
                     <div>
-                        <canvas id="grafico2" style="width: 100px; height: 100px;"></canvas>
+                        <canvas id="grafico2" style="width: 500px; height: 10%;"></canvas>
                     </div>
-                    <div class="percentual">
-                        <p>80%</p>
-                    </div>
+                    
                 </div>
                 </div>
-                <small class="mini-legenda">Últimas 24 Horas</small>
+                
             </div>
                 
                 <!--fim da 2ºcoluna-->
@@ -210,22 +206,20 @@
                             <!--fim da 6ºcoluna-->
         </div>
         
-        <div class="columns-dash">
+        <div class="columns-dash1">
         <div class="painel3" id="painel3">
           <span><i class="bi bi-graph-up-arrow"></i></span>
           <div class="conteudo">
           <div class="legenda">
-              <h3>Definir</h3>
-              <h1>Definir</h1>
+              <h3>Taxa de pacotes recebidos e enviados no mês</h3>
+              
           </div>
           <div class="status">
-              <canvas id="grafico3" style="width: 100px; height: 100px;"></canvas>
-              <div class="percentual">
-                  <p>80%</p>
-              </div>
+              <canvas id="grafico3" style="width: 100px; height: 22px;"></canvas>
+              
           </div>
           </div>
-          <small class="mini-legenda">Últimas 24 Horas</small>
+          <small class="mini-legenda">Último mês</small>
       </div>
     </div>
     </main>
@@ -235,9 +229,9 @@
      const ctx = document.getElementById('grafico');
 
 new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     datasets: [{
       label: '# of Votes',
       data: [12, 19, 3, 5, 2, 3],
@@ -253,38 +247,27 @@ new Chart(ctx, {
   }
 });
 
-const ctx2 = document.getElementById('grafico2');
 
-new Chart(ctx2, {
-  type: 'pie',
-  data: {
-    labels: ['Red', 'Yellow', 'Green'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+
+
 const ctx3 = document.getElementById('grafico3');
 
 new Chart(ctx3, {
-  type: 'radar',
+  type: 'line',
   data: {
-    labels: ['Red', 'Yellow', 'Green'],
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     datasets: [{
-      label: '# of Votes',
+      label: 'Taxa de pacotes recebidos', 
       data: [12, 19, 3],
       borderWidth: 1
-    }]
+
+      
+    }],
+
+    
+    
   },
+  
   options: {
     scales: {
       y: {
@@ -294,26 +277,7 @@ new Chart(ctx3, {
   }
 });
 
-const ctx4 = document.getElementById('grafico4');
 
-new Chart(ctx4, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Yellow', 'Green'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
 </script>
 </body>
 </html>
