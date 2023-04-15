@@ -17,14 +17,19 @@ nav.side-menu{
     width: 80px;
     max-width: 80px;
     height: 100%;
-    background-color: rgb(52, 52, 52);
+    background-color: #63bae9;
     padding: 40px 0 40px 1%;
-    box-shadow: 3px 0 0 #70c0ec ;/*criando uma linha na lateral da sidebar*/
+    box-shadow: 3px 0 0 #457f9e ;/*criando uma linha na lateral da sidebar*/
     position: fixed; /*mantendo a sidebar fixa */
     top: 0;
     left: 0;
     overflow: hidden;/*escondendo o texto do menu */
     transition: 0.5s;
+    background-image: url(/assets/icon/stabilis_side_white.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position-y: 95%;
     
 }
 /*animação da sidebar ao passa o mouse */
@@ -46,7 +51,7 @@ ul li.itens-menu{
 
 
 ul li.itens-menu:hover{
-    background-color:#70c0ec;
+    background-color:#91ceee;
 }
 
 /*estilizando os li da  da side bar, todos itens do menu */
@@ -132,7 +137,7 @@ main .columns-dash > div:hover{
     width: 55vw;
     height: 30vh;
     margin-left: 1.5rem;
-    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #747474;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #747474a2;
     border-radius: 8px;
    
   }
