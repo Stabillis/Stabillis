@@ -109,13 +109,13 @@ main .columns-dash{
 main .columns-dash > div{
     background-color: white;
     padding: 2.8rem;
-    width: 650px;
+    width: 648px;
     height: 390px;
     border-radius: 10px;
     margin-top: 1rem;
     box-shadow:0 1rem 1rem #70c0ec;
     transition: 1s;
-    margin-left: 1.5rem;
+    margin-left: 40px;
     margin-bottom: 1rem;
 }
 main .columns-dash > div:hover{
@@ -125,13 +125,13 @@ main .columns-dash > div:hover{
 main .columns-dash1 > div{
   background-color: white;
   padding: 2.8rem;
-  width: 1325px;
+  width: 1335px;
   height: 390px;
   border-radius: 10px;
   margin-top: 1rem;
   box-shadow:0 1rem 1rem #70c0ec;
   transition: 1s;
-  margin-left: 1.5rem;
+  margin-left: 40px;
   margin-bottom: 1rem;
 }
 main .columns-dash1 > div:hover{
@@ -158,7 +158,7 @@ main .columns-dash1 > div:hover{
   align-items: center;
   margin-top: 30px;
   width: 90vw;
-  height: 15vh;
+  /* height: 15vh; */
   margin-left: 1.5rem;
   box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #74747473;
   border-radius: 8px;
@@ -177,6 +177,7 @@ main .columns-dash1 > div:hover{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 
 }
 
@@ -191,6 +192,7 @@ main .columns-dash1 > div:hover{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 
 }
 
@@ -205,10 +207,12 @@ main .columns-dash1 > div:hover{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
 }
 
 .coluna-kpi p {
   font-size: 16px;
+  
 }
 
 /*estilização lgenda KPI*/
@@ -239,14 +243,13 @@ main .columns-dash1 > div:hover{
   }
 
   .container-botao {
-    box-shadow: 1px 3px 5px #747474;
+    box-shadow: 1px 3px 5px #8fcbfc;
     border-radius: 8px;
     display: flex;
     justify-content: space-between;
     margin-left: 12%;
     height: 30%;
-    margin-top: 3%;
-    margin-bottom: 2%;
+    margin-top: 1%;
     width: 70%;
     padding: 10px;
 }
@@ -267,3 +270,6 @@ main .columns-dash1 > div:hover{
     background:rgba(104, 165, 236, 1);
     
   }
+
+
+  

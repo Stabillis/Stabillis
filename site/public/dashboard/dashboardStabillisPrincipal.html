@@ -18,26 +18,26 @@
 <ul>
     <li class="itens-menu">
         <a href="#">
-            <span class="icon"><i class="bi bi-house"></i></span>
-            <span class="txt">Home</span>
+            <span class="icon"><i class="bi bi-person"></i></span>
+            <span class="txt">Perfil</span>
         </a>
     </li>
     <li class="itens-menu">
         <a href="#">
             <span class="icon"><i class="bi bi-columns-gap"></i></span>
-            <span class="txt">Dashboard</span>
+            <span class="txt">Suporte</span>
         </a>
     </li>
     <li class="itens-menu">
         <a href="#">
             <span class="icon"><i class="bi bi-gear"></i></span>
-            <span class="txt">Configuração</span>
+            <span class="txt">Alterar Senha</span>
         </a>
     </li>
     <li class="itens-menu">
         <a href="#">
-            <span class="icon"><i class="bi bi-person"></i></span>
-            <span class="txt">Conta</span>
+            <span class="icon"><i class="bi bi-house"></i></span>
+            <span class="txt">Sair</span>
         </a>
     </li>
 </ul>
@@ -109,19 +109,18 @@
                 </div>
                 <div class="status">
                     <div>
-                        <canvas id="grafico" style="width: 1000px; height: 450px;"></canvas>
+                        <canvas id="grafico" style="width: 1000px; height: 500px;"></canvas>
                     </div>
                     
                     
                 </div>
                 </div>
-                <small class="mini-legenda">Último mês</small>
             </div>
             
             <!--fim do 1º coluna-->
             
             <div class="painel2" id="painel2">
-                <span><i class="bi bi-pie-chart-fill"></i></span>
+                <span><i class="bi bi-file-bar-graph-fill"></i></span>
                 <div class="conteudo">
                 <div class="legenda">
                     <h3>Total de uso de Disco em cada semana</h3>
@@ -129,7 +128,7 @@
                 </div>
                 <div class="status">
                     <div>
-                        <canvas id="grafico2" style="width: 500px; height: 10%;"></canvas>
+                        <canvas id="grafico2" style="width: 1000px; height: 450px;"></canvas>
                     </div>
                     
                 </div>
@@ -219,7 +218,6 @@
               
           </div>
           </div>
-          <small class="mini-legenda">Último mês</small>
       </div>
     </div>
     </main>
@@ -233,10 +231,14 @@ new Chart(ctx, {
   data: {
     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
+          label: 'Pacotes enviados - %',
+          data: [2, 10, 4, 5, 6, 3, 23, 9, 8, 5, 30, 28],
+          borderWidth: 1
+        },{
+          label: 'Pacotes recebidos - %',
+          data: [3, 9, 3, 5, 2, 3, 22, 9, 7, 6, 29, 27],
+          borderWidth: 1
+        }]
   },
   options: {
     scales: {
@@ -247,7 +249,28 @@ new Chart(ctx, {
   }
 });
 
+const ctx2 = document.getElementById('grafico2');
 
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+    datasets: [{
+          label: 'Pacotes enviados - %',
+          data: [5, 10, 15, 20, 25, 30],
+          borderWidth: 1
+        
+        }]
+  },
+  
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
 
 
 const ctx3 = document.getElementById('grafico3');
@@ -257,15 +280,14 @@ new Chart(ctx3, {
   data: {
     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     datasets: [{
-      label: 'Taxa de pacotes recebidos', 
-      data: [12, 19, 3],
-      borderWidth: 1
-
-      
-    }],
-
-    
-    
+          label: 'Pacotes enviados - Kbps',
+          data: [300, 800, 500, 600, 700, 500, 1353, 615, 485, 530, 1989, 1690],
+          borderWidth: 1
+        },{
+          label: 'Pacotes recebidos - Kbps',
+          data: [200, 900, 300, 500, 700, 400, 1483, 789, 389, 439, 1970, 1560],
+          borderWidth: 1
+        }]
   },
   
   options: {
