@@ -45,35 +45,28 @@
 
         <div class="inputs">
           <input type="text" placeholder="Nome da empresa" id="ipt_nomeempresa">
-          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="10">
-        </div>
-
-        <div class="inputs">
-          <input type="text" placeholder="CEP" id="ipt_cep" maxlength="8">
-          <input type="text" placeholder="Complemento" id="ipt_complemento">
-
-        </div>
-
-        <div class="inputs">
-          <input type="text" placeholder="Cidade" id="ipt_cidade">
           <input type="text" placeholder="CNPJ" id="ipt_cnpj" maxlength="14">
         </div>
 
         <div class="inputs">
-          <input type="text" placeholder="E-mail" id="ipt_email">
+          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="10">
+          <input type="text" placeholder="CEP" id="ipt_cep" maxlength="8">
+
+        </div>
+
+        <div class="inputs">
           <input type="text" placeholder="Logradouro" id="ipt_logradouro">
+          <input type="text" placeholder="Complemento" id="ipt_complemento">
+        </div>
+
+        <div class="inputs">
+          <input type="text" placeholder="Estado" id="ipt_estado">
+          <input type="text" placeholder="Cidade" id="ipt_cidade">
         </div>
 
         <div class="inputs">
           <input type="text" placeholder="Bairro" id="ipt_bairro">
-          <input type="text" placeholder="Estado" id="ipt_estado">
         </div>
-
-        <div class="inputs">
-          <input type="password" placeholder="Senha" id="ipt_senha">
-          <input type="password" placeholder="Confirmação de senha" id="ipt_confirmar_senha">
-        </div>
-
 
         <button class="btn" onclick="cadastrar()">Cadastrar</button>
 
@@ -137,7 +130,6 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeEmpresaVar = ipt_nomeempresa.value;
-    var emailVar = ipt_email.value;
     var telefoneVar = ipt_telefone.value;
     var cepVar = ipt_cep.value;
     var complementoVar = ipt_complemento.value;
@@ -146,19 +138,18 @@
     var logradouroVar = ipt_logradouro.value;
     var bairroVar = ipt_bairro.value;
     var estadoVar = ipt_estado.value;
-    var senhaVar = ipt_senha.value
 
 
-    if (nomeEmpresaVar == "" || emailVar == "" || telefoneVar == "" || cepVar == ""
-      || complementoVar == "" || cidadeVar == "" || cnpjVar == "" || logradouroVar == ""
-      || bairroVar == "" || estadoVar == "" || senhaVar == "") {
+
+    if (nomeEmpresaVar == "" || telefoneVar == "" || cepVar == "" || complementoVar == "" ||
+      cidadeVar == "" || cnpjVar == "" || logradouroVar == "" || bairroVar == "" || estadoVar == "") {
       alert("Preencha todos os campos para finalizar o cadastro!")
 
       // finalizarAguardar();
       return false;
     }
     else {
-      setInterval(sumirMensagem(), 5000)
+      // setInterval(sumirMensagem(), 5000)
     }
 
     // Enviando o valor da nova input
@@ -171,16 +162,14 @@
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeEmpresaServer: nomeEmpresaVar,
-        emailServer: emailVar,
         telefoneServer: telefoneVar,
         cepServer: cepVar,
         complementoServer: complementoVar,
         cidadeServer: cidadeVar,
         cnpjServer: cnpjVar,
         logradouroServer: logradouroVar,
-        bairroServer: bairroVar,
         estadoServer: estadoVar,
-        senhaServer: senhaVar
+        bairroServer: bairroVar
       })
     }).then(function (resposta) {
 
@@ -188,13 +177,11 @@
 
       if (resposta.ok) {
 
-
+        entrar()
         setTimeout(() => {
-          window.location = "loginEmpresa.html";
-        }, "2000")
+          window.location = "cadastroUsuario.html";
+        }, "500")
 
-        // limparFormulario();
-        // finalizarAguardar();
       } else {
         throw ("Houve um erro ao tentar realizar o cadastro!");
       }
@@ -202,6 +189,68 @@
       console.log(`#ERRO: ${resposta}`);
       // finalizarAguardar();
     });
+
+
+    return false;
+  }
+
+  function entrar() {
+    // aguardar();
+
+    var nomeEmpresaVar = ipt_nomeempresa.value;
+    var cnpjVar = ipt_cnpj.value;
+
+    if (nomeEmpresaVar == "" || cnpjVar == "") {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      finalizarAguardar();
+      return false;
+    }
+    else {
+      setInterval(sumirMensagem, 5000)
+    }
+
+    console.log("FORM LOGIN: ", nomeEmpresaVar);
+    console.log("FORM SENHA: ", cnpjVar);
+
+    fetch("/empresas/autenticar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        nomeEmpresaServer: nomeEmpresaVar,
+        cnpjServer: cnpjVar
+      })
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+
+          sessionStorage.CNPJ_EMPRESA = json.CNPJ;
+          sessionStorage.NOME_EMPRESA = json.NomeEmpresa;
+          sessionStorage.ID_EMPRESA = json.idEmpresa;
+
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardar(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
 
     return false;
   }

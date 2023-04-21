@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/cadastroEmpresa.css">
+  <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="css/nav&fotter.css">
-  <script src="js/funcoes.js"></script>
   <script src="https://kit.fontawesome.com/9e4fa5cb9f.js" crossorigin="anonymous"></script>
-  <title>Cadastro de Colaborador</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+  <title>Login</title>
 </head>
 
 <body>
@@ -33,54 +35,38 @@
       <a href="./login.html"> <span id="login">Login</span></a>
     </div>
   </div>
-
-
   <div class="banner">
     <div class="container">
       <div class="card">
         <img id="logo" src="assets/icon/stabilis_main_side.png" alt="">
 
-        <p>Cadastre seu Colaborador</p>
+        <p>BEM-VINDO DE VOLTA</p>
+
+        <p>Faça seu login!</p>
 
 
         <div class="inputs">
-          <input type="text" placeholder="Nome Completo" id="ipt_nome_colaborador">
-          <!-- <input type="text" placeholder="Nome da Empresa" id="ipt_nome_empresa" maxlength="10"> -->
-        </div>
-
-        <div class="inputs">
-          <input type="text" placeholder="E-mail" id="ipt_email" maxlength="8">
-          <input type="text" placeholder="Telefone Celular" id="ipt_telefone_celular">
+          <input type="text" placeholder="E-mail" id="ipt_email">
 
         </div>
 
         <div class="inputs">
           <input type="text" placeholder="Senha" id="ipt_senha">
-          <input type="text" placeholder="Confirmar Senha" id="ipt_confirmar_senha" maxlength="14">
+
         </div>
 
-        <div class="inputs">
-          <select class="select" name="" id="">
-            <option value="#">--Selecione uma opção--</option>
-            <option value="0">Colaborador Padrão</option>
-            <option value="1">Colaborador Administrador</option>
-          </select>
+
+        <div class="botao">
+          <button class="btn" onclick="entrar()">Login</button>
+
+          <a href="cadastroColaborador.html"><button class="btn2">Criar uma Conta</button></a>
         </div>
-
-    
-
-
-
-
-        <button class="btn" onclick="cadastrar()">Cadastrar</button>
 
       </div>
     </div>
   </div>
 
   <!--footer inicio-->
-
-
   <footer class="padding_3x">
 
     <div class="flex">
@@ -121,6 +107,7 @@
 
     </div>
   </footer>
+
   <!--footer fim-->
 
 </body>
@@ -128,74 +115,77 @@
 </html>
 
 <script>
-  function cadastrar() {
+  function entrar() {
+    // aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeEmpresaVar = ipt_nomeempresa.value;
     var emailVar = ipt_email.value;
-    var telefoneVar = ipt_telefone.value;
-    var cepVar = ipt_cep.value;
-    var complementoVar = ipt_complemento.value;
-    var cidadeVar = ipt_cidade.value;
-    var cnpjVar = ipt_cnpj.value;
-    var logradouroVar = ipt_logradouro.value;
-    var bairroVar = ipt_bairro.value;
-    var estadoVar = ipt_estado.value;
+    var senhaVar = ipt_senha.value;
 
-
-    if (nomeEmpresaVar == "" || emailVar == "" || telefoneVar == "" || cepVar == ""
-      || complementoVar == "" || cidadeVar == "" || cnpjVar == "" || logradouroVar == ""
-      || bairroVar == "" || cepVar == "") {
-      alert("Preencha todos os campos para finalizar o cadastro!")
-
-      // finalizarAguardar();
+    if (emailVar == "" || senhaVar == "") {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      finalizarAguardar();
       return false;
     }
     else {
-      setInterval(sumirMensagem(), 5000)
+      setInterval(sumirMensagem, 5000)
     }
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeEmpresaServer: nomeEmpresaVar,
         emailServer: emailVar,
-        telefoneServer: telefoneVar,
-        cepServer: cepVar,
-        complementoServer: complementoVar,
-        cidadeServer: cidadeVar,
-        cnpjServer: cnpjVar,
-        logradouroServer: logradouroVar,
-        bairroServer: bairroVar,
-        estadoServer: estadoVar
+        senhaServer: senhaVar
       })
     }).then(function (resposta) {
-
-      console.log("resposta: ", resposta);
+      console.log("ESTOU NO THEN DO entrar()!")
 
       if (resposta.ok) {
+        console.log(resposta);
 
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
 
-        setTimeout(() => {
-          window.location = "login.html";
-        }, "2000")
+          sessionStorage.EMAIL_USUARIO = json.Email;
+          sessionStorage.NOME_USUARIO = json.NomeUsuario;
+          sessionStorage.FK_EMPRESA = json.FK_Empresa;
+          sessionStorage.PERMISSAO_USUARIO = json.FK_Permissao;
 
-        // limparFormulario();
-        // finalizarAguardar();
+          // if (sessionStorage.PERMISSAO_USUARIO == 1) {
+          //   setTimeout(function () {
+          //     window.location = "perfilUsuario.html";
+          //   }, 1000); // apenas para exibir o loading
+          // } else {
+          //   setTimeout(function () {
+          //     window.location = "perfilUsuario.html";
+          //   }, 1000); // apenas para exibir o loading
+          // }
+
+          setTimeout(function () {
+            window.location = "perfilUsuario.html";
+          }, 1000); // apenas para exibir o loading
+        });
+
       } else {
-        throw ("Houve um erro ao tentar realizar o cadastro!");
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          finalizarAguardar(texto);
+        });
       }
-    }).catch(function (resposta) {
-      console.log(`#ERRO: ${resposta}`);
-      // finalizarAguardar();
-    });
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
 
     return false;
   }
@@ -203,4 +193,6 @@
   function sumirMensagem() {
     // cardErro.style.display = "none"
   }
+
+
 </script>
