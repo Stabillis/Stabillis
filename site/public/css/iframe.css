@@ -1,0 +1,16 @@
+.chamado {
+  height: 800px;
+  width: 100%;
+  background-image: url(https://img.freepik.com/free-vector/flat-design-customer-support-concept-illustrated_52683-59662.jpg?w=826&t=st=1682109644~exp=1682110244~hmac=9ad135ee98965dee111d5bca968ce7b266ab02759ec1ae77ac9cca0279900983);
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: right;
+  background-position-y: 128%;
+}
+
+iframe {
+  display: flex;
+  height: 100%;
+  width: 40%;
+  margin-left: 8%;
+}
