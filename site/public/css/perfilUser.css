@@ -121,6 +121,15 @@ body {
   margin-left: 15px;
 }
 
+.opcoes a {
+  text-decoration: none;
+  color: black;
+}
+
+.opcoes a:visited {
+  color: black;
+}
+
 b {
   font-size: 30px;
   font-weight: 400;

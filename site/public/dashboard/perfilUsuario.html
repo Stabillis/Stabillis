@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/nav&fotter.css">
-  <link rel="stylesheet" href="css/perfilUser.css">
+  <link rel="stylesheet" href="../css/nav&fotter.css">
+  <link rel="stylesheet" href="../css/perfilUser.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-
+  <script src="../js/funcoes.js"></script>
   <title>Perfil</title>
 </head>
 
@@ -18,7 +18,7 @@
 
     <ul>
         <li class="itens-menu">
-            <a href="../perfilUsuario.html">
+            <a href="perfilUsuario.html">
                 <span class="icon"><i class="bi bi-person"></i></span>
                 <span class="txt">Perfil</span>
             </a>
@@ -36,7 +36,7 @@
             </a>
         </li>
         <li class="itens-menu">
-            <a href="../index.html">
+            <a onclick="limparSessao()">
                 <span class="icon"><i class="bi bi-house"></i></span>
                 <span class="txt">Sair</span>
             </a>
@@ -66,40 +66,30 @@
     </form>
 
     <div class="opcoes">
-      <div class="caixa">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/103/103071.png?w=826&t=st=1680898647~exp=1680899247~hmac=a52dacefea7055b9464698a3a0e401b6599570e7010278334bf0bd639bf5d923"
-          height="130px">
-
-        <div class="textos">
-          <b>Dashboard</b>
-          <p class="sobretexto">Monitorar e analisar</p>
+      <a href="dashboard/dashboardStabillisPrincipal.html">
+        <div class="caixa">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/103/103071.png?w=826&t=st=1680898647~exp=1680899247~hmac=a52dacefea7055b9464698a3a0e401b6599570e7010278334bf0bd639bf5d923"
+            height="130px">
+          <div class="textos">
+            <b>Dashboard</b>
+            <p class="sobretexto">Monitorar e analisar</p>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div class="caixa">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/130/130258.png?w=826&t=st=1680898797~exp=1680899397~hmac=079fb817a039a80ca3de639d72e01cca68c22f8d67e801dc6fdcfd2a6ea062f2"
-          height="130px">
-
-        <div class="textos">
-          <b>Máquinas</b>
-          <p class="sobretexto">Cadastrar, excluir, visualizar</p>
-        </div>
+      <a href="listaMaquinas.html">
+        <div class="caixa">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/130/130258.png?w=826&t=st=1680898797~exp=1680899397~hmac=079fb817a039a80ca3de639d72e01cca68c22f8d67e801dc6fdcfd2a6ea062f2"
+            height="130px">
+          <div class="textos">
+            <b>Máquinas</b>
+            <p class="sobretexto">Cadastrar, excluir, visualizar</p>
+          </div>
         
-      </div>
-
-      <div class="caixa">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1247/1247023.png?w=826&t=st=1680898991~exp=1680899591~hmac=adcc6cb2a06f2b8d34c2860d9a68c7ca371ce1b02cb7aac2b04334186eb405f1"
-          height="130px">
-
-        <div class="textos">
-          <b>Empresa</b>
-          <p class="sobretexto">Cadastrar, excluir, visualizar</p>
         </div>
-
-      </div>
+      </a
 
 
       <div class="caixa">
@@ -131,10 +121,10 @@
       </section>
       <section class="flex-content padding_1x">
         <h3>Mapa do site</h3>
-        <a href="index.html">Home</a>
-        <a href="sobre-nos.html">Sobre nós</a>
-        <a href="login.html">Login</a>
-        <a href="cadastroEmpresa.html">Cadastro</a>
+        <a href="../index.html">Home</a>
+        <a href="../sobre-nos.html">Sobre nós</a>
+        <a href="../loginUsuario.html">Login</a>
+        <a href="../cadastroEmpresa.html">Cadastro</a>
       </section>
       <section class="flex-content padding_1x">
         <h3>Quick Links</h3>
