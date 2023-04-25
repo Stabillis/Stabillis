@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/nav&fotter.css">
-  <link rel="stylesheet" href="css/listaColaborador.css">
-  <link rel="stylesheet" href="css/modalMaq.css">
+  <link rel="stylesheet" href="../css/nav&fotter.css">
+  <link rel="stylesheet" href="../css/listaColaborador.css">
+  <link rel="stylesheet" href="../css/modalMaq.css">
   <script src="js/maq.js" defer></script>
+  <script src="js/funcoes.js"></script>
   <title>Máquinas</title>
 </head>
 
@@ -16,7 +17,7 @@
   <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
-      <img style="height: 40px;" src="assets/icon/stabilis_main_side.png" alt="">
+      <img style="height: 40px;" src="../assets/icon/stabilis_main_side.png" alt="">
 
     </div>
     <div class="nav-btn">
@@ -27,10 +28,8 @@
       </label>
     </div>
 
-    <div class="nav-links">
-      <a href="./index.html">Home</a>
-      <a href="./sobre-nos.html">Sobre nós</a>
-      <a href="./login.html"> <span id="login">Login</span></a>
+    <div class="nav-links" onclick="limparSessao()">
+      <span id="login">Sair</span>
     </div>
   </div>
 
@@ -157,25 +156,25 @@
 
   <div class="modal" id="modal">
     <div class="modal-content">
-        <header class="modal-header">
-            <h2>Nova Máquina</h2>
-            <span class="modal-close" id="modalClose">&#10006;</span>
-        </header>
-        <form class="modal-form">
-            <input type="text" class="modal-field" placeholder="Nome da Máquina">
-            <input type="text" class="modal-field" placeholder="IP">
-            <input type="text" class="modal-field" placeholder="Memoria total do disco">
-            <input type="text" class="modal-field" placeholder="Serial">
-            <input type="text" class="modal-field" placeholder="Departamento">
-            <input type="text" class="modal-field" placeholder="Memória Ram">
+      <header class="modal-header">
+        <h2>Nova Máquina</h2>
+        <span class="modal-close" id="modalClose">&#10006;</span>
+      </header>
+      <form class="modal-form">
+        <input type="text" class="modal-field" placeholder="Nome da Máquina">
+        <input type="text" class="modal-field" placeholder="IP">
+        <input type="text" class="modal-field" placeholder="Memoria total do disco">
+        <input type="text" class="modal-field" placeholder="Serial">
+        <input type="text" class="modal-field" placeholder="Departamento">
+        <input type="text" class="modal-field" placeholder="Memória Ram">
 
-        </form>
-        <footer class="modal-footer">
-            <button class="saveButton">Salvar</button>
-            <button class="cancelButton">Cancelar</button>
-        </footer>
+      </form>
+      <footer class="modal-footer">
+        <button class="saveButton">Salvar</button>
+        <button class="cancelButton">Cancelar</button>
+      </footer>
     </div>
-</div>
+  </div>
 
   <!--footer inicio-->
 
@@ -190,10 +189,10 @@
       </section>
       <section class="flex-content padding_1x">
         <h3>Mapa do site</h3>
-        <a href="index.html">Home</a>
-        <a href="sobre-nos.html">Sobre nós</a>
-        <a href="login.html">Login</a>
-        <a href="cadastroEmpresa.html">Cadastro</a>
+        <a href="../index.html">Home</a>
+        <a href="../sobre-nos.html">Sobre nós</a>
+        <a href="../loginUsuario.html">Login</a>
+        <a href="../cadastroEmpresa.html">Cadastro</a>
       </section>
       <section class="flex-content padding_1x">
         <h3>Quick Links</h3>
