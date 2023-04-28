@@ -45,12 +45,12 @@
 
         <div class="inputs">
           <input type="text" placeholder="Nome da empresa" id="ipt_nomeempresa">
-          <input type="text" placeholder="CNPJ" id="ipt_cnpj" maxlength="14">
+          <input type="text" placeholder="CNPJ" id="ipt_cnpj" maxlength="18">
         </div>
 
         <div class="inputs">
-          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="10">
-          <input type="text" placeholder="CEP" id="ipt_cep" maxlength="8">
+          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="15">
+          <input type="text" placeholder="CEP" id="ipt_cep" maxlength="9">
 
         </div>
 
@@ -124,6 +124,59 @@
 </html>
 
 <script>
+  // FORMATAÇÃO CNPJ
+  const cnpj = document.getElementById("ipt_cnpj");
+  cnpj.addEventListener("keyup", formatarCNPJ);
+
+  function formatarCNPJ(e) {
+
+    var v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/^(\d{2})(\d)/, "$1.$2");
+
+    v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+
+    v = v.replace(/\.(\d{3})(\d)/, ".$1/$2");
+
+    v = v.replace(/(\d{4})(\d)/, "$1-$2");
+
+    e.target.value = v;
+  }
+  // FORMATAÇÃO CNPJ
+
+  // FORMATAÇÃO CEP
+  const cep = document.getElementById("ipt_cep");
+
+  cep.addEventListener("keyup", formatarCep);
+
+  function formatarCep(e) {
+
+    var v = e.target.value.replace(/\D/g, "")
+
+    v = v.replace(/^(\d{5})(\d)/, "$1-$2")
+
+    e.target.value = v;
+
+  }
+  // FORMATAÇÃO CEP
+
+  // FORMATAÇÃO TELEFONE
+  const telefone = document.getElementById("ipt_telefone");
+
+  telefone.addEventListener("keyup", formatarTelefone);
+
+  function formatarTelefone(e) {
+
+    var v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/^(\d\d)(\d)/g, "($1) $2");
+
+    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+
+    e.target.value = v;
+
+  }
+  // FORMATAÇÃO TELEFONE
 
   function cadastrar() {
 

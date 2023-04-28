@@ -50,7 +50,7 @@
 
         <div class="inputs">
           <input type="email" placeholder="E-mail" id="ipt_email">
-          <input type="text" placeholder="Telefone Celular" id="ipt_telefone_celular" maxlength="11">
+          <input type="tel" placeholder="Telefone Celular" id="ipt_telefone_celular" maxlength="15">
 
         </div>
 
@@ -115,11 +115,25 @@
 </html>
 
 <script>
-  
+  // FORMATAÇÃO TELEFONE
+  const telefone = document.getElementById("ipt_telefone_celular");
+
+  telefone.addEventListener("keyup", formatarTelefone);
+
+  function formatarTelefone(e) {
+
+    var v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/^(\d\d)(\d)/g, "($1) $2");
+
+    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+
+    e.target.value = v;
+
+  }
+  // FORMATAÇÃO TELEFONE
+
   function cadastrar() {
-    
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeUsuarioVar = ipt_nome_usuario.value
     var cargoVar = ipt_cargo.value
     var emailVar = ipt_email.value
@@ -129,11 +143,10 @@
     var fkEmpresaVar = sessionStorage.ID_EMPRESA
 
 
-    if (nomeUsuarioVar == "" || cargoVar == "" || emailVar == "" || telCelVar == "" || senhaVar == "" || 
+    if (nomeUsuarioVar == "" || cargoVar == "" || emailVar == "" || telCelVar == "" || senhaVar == "" ||
       ipt_confirmar_senha.value == "") {
       alert("Preencha todos os campos para finalizar o cadastro!")
 
-      // finalizarAguardar();
       return false;
     } else {
       setInterval(sumirMensagem(), 5000)
