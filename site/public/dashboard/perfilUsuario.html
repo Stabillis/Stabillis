@@ -56,11 +56,11 @@
       <img
         src="https://img.freepik.com/free-photo/portrait-happy-confident-woman-standing_171337-6086.jpg?w=1380&t=st=1680896448~exp=1680897048~hmac=4c04670a901efd71ba0741fcffcf8e3c41ecea811e065adf028c0456521539a0">
     </div>
-    <div class="nomeusuario">
+    <div class="nomeusuario" id="nomeusuario">
       Rosana Lima Bastos <br>
     </div>
 
-    <div class="emailusuario">
+    <div class="emailusuario" id="emailusuario">
       <p>
         RosanaAmazon@gmail.com.br
       </p>
@@ -163,3 +163,10 @@
 </body>
 
 </html>
+
+<script>
+   nomeusuario.innerHTML = sessionStorage.NOME_USUARIO
+   emailusuario.innerHTML= sessionStorage.EMAIL_USUARIO
+
+
+</script>
