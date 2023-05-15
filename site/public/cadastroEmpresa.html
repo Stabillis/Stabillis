@@ -49,7 +49,7 @@
         </div>
 
         <div class="inputs">
-          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="15">
+          <input type="tel" placeholder="Telefone Fixo" id="ipt_telefone" maxlength="14">
           <input type="text" placeholder="CEP" id="ipt_cep" maxlength="9">
 
         </div>
@@ -171,7 +171,7 @@
 
     v = v.replace(/^(\d\d)(\d)/g, "($1) $2");
 
-    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+    v = v.replace(/(\d{4})(\d)/, "$1-$2");
 
     e.target.value = v;
 
@@ -182,6 +182,7 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
+
     var nomeEmpresaVar = ipt_nomeempresa.value;
     var telefoneVar = ipt_telefone.value;
     var cepVar = ipt_cep.value;
@@ -192,8 +193,18 @@
     var bairroVar = ipt_bairro.value;
     var estadoVar = ipt_estado.value;
 
+    cnpjVar = cnpjVar.replace("-", "");
+    cnpjVar = cnpjVar.replace("/", "");
+    cnpjVar = cnpjVar.replace(".", "");
+    cnpjVar = cnpjVar.replace(".", "");
 
+    telefoneVar = telefoneVar.replace("(", "")
+    telefoneVar = telefoneVar.replace(")", "")
+    telefoneVar = telefoneVar.replace(" ", "")
+    telefoneVar = telefoneVar.replace("-", "")
 
+    cepVar = cepVar.replace("-", "")
+    
     if (nomeEmpresaVar == "" || telefoneVar == "" || cepVar == "" || complementoVar == "" ||
       cidadeVar == "" || cnpjVar == "" || logradouroVar == "" || bairroVar == "" || estadoVar == "") {
       alert("Preencha todos os campos para finalizar o cadastro!")

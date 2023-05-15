@@ -45,17 +45,16 @@
 
         <div class="inputs">
           <input type="text" placeholder="Nome Completo" id="ipt_nome_usuario">
-          <input type="text" placeholder="Cargo" id="ipt_cargo">
-        </div>
-
-        <div class="inputs">
           <input type="email" placeholder="E-mail" id="ipt_email">
-          <input type="tel" placeholder="Telefone Celular" id="ipt_telefone_celular" maxlength="15">
-
         </div>
 
         <div class="inputs">
+          <input type="tel" placeholder="Telefone Celular" id="ipt_telefone_celular" maxlength="15">
           <input type="password" placeholder="Senha" id="ipt_senha">
+          
+        </div>
+        
+        <div class="inputs">
           <input type="password" placeholder="Confirmar Senha" id="ipt_confirmar_senha">
         </div>
 
@@ -135,15 +134,18 @@
 
   function cadastrar() {
     var nomeUsuarioVar = ipt_nome_usuario.value
-    var cargoVar = ipt_cargo.value
     var emailVar = ipt_email.value
     var telCelVar = ipt_telefone_celular.value
     var senhaVar = ipt_senha.value
     var tipoUsuarioVar = 1
     var fkEmpresaVar = sessionStorage.ID_EMPRESA
 
+    telCelVar = telCelVar.replace("(", "")
+    telCelVar = telCelVar.replace(")", "")
+    telCelVar = telCelVar.replace(" ", "")
+    telCelVar = telCelVar.replace("-", "")
 
-    if (nomeUsuarioVar == "" || cargoVar == "" || emailVar == "" || telCelVar == "" || senhaVar == "" ||
+    if (nomeUsuarioVar == "" || emailVar == "" || telCelVar == "" || senhaVar == "" ||
       ipt_confirmar_senha.value == "") {
       alert("Preencha todos os campos para finalizar o cadastro!")
 
@@ -163,7 +165,6 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeUsuarioServer: nomeUsuarioVar,
         emailServer: emailVar,
-        cargoVar: cargoVar,
         telCelServer: telCelVar,
         senhaServer: senhaVar,
         tipoUsuarioServer: tipoUsuarioVar,
