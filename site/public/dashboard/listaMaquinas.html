@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="../css/nav&fotter.css">
   <link rel="stylesheet" href="../css/listaColaborador.css">
   <link rel="stylesheet" href="../css/modalMaq.css">
-  <script src="js/maq.js" defer></script>
-  <script src="js/funcoes.js"></script>
+  <script src="../js/maq.js" defer></script>
+  <script src="../js/funcoes.js"></script>
   <title>Máquinas</title>
 </head>
 
-<body>
+<body onload="atualizarFeed()">
   <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
@@ -62,11 +62,11 @@
     <table>
       <tr>
         <th>IDENTIFICAÇÃO</th>
-        <th>SERIAL</th>
+        <th>HOSTNAME</th>
         <th>STATUS</th>
         <th>EXCLUIR/PARAR</th>
       </tr>
-      <tr>
+      <!-- <tr>
         <td>150</td>
         <td>XXXX</td>
         <td>Ativo</td>
@@ -149,7 +149,7 @@
              https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb"
               height="25px"></a>
         </td>
-      </tr>
+      </tr> -->
     </table>
 
   </div>
@@ -226,3 +226,180 @@
 </body>
 
 </html>
+
+<script>
+
+  // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  function limparFormulario() {
+      document.getElementById("form_postagem").reset();
+  }
+
+  function publicar() {
+      var idUsuario = sessionStorage.ID_USUARIO;
+
+      var corpo = {
+          titulo: form_postagem.titulo.value,
+          descricao: form_postagem.descricao.value
+      }
+
+      fetch(`/avisos/publicar/${idUsuario}`, {
+          method: "post",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(corpo)
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+              window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+              window.location = "/dashboard/mural.html";
+              limparFormulario();
+              finalizarAguardar();
+          } else if (resposta.status == 404) {
+              window.alert("Deu 404!");
+          } else {
+              throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+          }
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+      });
+
+      return false;
+
+  }
+
+  function editar(idMaquina) {
+      sessionStorage.ID_POSTAGEM_EDITANDO = idMaquina;
+      console.log("cliquei em editar - " + idMaquina);
+      window.alert("Você será redirecionado à página de edição do aviso de id número: " + idMaquina);
+      window.location = "/dashboard/listaMaquinas.html"
+
+  }
+
+  function deletar(idMaquina) {
+      console.log("Criar função de apagar post escolhido - ID" + idMaquina);
+      fetch(`/avisos/deletar/${idMaquina}`, {
+          method: "DELETE",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      }).then(function (resposta) {
+
+          if (resposta.ok) {
+              window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+              window.location = "/dashboard/listaMaquinas.html"
+          } else if (resposta.status == 404) {
+              window.alert("Deu 404!");
+          } else {
+              throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+          }
+      }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+      });
+  }
+
+  function atualizarFeed() {
+      //aguardar();
+      fetch("/avisos/listar").then(function (resposta) {
+          if (resposta.ok) {
+              if (resposta.status == 204) {
+                  var feed = document.getElementsByClassName("table");
+                  var mensagem = document.createElement("span");
+                  mensagem.innerHTML = "Nenhum resultado encontrado."
+                  feed.appendChild(mensagem);
+                  throw "Nenhum resultado encontrado!!";
+              }
+
+              resposta.json().then(function (resposta) {
+                  console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                  var feed = document.querySelector('table');
+                  // feed.innerHTML = "";
+                  for (let i = 0; i < resposta.length; i++) {
+                      var publicacao = resposta[i];
+
+                      // criando e manipulando elementos do HTML via JavaScript
+                      var linhaLista = document.createElement("tr");
+                      var tdIdentificacao = document.createElement("td");
+                      var tdHostname = document.createElement("td");
+                      var tdStatus = document.createElement("td");
+                      var tdBotoes = document.createElement("td");
+                      var btnEditar = document.createElement("span");
+                      var btnDeletar = document.createElement("span");
+                      console.log("elemento html criado")
+
+
+                      tdIdentificacao.innerHTML = `${publicacao.idMaquina}`
+                      tdHostname.innerHTML = `${publicacao.Hostname}`
+                      if (publicacao.FK_Status == 1) {
+                        tdStatus.innerHTML = `Ativo`;
+                        console.log("entrando no if")
+                          
+                      } else if (publicacao.FK_Status == 2) {
+                          tdStatus.innerHTML = `Inativo`;
+                        console.log("entrando no else")
+
+                      }
+                      btnEditar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/98/98090.png?w=826&t=st=1680890579~exp=1680891179~hmac=22fea846a60055b34d1312f83040a9785f819033e8a2d12dcf6f6a8b1dad563c' height='25px'>"
+                      btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb' height='25px'>";
+                      console.log('elementos com conteudo criado')
+
+                      linhaLista.className = "lista-maquina";
+                      tdIdentificacao.id = "id-maquina" + publicacao.idMaquina;
+                      tdHostname.className = "lista-maquina-hostname";
+                      tdStatus.className = "lista-maquina-status";
+
+                      tdBotoes.className = "botoes-lista"
+
+                      console.log('classes atribuidas aos elementos')
+
+                      btnEditar.className = "lista-btn-editar"
+                      btnEditar.id = "btnEditar" + publicacao.idMaquina;
+                      btnEditar.setAttribute("onclick", `editar(${publicacao.idMaquina})`);
+
+                      btnDeletar.className = "lista-btn-editar"
+                      btnDeletar.id = "btnDeletar" + publicacao.idMaquina;
+                      btnDeletar.setAttribute("onclick", `deletar(${publicacao.idMaquina})`);
+                      console.log('botoes funcionando')
+
+                      linhaLista.appendChild(tdIdentificacao);
+                      linhaLista.appendChild(tdHostname);
+                      linhaLista.appendChild(tdStatus);
+                      linhaLista.appendChild(tdBotoes);
+                      tdBotoes.appendChild(btnEditar);
+                      tdBotoes.appendChild(btnDeletar);
+                      console.log('final')
+                      feed.appendChild(linhaLista);
+                  }
+
+                  // finalizarAguardar();
+              });
+          } else {
+              throw ('Houve um erro na API!');
+          }
+      }).catch(function (resposta) {
+          console.error(resposta);
+          // finalizarAguardar();
+      });
+  }
+
+  function testar() {
+      aguardar();
+
+      var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+      var divResultado = document.getElementById("div_feed");
+
+      divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+      divResultado.innerHTML = formulario.get("descricao");
+
+      finalizarAguardar();
+
+      return false;
+  }
+
+</script>
