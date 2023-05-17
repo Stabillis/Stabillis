@@ -4,9 +4,9 @@ function listar() {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
         select idMaquina,
-        Hostname,
+        nomeMaquina,
         FK_Status,
-        FK_Empresa
+        FK_Empresa  
         from Maquina as m
         inner join Empresa as e
         on e.idEmpresa = m.FK_Empresa;
@@ -57,10 +57,15 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
-function publicar(titulo, descricao, idUsuario) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
+function criarMaquina(nomeMaquina, fkEmpresa, capacidadeRAM, capacidadeDisco, frequenciaCPU
+    , arquitetura, sistemaOperacional, fkEmpresa) {
+    // console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucao = `
-        INSERT INTO aviso (titulo, descricao, fk_usuario) VALUES ('${titulo}', '${descricao}', ${idUsuario});
+        INSERT INTO Maquina (nomeMaquina, FK_Status, capacidadeMaxRAM, capacidadeMaxDisco, frequenciaCPU
+        , Arquitetura, SistemaOperacional, FK_Empresa) VALUES (
+            '${nomeMaquina}', '${fkStatus}', '${capacidadeRAM}', '${capacidadeDisco}', '${frequenciaCPU}'
+            , '${arquitetura}', '${sistemaOperacional}', '${fkEmpresa}'
+        );
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -75,10 +80,10 @@ function editar(novaDescricao, idAviso) {
     return database.executar(instrucao);
 }
 
-function deletar(idAviso) {
+function desativar(idMaquina) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
     var instrucao = `
-        DELETE FROM aviso WHERE id = ${idAviso};
+        UPDATE FROM Maquina SET FK_Status = 2 WHERE id = ${idMaquina};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -88,7 +93,7 @@ module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
-    publicar,
+    criarMaquina,
     editar,
-    deletar
+    desativar
 }

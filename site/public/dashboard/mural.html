@@ -112,7 +112,7 @@
 </html>
 
 <script>
-    
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {
@@ -191,7 +191,7 @@
         fetch("/avisos/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
+                    var lista = document.getElementsByTagName("table");
                     var mensagem = document.createElement("span");
                     mensagem.innerHTML = "Nenhum resultado encontrado."
                     feed.appendChild(mensagem);
@@ -207,24 +207,26 @@
                         var publicacao = resposta[i];
 
                         // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanTitulo = document.createElement("span");
-                        var spanNome = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-                        var divButtons = document.createElement("div");
-                        var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
+                        var linhaLista = document.createElement("tr");
+                        var tdIdentificacao = document.createElement("td");
+                        var tdHostname = document.createElement("td");
+                        var tdStatus = document.createElement("td");
+                        var tdBotoes = document.createElement("td");
+                        var btnEditar = document.createElement("div");
+                        var btnDeletar = document.createElement("div");
 
 
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
+                        tdIdentificacao.innerHTML = `${publicacao.idMaquina}`
+                        tdHostname.innerHTML = `${publicacao.Hostname}`
+                        if (publicacao.FK_Status == 1) {
+                            tdStatus.innerHTML = `Ativo`;
+                        } else if (publicacao.FK_Status == 2) {
+                            tdStatus.innerHTML = `Inativo`;
+                        }
+                        btnEditar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/98/98090.png?w=826&t=st=1680890579~exp=1680891179~hmac=22fea846a60055b34d1312f83040a9785f819033e8a2d12dcf6f6a8b1dad563c' height='25px'>"
+                        btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb' height='25px'>";
 
-                        divPublicacao.className = "publicacao";
+                        tdPublicacao.className = "publicacao";
                         spanTitulo.id = "inputNumero" + publicacao.idAviso;
                         spanNome.className = "publicacao-nome";
                         spanTitulo.className = "publicacao-titulo";

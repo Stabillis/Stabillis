@@ -65,19 +65,35 @@ function pesquisarDescricao(req, res) {
         );
 }
 
-function publicar(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
-    var idUsuario = req.params.idUsuario;
+function criarMaquina(req, res) {
+    var nomeMaquina = req.body.nomeMaquinaServer;
+    var fkStatus = req.body.fkStatusServer;
+    var capacidadeRAM = req.body.capacidadeRAMServer;
+    var capacidadeDisco = req.body.capacidadeDiscoServer
+    var frequenciaCPU = req.body.frequenciaCPUServer
+    var arquitetura = req.body.arquiteturaServer
+    var sistemaOperacional = req.body.sistemaOperacionalServer
+    var fkEmpresa = req.body.fkEmpresaServer
 
-    if (titulo == undefined) {
-        res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
-        res.status(400).send("A descrição está indefinido!");
-    } else if (idUsuario == undefined) {
-        res.status(403).send("O id do usuário está indefinido!");
+    if (nomeMaquina == undefined) {
+        res.status(400).send("O nome da máquina está indefinido!");
+    } else if (fkStatus == undefined) {
+        res.status(400).send("A fkStatus está indefinida!");
+    } else if (capacidadeRAM == undefined) {
+        res.status(400).send("A capacidade da RAM está indefinido!");
+    } else if (capacidadeDisco == undefined) {
+        res.status(400).send("A capacidade do disco está indefinido!");
+    } else if (frequenciaCPU == undefined) {
+        res.status(400).send("A frequência da CPU está indefinido!");
+    } else if (arquitetura == undefined) {
+        res.status(400).send("A arquitetura está indefinido!");
+    } else if (sistemaOperacional == undefined) {
+        res.status(400).send("O SO está indefinido!");
+    } else if (fkEmpresa == undefined) {
+        res.status(400).send("A fkEmpresa está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+        avisoModel.criarMaquina(nomeMaquina, fkStatus, capacidadeRAM, capacidadeDisco, frequenciaCPU
+            , arquitetura, sistemaOperacional, fkEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -113,10 +129,10 @@ function editar(req, res) {
 
 }
 
-function deletar(req, res) {
-    var idAviso = req.params.idAviso;
+function desativar(req, res) {
+    var idMaquina = req.params.idMaquina;
 
-    avisoModel.deletar(idAviso)
+    avisoModel.desativar(idMaquina)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -136,7 +152,7 @@ module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
-    publicar,
+    criarMaquina,
     editar,
-    deletar
+    desativar
 }

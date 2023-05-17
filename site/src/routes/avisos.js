@@ -19,16 +19,16 @@ router.get("/pesquisar/:descricao", function (req, res) {
     avisoController.pesquisarDescricao(req, res);
 });
 
-router.post("/publicar/:idUsuario", function (req, res) {
-    avisoController.publicar(req, res);
+router.post("/criarMaquina/", function (req, res) {
+    avisoController.criarMaquina(req, res);
 });
 
 router.put("/editar/:idAviso", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.delete("/deletar/:idAviso", function (req, res) {
-    avisoController.deletar(req, res);
+router.put("/desativar/:idMaquina", function (req, res) {
+    avisoController.desativar(req, res);
 });
 
 module.exports = router;
