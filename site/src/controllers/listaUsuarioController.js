@@ -127,9 +127,9 @@ function editar(req, res) {
 }
 
 function desativar(req, res) {
-    var idMaquina = req.params.idMaquina;
+    var idUsuario = req.params.idUsuario;
 
-    avisoModel.desativar(idMaquina)
+    listaUsuarioModels.desativar(idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);

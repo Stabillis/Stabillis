@@ -27,8 +27,8 @@ router.put("/editar/:idAviso", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.put("/desativar/:idMaquina", function (req, res) {
-    avisoController.desativar(req, res);
+router.delete("/desativar/:idUsuario", function (req, res) {
+    listaUsuarioController.desativar(req, res);
 });
 
 module.exports = router;
