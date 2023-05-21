@@ -23,9 +23,9 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/empresas", empresaRouter);
+app.use("/listaUsuario", listaUsuarioRouter)
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
-app.use("/listaUsuario", listaUsuarioRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

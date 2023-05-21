@@ -75,7 +75,7 @@
 
       <div class="legenda-kpi">
         <div class="kpi">
-          <div class="circulo verde"></div>
+          <div class="circuloverde"></div>
           <span>Tempo de atividade da máquina</span>
           <br><br>
           <p><b>10:05:25</b></p>
@@ -85,10 +85,9 @@
 
     <!--fim legenda -->
     <div class="container-botao">
-      <a href="dashboardStabillis.html"><button class="botoes">Máquina 1</button></a>
-      <a href="dashboardStabillis.html"><button class="botoes">Máquina 2</button></a>
-      <button class="botoes">Máquina 3</button>
-      <button class="botoes">Máquina 4</button>
+      <select name="opceos" id="">
+      
+      </select>
     </div>
     <!--Colunas da dash-->
     <div class="dashboard">
@@ -261,31 +260,126 @@
 
 
   <script>
-    const ctx = document.getElementById('grafico');
+    var idMaquina = 1;
+    window.onload = obterdadosGrafico(1);
 
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['12:10:15', '12:10:25', '12:10:35', '12:10:45', '12:10:55', '12:11:05'],
-        datasets: [{
-          label: 'Pacotes enviados',
-          data: [5, 12, 7, 15, 11, 9],
-          borderWidth: 1
-        },{
-          label: 'Pacotes recebidos',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+function obterdadosGrafico(idMaquina) {
+
+
+fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+
+            plotarGrafico(resposta, idMaquina);
+
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+// A função *plotarGrafico* também invoca a função *atualizarGrafico*
+function plotarGrafico(resposta, idMaquina) {
+  console.log('Iniciando plotagem do gráfico...');
+
+  const ctx = document.getElementById('grafico');
+  let labels = [];
+
+  var chartData = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Pacotes enviados',
+        data: [],
+        borderWidth: 1
+      }, {
+        label: 'Pacotes recebidos',
+        data: [],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
         }
       }
+    }
+  });
+
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i];
+    console.log(registro.pacotesRecebidos);
+    chartData.data.datasets[0].data.push(registro.pacotesEnviados);
+    chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
+    labels.push(registro.dh)
+  }
+  chartData.update();
+
+}
+ 
+    function atualizarGrafico(idMaquina, dados, myChart) {
+
+
+
+fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+            console.log(`dados recebidos: ${JSON.stringify(novoRegistro)}`);
+            console.log(`dados atuais do gráfico:`);
+            console.log(dados);
+
+            let avisoCaptura = document.getElementById(`avisoCaptura${idMaquina}`)
+            avisoCaptura.innerHTML = ""
+
+
+            if (novoRegistro[0].dh == dados.labels[dados.labels.length - 1]) {
+                console.log("---------------------------------------------------------------")
+                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                console.log("Horário do novo dado capturado:")
+                console.log(novoRegistro[0].dh)
+                console.log("Horário do último dado capturado:")
+                console.log(dados.labels[dados.labels.length - 1])
+                console.log("---------------------------------------------------------------")
+            } else {
+                // tirando e colocando valores no gráfico
+                dados.labels.shift(); // apagar o primeiro
+                dados.labels.push(novoRegistro[0].dh); // incluir um novo momento
+
+                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                dados.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
+
+                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de temperatura
+
+                myChart.update();
+            }
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 
+}
     const ctx2 = document.getElementById('grafico2');
 
     new Chart(ctx2, {

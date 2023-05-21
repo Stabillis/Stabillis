@@ -1,27 +1,24 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
+function buscarUltimasMedidas(idMaquina,limite_linhas) {
 
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc`;
+        usoRAM as RAM , 
+        usoCPU as CPU,  
+        usoDisco as Disco,
+        pacotesRecebidos as pr,
+        pacotesEnviados as pe,
+        dataHora,
+                        FORMAT(dataHora, 'HH:mm:ss') as dh
+                    from Captura
+                    where FK_Maquina = ${idMaquina}
+                    order by idMaquina desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    from medida
-                    where fk_aquario = ${idAquario}
-                    order by id desc limit ${limite_linhas}`;
+        instrucaoSql = `select pacotesRecebidos, pacotesEnviados, DATE_FORMAT (dataHora, '%H:%i:%s') as dh, idMaquina from Captura c 
+        join Maquina m on m.idMaquina = c.FK_Maquina where idMaquina = ${idMaquina} order by idCaptura desc limit ${limite_linhas} ;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
@@ -31,7 +28,7 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idMaquina) {
 
     instrucaoSql = ''
 

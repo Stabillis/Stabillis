@@ -1,4 +1,4 @@
-var listaUsuarioModel = require("../models/listaUsuarioModel");
+var listaUsuarioModel = require("../models/listaUsuarioModels");
 
 function testar(req, res) {
     console.log("ENTRAMOS NO avisoController");

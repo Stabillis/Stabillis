@@ -1,7 +1,8 @@
 var express = require("express");
 var router = express.Router();
 
-var listaUsuarioController = require("../controllers/listaUsuario");
+var listaUsuarioController = require("../controllers/listaUsuarioController");
+
 
 router.get("/", function (req, res) {
     avisoController.testar(req, res);

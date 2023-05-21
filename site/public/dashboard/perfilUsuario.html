@@ -14,48 +14,47 @@
 
 <body>
   <nav class="side-menu" id="sideMenu">
-
-
     <ul>
-        <li class="itens-menu">
-            <a href="perfilUsuario.html">
-                <span class="icon"><i class="bi bi-person"></i></span>
-                <span class="txt">Perfil</span>
-            </a>
-        </li>
-        <li class="itens-menu">
-            <a href="../suporte.html">
-                <span class="icon"><i class="bi bi-columns-gap"></i></span>
-                <span class="txt">Suporte</span>
-            </a>
-        </li>
-        <li class="itens-menu">
-            <a href="../recuperacaoSenha.html">
-                <span class="icon"><i class="bi bi-gear"></i></span>
-                <span class="txt">Alterar Senha</span>
-            </a>
-        </li>
-        <li class="itens-menu">
-                      <a href="Script_JavaInstalacao.pdf" download>
-                          <span class="icon"><i class="bi bi-file-earmark-arrow-down-fill"></i></span>
-                          <span class="txt">Download</span>
-                      </a>
-                  </li>
-        <li class="itens-menu"> 
-            <a href="../index.html">
-            <a onclick="limparSessao()">
-                <span class="icon"><i class="bi bi-house"></i></span>
-                <span class="txt">Sair</span>
-            </a>
-        </li>
+      <li class="itens-menu">
+        <a href="perfilUsuario.html">
+          <span class="icon"><i class="bi bi-person"></i></span>
+          <span class="txt">Perfil</span>
+        </a>
+      </li>
+      <li class="itens-menu">
+        <a href="../suporte.html">
+          <span class="icon"><i class="bi bi-columns-gap"></i></span>
+          <span class="txt">Suporte</span>
+        </a>
+      </li>
+      <li class="itens-menu">
+        <a href="../recuperacaoSenha.html">
+          <span class="icon"><i class="bi bi-gear"></i></span>
+          <span class="txt">Alterar Senha</span>
+        </a>
+      </li>
+      <li class="itens-menu">
+        <a href="Script_JavaInstalacao.pdf" download>
+          <span class="icon"><i class="bi bi-file-earmark-arrow-down-fill"></i></span>
+          <span class="txt">Download</span>
+        </a>
+      </li>
+      <li class="itens-menu">
+        <a href="../index.html">
+          <a onclick="limparSessao()">
+            <span class="icon"><i class="bi bi-house"></i></span>
+            <span class="txt">Sair</span>
+          </a>
+      </li>
     </ul>
-        </nav>
+  </nav>
 
-  <div class="container">
-    <div class="avatar">
-      <img
-        src="https://img.freepik.com/free-photo/portrait-happy-confident-woman-standing_171337-6086.jpg?w=1380&t=st=1680896448~exp=1680897048~hmac=4c04670a901efd71ba0741fcffcf8e3c41ecea811e065adf028c0456521539a0">
-    </div>
+
+  <div class="usuario">
+    <img class="image"
+      src="https://img.freepik.com/premium-photo/happy-african-american-female-adviser-with-tablet-smiling-looking-camera-while-working-contemporary-office_251859-170.jpg?w=1380"
+      alt="" />
+
     <div class="nomeusuario" id="nomeusuario">
       Rosana Lima Bastos <br>
     </div>
@@ -65,56 +64,53 @@
         RosanaAmazon@gmail.com.br
       </p>
     </div>
-   
+
     <form class="search-container">
       <input type="text" id="search-bar" placeholder="Localizar uma configuração">
       <a href="#"><img class="search-icon"
           src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
     </form>
-
-    <div class="opcoes">
-      <a href="dashboardStabillisPrincipal.html">
-        <div class="caixa">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/103/103071.png?w=826&t=st=1680898647~exp=1680899247~hmac=a52dacefea7055b9464698a3a0e401b6599570e7010278334bf0bd639bf5d923"
-            height="130px">
-          <div class="textos">
-            <b>Dashboard</b>
-            <p class="sobretexto">Monitorar e analisar</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="listaMaquinas.html">
-        <div class="caixa">
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/130/130258.png?w=826&t=st=1680898797~exp=1680899397~hmac=079fb817a039a80ca3de639d72e01cca68c22f8d67e801dc6fdcfd2a6ea062f2"
-            height="130px">
-          <div class="textos">
-            <b>Máquinas</b>
-            <p class="sobretexto">Cadastrar, excluir, visualizar</p>
-          </div>
-        
-        </div>
-      </a>
-
-      <a href="listaUsuarios.html">
-      <div class="caixa">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/1250/1250689.png?w=826&t=st=1681677640~exp=1681678240~hmac=92ac5d62fc56bce74218a4383e90d3802613b4d9b946bdfaa3797a3ed38696fa"
-          height="130px">
-
-        <div class="textos">
-          <b>Usuários</b>
-          <p class="sobretexto">Cadastrar, excluir. visualizar</p>
-        </div>
-
-      </div>
-      </a>
-    </div>
   </div>
 
 
+
+  <div class="contanier">
+
+    <a class="card3" href="dashboardStabillis.html">
+      <h3>Dashbaord</h3>
+      <p class="small">Monitoramento de componentes</p>
+      <div class="dimmer"></div>
+      <div class="go-corner" href="#">
+        <div class="go-arrow">
+          →
+        </div>
+      </div>
+    </a>
+
+    <a class="card3" href="listaUsuarios.html">
+      <h3>Usuários</h3>
+      <p class="small">Adicionar, excluir, editar e visualizar</p>
+      <div class="dimmer"></div>
+      <div class="go-corner" href="#">
+        <div class="go-arrow">
+          →
+        </div>
+      </div>
+    </a>
+
+
+    <a class="card3" href="listaMaquinas.html">
+      <h3>Máquinas</h3>
+      <p class="small">Adicionar, excluir, editar e visualizar</p>
+      <div class="dimmer"></div>
+      <div class="go-corner" href="#">
+        <div class="go-arrow">
+          →
+        </div>
+      </div>
+    </a>
+
+  </div>
 
 
   <!--footer inicio-->
@@ -154,9 +150,6 @@
 
     </div>
     <div class="flex">
-
-
-
   </footer>
   <!--footer fim-->
 
@@ -165,8 +158,8 @@
 </html>
 
 <script>
-   nomeusuario.innerHTML = sessionStorage.NOME_USUARIO
-   emailusuario.innerHTML= sessionStorage.EMAIL_USUARIO
+  nomeusuario.innerHTML = sessionStorage.NOME_USUARIO
+  emailusuario.innerHTML = sessionStorage.EMAIL_USUARIO
 
 
 </script>

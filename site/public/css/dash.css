@@ -10,6 +10,7 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  background-color: #192329;
 }
 
 /*estilizando a navbar */
@@ -143,31 +144,32 @@ main .columns-dash>div:hover {
 }
 
 .coluna-kpi {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
-  width: 55vw;
-  height: 15vh;
+  width: 30vw;
+  height: 25vh;
   margin-left: 1.5rem;
-  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #74747473;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #38383873;
   border-radius: 8px;
-
+  background-color: #fff;
 }
 
-.coluna-kpi p{
+.coluna-kpi p {
   font-weight: bold;
 }
 
+.coluna-kpi p {
+  font-size: 16px;
+}
+
+
 .card-perigo {
-  border: 1px solid red;
   background-color: rgba(255, 29, 29, 0.658);
   margin: 10px;
-  padding: 10px;
-  width: 30%;
-  height: 40%;
-  border-radius: 6px;
+  width: 40%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,13 +177,10 @@ main .columns-dash>div:hover {
 }
 
 .card-atencao {
-  border: 1px solid yellow;
   background-color: rgba(255, 238, 86, 0.822);
   margin: 10px;
-  padding: 10px;
-  width: 30%;
-  height: 40%;
-  border-radius: 6px;
+  width: 40%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -189,20 +188,13 @@ main .columns-dash>div:hover {
 }
 
 .card-estavel {
-  border: 1px solid green;
   background-color: rgba(110, 248, 110, 0.747);
   margin: 10px;
-  padding: 10px;
-  width: 30%;
-  height: 40%;
-  border-radius: 6px;
+  width: 40%;
+  height: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.coluna-kpi p {
-  font-size: 16px;
 }
 
 /*estilização lgenda KPI*/
@@ -214,9 +206,10 @@ main .columns-dash>div:hover {
   margin-top: 0.5rem;
   width: 20vw;
   height: 15vh;
-  margin-left: 1.5rem;
+  margin-right: 5%;
   box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #7474747c;
   border-radius: 8px;
+  background-color: #fff;
 
 }
 
@@ -224,19 +217,19 @@ main .columns-dash>div:hover {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 10px;
+  background-color: #fff;
 }
 
 .container-botao {
-  box-shadow: 1px 3px 5px #747474;
+  box-shadow: 1px 3px 5px #424242;
+  background-color: #fff;
   border-radius: 8px;
   display: flex;
   justify-content: space-evenly;
-  margin-left: 12%;
+  margin-left: 58%;
   height: 30%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  width: 70%;
+  margin-bottom: 5%;
+  width: 32.3%;
   padding: 10px;
 }
 
