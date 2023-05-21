@@ -5,9 +5,13 @@ function buscarUltimasMedidas(idMaquina,limite_linhas) {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
+        instrucaoSql = `select top ${limite_linhas} 
         pacotesRecebidos,
         pacotesEnviados,
+        usoRAM, 
+        usoCPU, 
+        usoDisco,
+        capacidadeMaxDisco,
         dataHora,
                         FORMAT(dataHora, 'HH:mm:ss') as dh
                     from Captura join Maquina on 

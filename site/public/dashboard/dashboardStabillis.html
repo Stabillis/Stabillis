@@ -315,15 +315,119 @@ function plotarGrafico(resposta, idMaquina) {
       }
     }
   });
+  // termino grafico 1 
+  
+  const ctx2 = document.getElementById('grafico2');
+
+   var chartData2 = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Valor em MiB',
+          data: [],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    const ctx3 = document.getElementById('grafico3');
+
+    var chartData3 = new Chart(ctx3, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Uso em %',
+          data: [],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const ctx4 = document.getElementById('grafico4');
+
+    var chartData4 = new Chart(ctx4, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: ['% Disponível', '% Em uso'],
+          data: [],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    const ctx5 = document.getElementById('grafico5');
+
+    var chartData5 = new Chart(ctx5, {
+      type: 'pie',
+      data: {
+        labels: [],
+        datasets: [{
+          label: [ '% Em uso'],
+          data: [],
+          borderWidth: 1
+        },
+        {
+          label: ['% Disponível'],
+          data: [],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
 
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i];
     console.log(registro.pacotesRecebidos);
+    //começando envio de dados do pacote 
     chartData.data.datasets[0].data.push(registro.pacotesEnviados);
     chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
+    //terminando envio de dados do pacote
+    chartData4.data.datasets[0].data.push(registro.usoRAM);
+    chartData3.data.datasets[0].data.push(registro.usoCPU);
+    chartData2.data.datasets[0].data.push(registro.usoDisco);
+    chartData5.data.datasets[0].data.push(registro.usoDisco);
+    chartData5.data.datasets[1].data.push(registro.capacidadeMaxDisco - registro.usoDisco);
+
+
+
     labels.push(registro.dh)
   }
+
   chartData.update();
+  chartData3.update();
+  chartData2.update();
+  chartData4.update();
+  chartData5.update();
 
 }
  
@@ -361,13 +465,20 @@ fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (
                 dados.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
 
                 dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de temperatura
+                dados.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de 
+                dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[2].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
+                dados.datasets[3].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[3].data.push(novoRegistro[0].usoCPU); // incluir uma nova medida de temperatura
+                dados.datasets[4].data.shift();  // apagar o primeiro de temperatura
+                dados.datasets[4].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
+
 
                 myChart.update();
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 1000);
         });
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -380,88 +491,7 @@ fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (
     });
 
 }
-    const ctx2 = document.getElementById('grafico2');
-
-    new Chart(ctx2, {
-      type: 'line',
-      data: {
-        labels: ['12:10:15', '12:10:25', '12:10:35', '12:10:45', '12:10:55', '12:11:05'],
-        datasets: [{
-          label: 'Valor em MiB',
-          data: [1224123, 634523, 804239, 536123, 357192, 936481],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-    const ctx3 = document.getElementById('grafico3');
-
-    new Chart(ctx3, {
-      type: 'line',
-      data: {
-        labels: ['12:10:15', '12:10:25', '12:10:35', '12:10:45', '12:10:55', '12:11:05'],
-        datasets: [{
-          label: 'Uso em %',
-          data: [52, 49, 63, 78, 63, 57],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    const ctx4 = document.getElementById('grafico4');
-
-    new Chart(ctx4, {
-      type: 'pie',
-      data: {
-        labels: ['% Disponível', '% Em uso'],
-        datasets: [{
-          label: ['% Disponível', '% Em uso'],
-          data: [23, 77],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    const ctx5 = document.getElementById('grafico5');
-
-    new Chart(ctx5, {
-      type: 'pie',
-      data: {
-        labels: ['% Disponível', '% Em uso'],
-        datasets: [{
-          label: ['% Disponível', '% Em uso'],
-          data: [39, 61],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+    
   </script>
 </body>
 
