@@ -6,16 +6,14 @@ function buscarUltimasMedidas(idMaquina,limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
-        usoRAM as RAM , 
-        usoCPU as CPU,  
-        usoDisco as Disco,
-        pacotesRecebidos as pr,
-        pacotesEnviados as pe,
+        pacotesRecebidos,
+        pacotesEnviados,
         dataHora,
                         FORMAT(dataHora, 'HH:mm:ss') as dh
-                    from Captura
-                    where FK_Maquina = ${idMaquina}
-                    order by idMaquina desc`;
+                    from Captura join Maquina on 
+                    idMaquina = FK_Maquina 
+                    where idMaquina = ${idMaquina}
+                    order by idCaptura desc`;
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select pacotesRecebidos, pacotesEnviados, DATE_FORMAT (dataHora, '%H:%i:%s') as dh, idMaquina from Captura c 
         join Maquina m on m.idMaquina = c.FK_Maquina where idMaquina = ${idMaquina} order by idCaptura desc limit ${limite_linhas} ;`;
