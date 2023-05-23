@@ -147,7 +147,7 @@
     function obterDadosGraficos() {
       var select = document.getElementById('sel_maq')
       var value = select.options[select.selectedIndex].value
-      alert(value)
+
       if (value == '#') {
         alert("Escolha uma máquina!")
       } else {
@@ -364,9 +364,9 @@
         var tempo_atividade = document.getElementById("tempo-atividade")
         tempo_atividade.innerHTML = `${(resposta[0].tempoAtividade).replace("days", "dias")}`
 
-        chartData.resize(600, 200)
-        chartData2.resize(600, 200)
-        chartData3.resize(600, 200)
+        chartData.resize(1000, 200)
+        chartData2.resize(1000, 200)
+        chartData3.resize(1000, 200)
 
         chartData.update();
         chartData2.update();
