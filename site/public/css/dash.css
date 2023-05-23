@@ -220,6 +220,10 @@ main .columns-dash>div:hover {
   background-color: #fff;
 }
 
+#tempo-atividade {
+  font-weight: bold;
+}
+
 .container-botao {
   box-shadow: 1px 3px 5px #424242;
   background-color: #fff;

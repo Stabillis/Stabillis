@@ -13,7 +13,7 @@
   <title>Máquinas</title>
 </head>
 
-<body onload="atualizarFeed()">
+<body onload="atualizarFeed(fkEmpresa)">
   <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
@@ -146,7 +146,7 @@
 
 <script>
 
-  // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  var fkEmpresa = sessionStorage.FK_EMPRESA;
 
   function limparFormulario() {
     document.getElementById("form_postagem").reset();
@@ -236,9 +236,9 @@
     });
   }
 
-  function atualizarFeed() {
+  function atualizarFeed(fkEmpresa) {
     //aguardar();
-    fetch("/avisos/listar").then(function (resposta) {
+    fetch(`/avisos/listar/${fkEmpresa}`).then(function (resposta) {
       if (resposta.ok) {
         if (resposta.status == 204) {
           var feed = document.getElementsByClassName("table");
@@ -269,7 +269,7 @@
 
 
             tdIdentificacao.innerHTML = `${publicacao.idMaquina}`
-            tdHostname.innerHTML = `${publicacao.Hostname}`
+            tdHostname.innerHTML = `${publicacao.nomeMaquina}`
             if (publicacao.FK_Status == 1) {
               tdStatus.innerHTML = `Ativo`;
               console.log("entrando no if")

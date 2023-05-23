@@ -20,28 +20,28 @@
     <ul>
       <li class="itens-menu">
         <a href="perfilUsuario.html">
-            <span class="icon"><i class="bi bi-person"></i></span>
-            <span class="txt">Perfil</span>
+          <span class="icon"><i class="bi bi-person"></i></span>
+          <span class="txt">Perfil</span>
         </a>
-    </li>
-    <li class="itens-menu">
+      </li>
+      <li class="itens-menu">
         <a href="../suporte.html">
-            <span class="icon"><i class="bi bi-columns-gap"></i></span>
-            <span class="txt">Suporte</span>
+          <span class="icon"><i class="bi bi-columns-gap"></i></span>
+          <span class="txt">Suporte</span>
         </a>
-    </li>
-    <li class="itens-menu">
+      </li>
+      <li class="itens-menu">
         <a href="../recuperacaoSenha.html">
-            <span class="icon"><i class="bi bi-gear"></i></span>
-            <span class="txt">Alterar Senha</span>
+          <span class="icon"><i class="bi bi-gear"></i></span>
+          <span class="txt">Alterar Senha</span>
         </a>
-    </li>
-    <li class="itens-menu">
+      </li>
+      <li class="itens-menu">
         <a href="../index.html">
-            <span class="icon"><i class="bi bi-house"></i></span>
-            <span class="txt">Sair</span>
+          <span class="icon"><i class="bi bi-house"></i></span>
+          <span class="txt">Sair</span>
         </a>
-    </li>
+      </li>
   </nav>
 
   <!-------Fim da sidebar------>
@@ -50,11 +50,6 @@
 
   <!--Inicio dos gráficos -->
   <main>
-
-    <!--Calendario-->
-    <!-- <div class="data">
-            <input type="date">
-        </div> -->
 
     <!--KPIs-->
     <div class="container">
@@ -78,22 +73,22 @@
           <div class="circuloverde"></div>
           <span>Tempo de atividade da máquina</span>
           <br><br>
-          <p><b>10:05:25</b></p>
+          <p id="tempo-atividade">- dias, --:--:--</p>
         </div>
       </div>
     </div>
 
     <!--fim legenda -->
     <div class="container-botao">
-      <select name="opceos" id="">
-      
+      <select name="opceos" id="sel_maq" onchange="obterDadosGraficos()">
+        <option value="#">Selecionar máquina</option>
       </select>
     </div>
     <!--Colunas da dash-->
     <div class="dashboard">
 
       <div class="graficos">
-        
+
         <div class="status">
           <p>Uso de memória RAM</p>
           <div>
@@ -118,7 +113,7 @@
             <canvas id="grafico" style="width: 600px; height: 200px;"></canvas>
           </div>
         </div>
-        
+
         <div class="status">
           <p>Taxa de transferência do disco</p>
           <div>
@@ -135,124 +130,7 @@
 
       </div>
     </div>
-    <!-- <div class="dashboard">
-      <div class="painel1" id="painel1">
-        <span><i class="bi bi-file-bar-graph-fill"></i></span>
-        <div class="conteudo">
-          <div class="legenda">
-            <h3>Definir</h3>
-            <h1>Definir</h1>
-          </div>
-          
-          <div class="status">
-            <div>
-              <canvas id="grafico2" style="width: 100px; height: 100px;"></canvas>
-            </div>
-            <div class="percentual">
-              <p>80%</p>
-            </div>
-          </div>
-        </div>
-        <small class="mini-legenda">Últimas 24 Horas</small>
-      </div>
-    </div>
-    <div class="columns-dash">
-      
-      <!--fim do 1º coluna-->
-<!-- 
-    <div class="painel2" id="painel2">
-      <span><i class="bi bi-pie-chart-fill"></i></span>
-      <div class="conteudo">
-        <div class="legenda">
-          <h3>Definir</h3>
-          <h1>Definir</h1>
-        </div>
-      </div>
-      <small class="mini-legenda">Últimas 24 Horas</small>
-    </div> -->
-
-    <!--fim da 2ºcoluna-->
-
-    <!-- <div class="painel3" id="painel3">
-      <span><i class="bi bi-graph-up-arrow"></i></span>
-      <div class="conteudo">
-        <div class="legenda">
-          <h3>Definir</h3>
-          <h1>Definir</h1>
-        </div>
-        <div class="status">
-          <canvas id="grafico3" style="width: 100px; height: 100px;"></canvas>
-          <div class="percentual">
-            <p>80%</p>
-          </div>
-        </div>
-      </div>
-      <small class="mini-legenda">Últimas 24 Horas</small>
-    </div> -->
-
-    <!--fim da 3º coluna-->
-
-    <!-- <div class="painel4" id="painel4">
-      <span><i class="bi bi-bar-chart-line-fill"></i></span>
-      <div class="conteudo">
-        <div class="legenda">
-          <h3>Definir</h3>
-          <h1>Definir</h1>
-        </div>
-        <div class="status">
-          <canvas id="grafico4" style="width: 100px; height: 100px;"></canvas>
-          <div class="percentual">
-            <p>80%</p>
-          </div>
-        </div>
-      </div>
-      <small class="mini-legenda">Últimas 24 Horas</small>
-    </div>
-
-    fim da 4ºcoluna -->
-
-    <!-- <div class="painel5" id="painel5">
-      <span><i class="bi bi-file-bar-graph-fill"></i></span>
-      <div class="conteudo">
-        <div class="legenda">
-          <h3>Definir</h3>
-          <h1>Definir</h1>
-        </div>
-        <div class="status">
-          <span><img src="" alt="">imagem
-          </span>
-          <div class="percentual">
-            <p>80%</p>
-          </div>
-        </div>
-      </div>
-      <small class="mini-legenda">Últimas 24 Horas</small>
-    </div>
-
-
-
-    fim da 5ºcoluna -->
-
-    <!-- <div class="painel6" id="painel6">
-      <span><i class="bi bi-file-bar-graph-fill"></i></span>
-      <div class="conteudo">
-        <div class="legenda">
-          <h3>Definir</h3>
-          <h1>Definir</h1>
-        </div>
-        <div class="status">
-          <span><img src="" alt="">imagem
-          </span>
-          <div class="percentual">
-            <p>80%</p>
-          </div>
-        </div>
-      </div>
-      <small class="mini-legenda">Últimas 24 Horas</small>
-    </div>
-
-
-    fim da 6ºcoluna -->
+    
     </div>
 
 
@@ -260,184 +138,233 @@
 
 
   <script>
-    var idMaquina = 3;
-    window.onload = obterdadosGrafico(3);
+    var fkEmpresa = sessionStorage.FK_EMPRESA
+    // var idMaquina = 3;
+    window.onload = atualizarSelectBox(fkEmpresa);
 
-function obterdadosGrafico(idMaquina) {
+    function obterDadosGraficos() {
+      var select = document.getElementById('sel_maq')
+      var value = select.options[select.selectedIndex].value
+      alert(value)
+      if (value == '#') {
+        alert("Escolha uma máquina!")
+      } else {
+        obterdadosGrafico(value)
+        alert("Entrei no else")
+      }
+    }
 
+    function atualizarSelectBox(fkEmpresa) {
+      fetch(`/avisos/listarMaquinas/${fkEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+          if (resposta.status == 204) {
+            alert('Não há máquinas cadastradas!')
+            throw "Nenhum resultado encontrado!!";
+          }
 
-fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (resposta) {
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+            var feed = document.getElementById('sel_maq');
+            // feed.innerHTML = "";
+            for (let i = 0; i < resposta.length; i++) {
+              var publicacao = resposta[i];
+
+              // criando e manipulando elementos do HTML via JavaScript
+              var opcao = document.createElement('option')
+              opcao.innerHTML = `${publicacao.nomeMaquina}`
+              opcao.id = "maquina-" + publicacao.idMaquina
+              opcao.value = `${publicacao.idMaquina}`
+              feed.appendChild(opcao)
+              // console.log("elemento html criado")
+              feed.appendChild(opcao);
+            }
+
+            // finalizarAguardar();
+          });
+        } else {
+          throw ('Houve um erro na API!');
+        }
+      }).catch(function (resposta) {
+        console.error(resposta);
+        // finalizarAguardar();
+      });
+    }
+
+    function obterdadosGrafico(idMaquina) {
+
+      fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
             console.log(`dados recebidos: ${JSON.stringify(resposta)}`);
             resposta.reverse();
 
             plotarGrafico(resposta, idMaquina);
 
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
     }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-}
 
-// Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-// Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
-// A função *plotarGrafico* também invoca a função *atualizarGrafico*
-function plotarGrafico(resposta, idMaquina) {
-  console.log('Iniciando plotagem do gráfico...');
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idMaquina) {
+      console.log('Iniciando plotagem do gráfico...');
 
-  const ctx = document.getElementById('grafico');
-  let labels = [];
+      const ctx = document.getElementById('grafico');
+      let labels = [];
 
-  var chartData = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Pacotes enviados',
-        data: [],
-        borderWidth: 1
-      }, {
-        label: 'Pacotes recebidos',
-        data: [],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-  // termino grafico 1 
-  
-  const ctx2 = document.getElementById('grafico2');
-
-   var chartData2 = new Chart(ctx2, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Valor em MiB',
-          data: [],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-    const ctx3 = document.getElementById('grafico3');
-
-    var chartData3 = new Chart(ctx3, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Uso em %',
-          data: [],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    const ctx4 = document.getElementById('grafico4');
-
-    var chartData4 = new Chart(ctx4, {
-      type: 'pie',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: ['% Disponível', '% Em uso'],
-          data: [],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-
-    const ctx5 = document.getElementById('grafico5');
-
-    var chartData5 = new Chart(ctx5, {
-      type: 'pie',
-      data: {
-        labels: [],
-        datasets: [{
-          label: [ '% Em uso'],
-          data: [],
-          borderWidth: 1
+      var chartData = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Pacotes enviados',
+            data: [],
+            borderWidth: 1
+          }, {
+            label: 'Pacotes recebidos',
+            data: [],
+            borderWidth: 1
+          }]
         },
-        {
-          label: ['% Disponível'],
-          data: [],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
         }
+      });
+      // termino grafico 1 
+
+      const ctx2 = document.getElementById('grafico2');
+
+      var chartData2 = new Chart(ctx2, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Valor em MiB',
+            data: [],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+      const ctx3 = document.getElementById('grafico3');
+
+      var chartData3 = new Chart(ctx3, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Uso em %',
+            data: [],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const ctx4 = document.getElementById('grafico4');
+
+      var chartData4 = new Chart(ctx4, {
+        type: 'pie',
+        data: {
+          labels: ['% Em uso', '% Disponível'],
+          datasets: [{
+            label: [],
+            data: [],
+            borderWidth: 1,
+            backgroundColor: ['#8C4356', '#27628A']
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const ctx5 = document.getElementById('grafico5');
+
+      var chartData5 = new Chart(ctx5, {
+        type: 'pie',
+        data: {
+          labels: ['% Em uso', '% Disponível'],
+          datasets: [{
+            label: [],
+            data: [],
+            borderWidth: 1,
+            backgroundColor: ['#8C4356', '#27628A']
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        // console.log(registro);
+        //começando envio de dados do pacote 
+        chartData.data.datasets[0].data.push(registro.pacotesEnviados);
+        chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
+        //terminando envio de dados do pacote
+        chartData2.data.datasets[0].data.push(registro.usoDisco);
+        chartData3.data.datasets[0].data.push(registro.usoCPU);
+
+        labels.push(registro.dh)
       }
-    });
+      chartData4.data.datasets[0].data.push(resposta[0].usoRAM);
+      chartData4.data.datasets[0].data.push(resposta[0].capacidadeMaxRAM - resposta[0].usoRAM);
 
-  for (i = 0; i < resposta.length; i++) {
-    var registro = resposta[i];
-    console.log(registro.pacotesRecebidos);
-    //começando envio de dados do pacote 
-    chartData.data.datasets[0].data.push(registro.pacotesEnviados);
-    chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
-    //terminando envio de dados do pacote
-    chartData4.data.datasets[0].data.push(registro.usoRAM);
-    chartData3.data.datasets[0].data.push(registro.usoCPU);
-    chartData2.data.datasets[0].data.push(registro.usoDisco);
-    chartData5.data.datasets[0].data.push(registro.usoDisco);
-    chartData5.data.datasets[1].data.push(registro.capacidadeMaxDisco - registro.usoDisco);
+      chartData5.data.datasets[0].data.push(resposta[0].usoDisco);
+      chartData5.data.datasets[0].data.push(resposta[0].capacidadeMaxDisco - resposta[0].usoDisco);
 
+      var tempo_atividade = document.getElementById("tempo-atividade")
+      tempo_atividade.innerHTML = `${(resposta[0].tempoAtividade).replace("days", "dias")}`
 
+      chartData.update();
+      chartData2.update();
+      chartData3.update();
+      chartData4.update();
+      chartData5.update();
 
-    labels.push(registro.dh)
-  }
+    }
 
-  chartData.update();
-  chartData3.update();
-  chartData2.update();
-  chartData4.update();
-  chartData5.update();
-
-}
- 
     function atualizarGrafico(idMaquina, dados, myChart) {
 
 
 
-fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-    if (response.ok) {
-        response.json().then(function (novoRegistro) {
+      fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (novoRegistro) {
 
             console.log(`dados recebidos: ${JSON.stringify(novoRegistro)}`);
             console.log(`dados atuais do gráfico:`);
@@ -448,50 +375,50 @@ fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (
 
 
             if (novoRegistro[0].dh == dados.labels[dados.labels.length - 1]) {
-                console.log("---------------------------------------------------------------")
-                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-                console.log("Horário do novo dado capturado:")
-                console.log(novoRegistro[0].dh)
-                console.log("Horário do último dado capturado:")
-                console.log(dados.labels[dados.labels.length - 1])
-                console.log("---------------------------------------------------------------")
+              console.log("---------------------------------------------------------------")
+              console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+              avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+              console.log("Horário do novo dado capturado:")
+              console.log(novoRegistro[0].dh)
+              console.log("Horário do último dado capturado:")
+              console.log(dados.labels[dados.labels.length - 1])
+              console.log("---------------------------------------------------------------")
             } else {
-                // tirando e colocando valores no gráfico
-                dados.labels.shift(); // apagar o primeiro
-                dados.labels.push(novoRegistro[0].dh); // incluir um novo momento
+              // tirando e colocando valores no gráfico
+              dados.labels.shift(); // apagar o primeiro
+              dados.labels.push(novoRegistro[0].dh); // incluir um novo momento
 
-                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
+              dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+              dados.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
 
-                dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de 
-                dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[2].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
-                dados.datasets[3].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[3].data.push(novoRegistro[0].usoCPU); // incluir uma nova medida de temperatura
-                dados.datasets[4].data.shift();  // apagar o primeiro de temperatura
-                dados.datasets[4].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
+              dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+              dados.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de 
+              dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
+              dados.datasets[2].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
+              dados.datasets[3].data.shift();  // apagar o primeiro de temperatura
+              dados.datasets[3].data.push(novoRegistro[0].usoCPU); // incluir uma nova medida de temperatura
+              dados.datasets[4].data.shift();  // apagar o primeiro de temperatura
+              dados.datasets[4].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
 
 
-                myChart.update();
+              myChart.update();
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
             proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 1000);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
-    }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
 
-}
-    
+    }
+
   </script>
 </body>
 

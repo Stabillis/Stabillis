@@ -12,6 +12,8 @@ function buscarUltimasMedidas(idMaquina,limite_linhas) {
         usoCPU, 
         usoDisco,
         capacidadeMaxDisco,
+        capacidadeMaxRAM,
+        tempoAtividade,
         dataHora,
                         FORMAT(dataHora, 'HH:mm:ss') as dh
                     from Captura join Maquina on 
