@@ -1,15 +1,32 @@
 var database = require("../database/config");
 
-function listar() {
+function listar(fkEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        select idMaquina,
-        nomeMaquina,
-        FK_Status,
-        FK_Empresa  
+        select m.idMaquina,
+        m.nomeMaquina,
+        m.FK_Status,
+        m.FK_Empresa  
         from Maquina as m
         inner join Empresa as e
-        on e.idEmpresa = m.FK_Empresa;
+        on e.idEmpresa = m.FK_Empresa
+        where m.FK_Empresa = ${fkEmpresa};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function listarMaquinas(fkEmpresa) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+        select m.idMaquina,
+        m.nomeMaquina,
+        m.FK_Status,
+        m.FK_Empresa  
+        from Maquina as m
+        inner join Empresa as e
+        on e.idEmpresa = m.FK_Empresa
+        where m.FK_Empresa = ${fkEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -91,6 +108,7 @@ function desativar(idMaquina) {
 
 module.exports = {
     listar,
+    listarMaquinas,
     listarPorUsuario,
     pesquisarDescricao,
     criarMaquina,

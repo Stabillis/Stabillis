@@ -7,8 +7,12 @@ router.get("/", function (req, res) {
     avisoController.testar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.get("/listar/:fkEmpresa", function (req, res) {
     avisoController.listar(req, res);
+});
+
+router.get("/listarMaquinas/:fkEmpresa", function (req, res) {
+    avisoController.listarMaquinas(req, res);
 });
 
 router.get("/listar/:idUsuario", function (req, res) {
