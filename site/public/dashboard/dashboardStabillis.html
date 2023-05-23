@@ -130,7 +130,7 @@
 
       </div>
     </div>
-    
+
     </div>
 
 
@@ -139,7 +139,9 @@
 
   <script>
     var fkEmpresa = sessionStorage.FK_EMPRESA
-    // var idMaquina = 3;
+    var naoExisteGrafico = false
+    var chartData, chartData2, chartData3, chartData4, chartData5
+
     window.onload = atualizarSelectBox(fkEmpresa);
 
     function obterDadosGraficos() {
@@ -150,7 +152,6 @@
         alert("Escolha uma máquina!")
       } else {
         obterdadosGrafico(value)
-        alert("Entrei no else")
       }
     }
 
@@ -179,6 +180,7 @@
               // console.log("elemento html criado")
               feed.appendChild(opcao);
             }
+
 
             // finalizarAguardar();
           });
@@ -217,144 +219,162 @@
     function plotarGrafico(resposta, idMaquina) {
       console.log('Iniciando plotagem do gráfico...');
 
-      const ctx = document.getElementById('grafico');
-      let labels = [];
+      if (naoExisteGrafico) {
+        console.log("destruindo graficos")
+        naoExisteGrafico = false
+        chartData.destroy()
+        chartData2.destroy()
+        chartData3.destroy()
+        chartData4.destroy()
+        chartData5.destroy()
+        plotarGrafico(resposta, idMaquina)
+      } else {
+        naoExisteGrafico = true
 
-      var chartData = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Pacotes enviados',
-            data: [],
-            borderWidth: 1
-          }, {
-            label: 'Pacotes recebidos',
-            data: [],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+        const ctx = document.getElementById('grafico');
+        let labels = [];
+
+        chartData = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Pacotes enviados',
+              data: [],
+              borderWidth: 1
+            }, {
+              label: 'Pacotes recebidos',
+              data: [],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
             }
           }
-        }
-      });
-      // termino grafico 1 
+        });
+        // termino grafico 1 
 
-      const ctx2 = document.getElementById('grafico2');
+        const ctx2 = document.getElementById('grafico2');
 
-      var chartData2 = new Chart(ctx2, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Valor em MiB',
-            data: [],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+        chartData2 = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Valor em MiB',
+              data: [],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
             }
           }
-        }
-      });
-      const ctx3 = document.getElementById('grafico3');
+        });
+        const ctx3 = document.getElementById('grafico3');
 
-      var chartData3 = new Chart(ctx3, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Uso em %',
-            data: [],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+        chartData3 = new Chart(ctx3, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Uso em %',
+              data: [],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
             }
           }
-        }
-      });
+        });
 
-      const ctx4 = document.getElementById('grafico4');
+        const ctx4 = document.getElementById('grafico4');
 
-      var chartData4 = new Chart(ctx4, {
-        type: 'pie',
-        data: {
-          labels: ['% Em uso', '% Disponível'],
-          datasets: [{
-            label: [],
-            data: [],
-            borderWidth: 1,
-            backgroundColor: ['#8C4356', '#27628A']
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+        chartData4 = new Chart(ctx4, {
+          type: 'pie',
+          data: {
+            labels: ['% Em uso', '% Disponível'],
+            datasets: [{
+              label: [],
+              data: [],
+              borderWidth: 1,
+              backgroundColor: ['#8C4356', '#27628A']
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
             }
           }
-        }
-      });
+        });
 
-      const ctx5 = document.getElementById('grafico5');
+        const ctx5 = document.getElementById('grafico5');
 
-      var chartData5 = new Chart(ctx5, {
-        type: 'pie',
-        data: {
-          labels: ['% Em uso', '% Disponível'],
-          datasets: [{
-            label: [],
-            data: [],
-            borderWidth: 1,
-            backgroundColor: ['#8C4356', '#27628A']
-          }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+        chartData5 = new Chart(ctx5, {
+          type: 'pie',
+          data: {
+            labels: ['% Em uso', '% Disponível'],
+            datasets: [{
+              label: [],
+              data: [],
+              borderWidth: 1,
+              backgroundColor: ['#8C4356', '#27628A']
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
             }
           }
+        });
+
+        for (i = 0; i < resposta.length; i++) {
+          var registro = resposta[i];
+          // console.log(registro);
+          //começando envio de dados do pacote 
+          chartData.data.datasets[0].data.push(registro.pacotesEnviados);
+          chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
+          //terminando envio de dados do pacote
+          chartData2.data.datasets[0].data.push(registro.usoDisco);
+          chartData3.data.datasets[0].data.push(registro.usoCPU);
+
+          labels.push(registro.dh)
         }
-      });
+        chartData4.data.datasets[0].data.push(resposta[0].usoRAM);
+        chartData4.data.datasets[0].data.push(resposta[0].capacidadeMaxRAM - resposta[0].usoRAM);
 
-      for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        // console.log(registro);
-        //começando envio de dados do pacote 
-        chartData.data.datasets[0].data.push(registro.pacotesEnviados);
-        chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
-        //terminando envio de dados do pacote
-        chartData2.data.datasets[0].data.push(registro.usoDisco);
-        chartData3.data.datasets[0].data.push(registro.usoCPU);
+        chartData5.data.datasets[0].data.push(resposta[0].usoDisco);
+        chartData5.data.datasets[0].data.push(resposta[0].capacidadeMaxDisco - resposta[0].usoDisco);
 
-        labels.push(registro.dh)
+        var tempo_atividade = document.getElementById("tempo-atividade")
+        tempo_atividade.innerHTML = `${(resposta[0].tempoAtividade).replace("days", "dias")}`
+
+        chartData.resize(600, 200)
+        chartData2.resize(600, 200)
+        chartData3.resize(600, 200)
+
+        chartData.update();
+        chartData2.update();
+        chartData3.update();
+        chartData4.update();
+        chartData5.update();
+
       }
-      chartData4.data.datasets[0].data.push(resposta[0].usoRAM);
-      chartData4.data.datasets[0].data.push(resposta[0].capacidadeMaxRAM - resposta[0].usoRAM);
-
-      chartData5.data.datasets[0].data.push(resposta[0].usoDisco);
-      chartData5.data.datasets[0].data.push(resposta[0].capacidadeMaxDisco - resposta[0].usoDisco);
-
-      var tempo_atividade = document.getElementById("tempo-atividade")
-      tempo_atividade.innerHTML = `${(resposta[0].tempoAtividade).replace("days", "dias")}`
-
-      chartData.update();
-      chartData2.update();
-      chartData3.update();
-      chartData4.update();
-      chartData5.update();
 
     }
 
