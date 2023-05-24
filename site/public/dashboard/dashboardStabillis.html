@@ -368,17 +368,17 @@
         chartData2.resize(1000, 200)
         chartData3.resize(1000, 200)
 
-        chartData.update();
-        chartData2.update();
-        chartData3.update();
-        chartData4.update();
-        chartData5.update();
+        
+
+        setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
+        chartData4, chartData5 ),2000);
 
       }
 
     }
 
-    function atualizarGrafico(idMaquina, dados, myChart) {
+    function atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
+        chartData4, chartData5 ) {
 
 
 
@@ -388,49 +388,60 @@
 
             console.log(`dados recebidos: ${JSON.stringify(novoRegistro)}`);
             console.log(`dados atuais do gráfico:`);
-            console.log(dados);
+            //console.log(dados);
 
-            let avisoCaptura = document.getElementById(`avisoCaptura${idMaquina}`)
-            avisoCaptura.innerHTML = ""
+           // let avisoCaptura = document.getElementById(`avisoCaptura${idMaquina}`)
+           // avisoCaptura.innerHTML = ""
 
 
-            if (novoRegistro[0].dh == dados.labels[dados.labels.length - 1]) {
+            if (novoRegistro[0].dh == chartData.data.labels[chartData.data.labels.length - 1] && novoRegistro[0].dh == chartData3.data.labels[chartData3.data.labels.length - 1]) {
               console.log("---------------------------------------------------------------")
               console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-              avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+              //avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
               console.log("Horário do novo dado capturado:")
               console.log(novoRegistro[0].dh)
               console.log("Horário do último dado capturado:")
-              console.log(dados.labels[dados.labels.length - 1])
+              console.log(chartData.data.labels[chartData.data.labels.length - 1])
+              console.log(chartData3.data.labels[chartData3.data.labels.length - 1])
               console.log("---------------------------------------------------------------")
             } else {
               // tirando e colocando valores no gráfico
-              dados.labels.shift(); // apagar o primeiro
-              dados.labels.push(novoRegistro[0].dh); // incluir um novo momento
+              chartData.data.labels.shift();
+              chartData3.data.labels.shift(); // apagar o primeiro
+              chartData.data.labels.push(novoRegistro[0].dh);
+              chartData3.data.labels.push(novoRegistro[0].dh); // incluir um novo momento
 
-              dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-              dados.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
+              chartData.data.datasets[0].data.shift();  // apagar o primeiro de umidade
+             chartData.data.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
 
-              dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-              dados.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de 
-              dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
-              dados.datasets[2].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
-              dados.datasets[3].data.shift();  // apagar o primeiro de temperatura
-              dados.datasets[3].data.push(novoRegistro[0].usoCPU); // incluir uma nova medida de temperatura
-              dados.datasets[4].data.shift();  // apagar o primeiro de temperatura
-              dados.datasets[4].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
+              chartData.data.datasets[1].data.shift();  // apagar o primeiro de temperatura
+              chartData.data.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de 
+              chartData4.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+              chartData4.data.datasets[0].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
+              chartData3.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+              chartData3.data.datasets[0].data.push(novoRegistro[0].usoCPU); // incluir uma nova medida de temperatura
+              chartData5.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+              chartData5.data.datasets[0].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
 
+        var tempo_atividade = document.getElementById('tempo-atividade')
+        tempo_atividade.innerHTML = `${(novoRegistro[0].tempoAtividade).replace('days', 'dias')}`
 
-              myChart.update();
+        chartData.update();
+        chartData2.update();
+        chartData3.update();
+        chartData4.update();
+        chartData5.update();
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 1000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
+        chartData4, chartData5), 1000);
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, myChart), 2000);
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
+        chartData4, chartData5), 2000);
         }
       })
         .catch(function (error) {
