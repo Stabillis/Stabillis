@@ -26,7 +26,8 @@ function listarMaquinas(fkEmpresa) {
         from Maquina as m
         inner join Empresa as e
         on e.idEmpresa = m.FK_Empresa
-        where m.FK_Empresa = ${fkEmpresa};
+        where m.FK_Empresa = ${fkEmpresa} and 
+        FK_Status = 1;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

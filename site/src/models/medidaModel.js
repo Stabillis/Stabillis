@@ -6,8 +6,8 @@ function buscarUltimasMedidas(idMaquina,limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas} 
-        pacotesRecebidos,
-        pacotesEnviados,
+        bytesRecebidos,
+        bytesEnviados,
         usoRAM, 
         usoCPU, 
         usoDisco,
@@ -38,8 +38,8 @@ function buscarMedidasEmTempoReal(idMaquina) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top 1 
-        pacotesRecebidos,
-        pacotesEnviados,
+        bytesRecebidos,
+        bytesEnviados,
         usoRAM, 
         usoCPU, 
         usoDisco,

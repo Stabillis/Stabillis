@@ -108,16 +108,9 @@
       <div class="graficos">
 
         <div class="status">
-          <p>Pacotes enviados e recebidos da máquina</p>
+          <p>Bytes enviados e recebidos da máquina</p>
           <div>
             <canvas id="grafico" style="width: 600px; height: 200px;"></canvas>
-          </div>
-        </div>
-
-        <div class="status">
-          <p>Taxa de transferência do disco</p>
-          <div>
-            <canvas id="grafico2" style="width: 600px; height: 200px;"></canvas>
           </div>
         </div>
 
@@ -140,7 +133,7 @@
   <script>
     var fkEmpresa = sessionStorage.FK_EMPRESA
     var naoExisteGrafico = false
-    var chartData, chartData2, chartData3, chartData4, chartData5
+    var chartData, chartData3, chartData4, chartData5
 
     window.onload = atualizarSelectBox(fkEmpresa);
 
@@ -223,7 +216,6 @@
         console.log("destruindo graficos")
         naoExisteGrafico = false
         chartData.destroy()
-        chartData2.destroy()
         chartData3.destroy()
         chartData4.destroy()
         chartData5.destroy()
@@ -239,11 +231,11 @@
           data: {
             labels: labels,
             datasets: [{
-              label: 'Pacotes enviados',
+              label: 'Bytes enviados',
               data: [],
               borderWidth: 1
             }, {
-              label: 'Pacotes recebidos',
+              label: 'Bytes recebidos',
               data: [],
               borderWidth: 1
             }]
@@ -257,27 +249,6 @@
           }
         });
         // termino grafico 1 
-
-        const ctx2 = document.getElementById('grafico2');
-
-        chartData2 = new Chart(ctx2, {
-          type: 'line',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: 'Valor em MiB',
-              data: [],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
         const ctx3 = document.getElementById('grafico3');
 
         chartData3 = new Chart(ctx3, {
@@ -346,11 +317,19 @@
         for (i = 0; i < resposta.length; i++) {
           var registro = resposta[i];
           // console.log(registro);
-          //começando envio de dados do pacote 
-          chartData.data.datasets[0].data.push(registro.pacotesEnviados);
-          chartData.data.datasets[1].data.push(registro.pacotesRecebidos);
+          //começando envio de dados do pacote
+          var dadoBytesEnviados = registro.bytesEnviados
+          var valorBytesEnviados = Number((dadoBytesEnviados.slice(0,3)).replace(",", "."))
+          var medidaBytesEnviados = dadoBytesEnviados.slice(3)
+          
+          var dadoBytesRecebidos = registro.bytesRecebidos
+          var valorBytesRecebidos = Number((dadoBytesRecebidos.slice(0,3)).replace(",", "."))
+          var medidaBytesRecebidos = dadoBytesRecebidos.slice(3)
+          
+
+          chartData.data.datasets[0].data.push(valorBytesEnviados);
+          chartData.data.datasets[1].data.push(valorBytesRecebidos);
           //terminando envio de dados do pacote
-          chartData2.data.datasets[0].data.push(registro.usoDisco);
           chartData3.data.datasets[0].data.push(registro.usoCPU);
 
           labels.push(registro.dh)
@@ -364,21 +343,21 @@
         var tempo_atividade = document.getElementById("tempo-atividade")
         tempo_atividade.innerHTML = `${(resposta[0].tempoAtividade).replace("days", "dias")}`
 
-        chartData.resize(1000, 200)
-        chartData2.resize(1000, 200)
-        chartData3.resize(1000, 200)
+        chartData.resize()
+        chartData3.resize()
 
-        
-
-        setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
-        chartData4, chartData5 ),2000);
-
+        //setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
+        //  chartData4, chartData5), 2000);
+        chartData.update();
+        chartData3.update();
+        chartData4.update();
+        chartData5.update();
       }
 
     }
 
-    function atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
-        chartData4, chartData5 ) {
+    function atualizarGrafico(idMaquina, chartData, chartData3,
+      chartData4, chartData5) {
 
 
 
@@ -390,8 +369,8 @@
             console.log(`dados atuais do gráfico:`);
             //console.log(dados);
 
-           // let avisoCaptura = document.getElementById(`avisoCaptura${idMaquina}`)
-           // avisoCaptura.innerHTML = ""
+            // let avisoCaptura = document.getElementById(`avisoCaptura${idMaquina}`)
+            // avisoCaptura.innerHTML = ""
 
 
             if (novoRegistro[0].dh == chartData.data.labels[chartData.data.labels.length - 1] && novoRegistro[0].dh == chartData3.data.labels[chartData3.data.labels.length - 1]) {
@@ -412,10 +391,10 @@
               chartData3.data.labels.push(novoRegistro[0].dh); // incluir um novo momento
 
               chartData.data.datasets[0].data.shift();  // apagar o primeiro de umidade
-             chartData.data.datasets[0].data.push(novoRegistro[0].pacotesRecebidos); // incluir uma nova medida de umidade
+              chartData.data.datasets[0].data.push(novoRegistro[0].BytesRecebidos); // incluir uma nova medida de umidade
 
               chartData.data.datasets[1].data.shift();  // apagar o primeiro de temperatura
-              chartData.data.datasets[1].data.push(novoRegistro[0].pacotesEnviados); // incluir uma nova medida de 
+              chartData.data.datasets[1].data.push(novoRegistro[0].BytesEnviados); // incluir uma nova medida de 
               chartData4.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
               chartData4.data.datasets[0].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
               chartData3.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
@@ -423,31 +402,40 @@
               chartData5.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
               chartData5.data.datasets[0].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
 
-        var tempo_atividade = document.getElementById('tempo-atividade')
-        tempo_atividade.innerHTML = `${(novoRegistro[0].tempoAtividade).replace('days', 'dias')}`
+              var tempo_atividade = document.getElementById('tempo-atividade')
+              tempo_atividade.innerHTML = `${(novoRegistro[0].tempoAtividade).replace('days', 'dias')}`
 
-        chartData.update();
-        chartData2.update();
-        chartData3.update();
-        chartData4.update();
-        chartData5.update();
+              chartData.update();
+              chartData3.update();
+              chartData4.update();
+              chartData5.update();
             }
 
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
-        chartData4, chartData5), 1000);
+            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
+              chartData4, chartData5), 1000);
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData2, chartData3,
-        chartData4, chartData5), 2000);
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
+            chartData4, chartData5), 2000);
         }
       })
         .catch(function (error) {
           console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
+    }
+
+    function converterBytes(bytes) {
+      const unidades = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB'];
+      const base = 1024;
+      if (bytes === 0) return '0 Bytes';
+      const exp = Math.floor(Math.log(bytes) / Math.log(base));
+      const tamanho = (bytes / Math.pow(base, exp)).toFixed(1);
+      const unidade = unidades[exp];
+      return tamanho + ' ' + unidade;
     }
 
   </script>
