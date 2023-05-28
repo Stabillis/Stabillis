@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -8,6 +8,7 @@
   <title>Dashboard</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../css/dash.css">
+  <link rel="stylesheet" href="./dashmaquina.css">
   <script src="../js/funcoes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -84,10 +85,13 @@
         <option value="#">Selecionar máquina</option>
       </select>
     </div>
-    <!--Colunas da dash-->
+
+    <div class="container1" id="container1">
+    </div>
+    <!--Colunas da dash por máquina-->
     <div class="dashboard">
 
-      <div class="graficos">
+      <div class="graficos-disco">
 
         <div class="status">
           <p>Uso de memória RAM</p>
@@ -105,19 +109,19 @@
 
       </div>
 
-      <div class="graficos">
+      <div class="graficos-linha">
 
         <div class="status">
-          <p>Bytes enviados e recebidos da máquina</p>
+          <p>Bytes enviados(<span id="medBytesEnv"></span>) e recebidos(<span id="medBytesReb"></span>) da máquina</p>
           <div>
-            <canvas id="grafico" style="width: 600px; height: 200px;"></canvas>
+            <canvas id="grafico"></canvas>
           </div>
         </div>
 
         <div class="status">
           <p>Em uso CPU</p>
           <div>
-            <canvas id="grafico3" style="width: 600px; height: 200px;"></canvas>
+            <canvas id="grafico3"></canvas>
           </div>
         </div>
 
@@ -134,18 +138,122 @@
     var fkEmpresa = sessionStorage.FK_EMPRESA
     var naoExisteGrafico = false
     var chartData, chartData3, chartData4, chartData5
+    var tempo_atividade = document.getElementById('tempo-atividade')
+    tempo_atividade.innerHTML = 'Nenhuma máquina selecionada'
 
-    window.onload = atualizarSelectBox(fkEmpresa);
+    window.onload = () => {
+      atualizarSelectBox(fkEmpresa)
+      mostrarDashMaquinas(fkEmpresa)
+    };
 
     function obterDadosGraficos() {
+      var dashPorMaquina = document.querySelector('.dashboard')
+      var dashGeral = document.querySelector('.container1')
+
       var select = document.getElementById('sel_maq')
       var value = select.options[select.selectedIndex].value
 
       if (value == '#') {
-        alert("Escolha uma máquina!")
+        dashPorMaquina.style.display = 'none'
+        dashGeral.style.display = 'flex'
+
+        tempo_atividade = document.getElementById('tempo-atividade')
+        tempo_atividade.innerHTML = 'Nenhuma máquina selecionada'
+        mostrarDashMaquinas(fkEmpresa)
       } else {
+        dashGeral.style.display = 'none'
+        dashPorMaquina.style.display = 'flex'
         obterdadosGrafico(value)
       }
+    }
+
+    function mostrarDashMaquinas(fkEmpresa) {
+      fetch(`/avisos/listarMaquinas/${fkEmpresa}`).then(function (resposta) {
+        if (resposta.ok) {
+          if (resposta.status == 204) {
+            alert('Não há máquinas cadastradas!')
+            throw "Nenhum resultado encontrado!!";
+          }
+
+          resposta.json().then(function (resposta) {
+            console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+            var feed = document.getElementById('container1');
+            // feed.innerHTML = "";
+            for (let i = 0; i < resposta.length; i++) {
+              var publicacao = resposta[i];
+
+              // criando e manipulando elementos do HTML via JavaScript
+              var caixaMaquina = document.createElement('div')
+              var titulo = document.createElement('h3')
+
+              var caixaCPU = document.createElement('div')
+              var tituloCPU = document.createElement('p')
+              var dadoCPU = document.createElement('p')
+
+              var caixaRAM = document.createElement('div')
+              var tituloRAM = document.createElement('p')
+              var dadoRAM = document.createElement('p')
+
+              var caixaDisco = document.createElement('div')
+              var tituloDisco = document.createElement('p')
+              var dadoDisco = document.createElement('p')
+
+              caixaMaquina.className = 'box1'
+              titulo.className = 'title'
+
+              titulo.innerHTML = `Máquina: ${publicacao.nomeMaquina}`
+              caixaCPU.className = 'graphic1'
+              caixaCPU.id = "cpu-caixa" + publicacao.idMaquina
+              tituloCPU.innerHTML = "CPU"
+              tituloCPU.className = 'content-box'
+              dadoCPU.innerHTML = "teste"
+              dadoCPU.className = 'content-box'
+              dadoCPU.id = "cpu-maquina" + publicacao.idMaquina
+
+              caixaRAM.className = 'graphic2'
+              caixaRAM.id = 'ram-caixa' + publicacao.idMaquina
+              tituloRAM.innerHTML = "RAM"
+              tituloRAM.className = 'content-box'
+              dadoRAM.innerHTML = "teste"
+              dadoRAM.className = 'content-box'
+              dadoRAM.id = "ram-maquina" + publicacao.idMaquina
+
+              caixaDisco.className = 'graphic3'
+              caixaDisco.id = 'disco-caixa' + publicacao.idMaquina
+              tituloDisco.innerHTML = "Disco"
+              tituloDisco.className = 'content-box'
+              dadoDisco.innerHTML = "teste"
+              dadoDisco.className = 'content-box'
+              dadoDisco.id = "disco-maquina" + publicacao.idMaquina
+
+              caixaMaquina.appendChild(titulo)
+
+              caixaMaquina.appendChild(caixaCPU)
+              caixaCPU.appendChild(tituloCPU)
+              caixaCPU.appendChild(dadoCPU)
+
+              caixaMaquina.appendChild(caixaRAM)
+              caixaRAM.appendChild(tituloRAM)
+              caixaRAM.appendChild(dadoRAM)
+
+              caixaMaquina.appendChild(caixaDisco)
+              caixaDisco.appendChild(tituloDisco)
+              caixaDisco.appendChild(dadoDisco)
+
+              feed.appendChild(caixaMaquina)
+            }
+
+            atualizarDashGeral(fkEmpresa)
+            // finalizarAguardar();
+          });
+        } else {
+          throw ('Houve um erro na API!');
+        }
+      }).catch(function (resposta) {
+        console.error(resposta);
+        // finalizarAguardar();
+      });
     }
 
     function atualizarSelectBox(fkEmpresa) {
@@ -174,8 +282,6 @@
               feed.appendChild(opcao);
             }
 
-
-            // finalizarAguardar();
           });
         } else {
           throw ('Houve um erro na API!');
@@ -186,6 +292,47 @@
       });
     }
 
+    function atualizarDashGeral(fkEmpresa) {
+
+      fetch(`/medidas/tempo-real-geral/${fkEmpresa}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+          response.json().then(function (resposta) {
+
+            console.log(`dados recebidos: ${JSON.stringify(resposta)}`);
+            console.log(`dados atuais do gráfico:`);
+            //console.log(dados);
+
+            for (let i = 0; i < resposta.length; i++) {
+              var dadosResposta = resposta[i];
+              
+              var cpuMaquina = document.getElementById(`cpu-maquina${dadosResposta.FK_Maquina}`)
+              var ramMaquina = document.getElementById(`ram-maquina${dadosResposta.FK_Maquina}`)
+              var discoMaquina = document.getElementById(`disco-maquina${dadosResposta.FK_Maquina}`)
+
+              var porcentCPU = ((dadosResposta.usoCPU * 100)/ dadosResposta.capacidadeMaxCPU).toFixed(2)
+              var porcentRAM = ((dadosResposta.usoRAM * 100)/ dadosResposta.capacidadeMaxRAM).toFixed(2)
+              var porcentDisco = ((dadosResposta.usoDisco * 100)/ dadosResposta.capacidadeMaxDisco).toFixed(2)
+              
+              cpuMaquina.innerHTML = `${porcentCPU}%`
+              ramMaquina.innerHTML = `${porcentRAM}%`
+              discoMaquina.innerHTML = `${porcentDisco}%`
+            }
+            
+
+            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+            proximaAtualizacao = setTimeout(() => atualizarDashGeral(fkEmpresa), 1000);
+          });
+        } else {
+          console.error('Nenhum dado encontrado ou erro na API');
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarDashGeral(fkEmpresa), 2000);
+        }
+      })
+        .catch(function (error) {
+          console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
+
+    }
     function obterdadosGrafico(idMaquina) {
 
       fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
@@ -233,7 +380,8 @@
             datasets: [{
               label: 'Bytes enviados',
               data: [],
-              borderWidth: 1
+              borderWidth: 1,
+              color: '#FFF'
             }, {
               label: 'Bytes recebidos',
               data: [],
@@ -266,7 +414,7 @@
               y: {
                 beginAtZero: true
               }
-            }
+            },
           }
         });
 
@@ -280,7 +428,7 @@
               label: [],
               data: [],
               borderWidth: 1,
-              backgroundColor: ['#8C4356', '#27628A']
+              backgroundColor: ['#8C4356', '#27628A'],
             }]
           },
           options: {
@@ -319,13 +467,15 @@
           // console.log(registro);
           //começando envio de dados do pacote
           var dadoBytesEnviados = registro.bytesEnviados
-          var valorBytesEnviados = Number((dadoBytesEnviados.slice(0,3)).replace(",", "."))
-          var medidaBytesEnviados = dadoBytesEnviados.slice(3)
-          
+          var valorBytesEnviados = Number((dadoBytesEnviados.slice(0, 3)).replace(",", "."))
+          var medidaBytesEnviados = dadoBytesEnviados.slice(-3)
+          medBytesEnv.innerHTML = medidaBytesEnviados
+
           var dadoBytesRecebidos = registro.bytesRecebidos
-          var valorBytesRecebidos = Number((dadoBytesRecebidos.slice(0,3)).replace(",", "."))
-          var medidaBytesRecebidos = dadoBytesRecebidos.slice(3)
-          
+          var valorBytesRecebidos = Number((dadoBytesRecebidos.slice(0, 3)).replace(",", "."))
+          var medidaBytesRecebidos = dadoBytesRecebidos.slice(-3)
+          medBytesReb.innerHTML = medidaBytesRecebidos
+
 
           chartData.data.datasets[0].data.push(valorBytesEnviados);
           chartData.data.datasets[1].data.push(valorBytesRecebidos);
@@ -346,20 +496,18 @@
         chartData.resize()
         chartData3.resize()
 
-        //setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
-        //  chartData4, chartData5), 2000);
         chartData.update();
         chartData3.update();
         chartData4.update();
         chartData5.update();
+
+        setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
+          chartData4, chartData5), 2000);
       }
 
     }
 
-    function atualizarGrafico(idMaquina, chartData, chartData3,
-      chartData4, chartData5) {
-
-
+    function atualizarGrafico(idMaquina, chartData, chartData3, chartData4, chartData5) {
 
       fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -391,16 +539,30 @@
               chartData3.data.labels.push(novoRegistro[0].dh); // incluir um novo momento
 
               chartData.data.datasets[0].data.shift();  // apagar o primeiro de umidade
-              chartData.data.datasets[0].data.push(novoRegistro[0].BytesRecebidos); // incluir uma nova medida de umidade
+              var dadoBytesRecebidos = novoRegistro[0].bytesRecebidos
+              var valorBytesRecebidos = Number((dadoBytesRecebidos.slice(0, 3)).replace(",", "."))
+              var medidaBytesRecebidos = dadoBytesRecebidos.slice(3)
+              chartData.data.datasets[0].data.push(valorBytesRecebidos); // incluir uma nova medida de umidade
 
               chartData.data.datasets[1].data.shift();  // apagar o primeiro de temperatura
-              chartData.data.datasets[1].data.push(novoRegistro[0].BytesEnviados); // incluir uma nova medida de 
-              chartData4.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
-              chartData4.data.datasets[0].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
+              var dadoBytesEnviados = novoRegistro[0].bytesEnviados
+              console.log(dadoBytesEnviados)
+              var valorBytesEnviados = Number((dadoBytesEnviados.slice(0, 3)).replace(",", "."))
+              var medidaBytesEnviados = dadoBytesEnviados.slice(3)
+              chartData.data.datasets[1].data.push(valorBytesEnviados); // incluir uma nova medida de 
+
               chartData3.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
               chartData3.data.datasets[0].data.push(novoRegistro[0].usoCPU); // incluir uma nova medida de temperatura
+
+              chartData4.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
+              chartData4.data.datasets[0].data.push(novoRegistro[0].usoRAM); // incluir uma nova medida de temperatura
+              chartData4.data.datasets[0].data.shift()
+              chartData4.data.datasets[0].data.push(novoRegistro[0].capacidadeMaxRAM - novoRegistro[0].usoRAM)
+
               chartData5.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
               chartData5.data.datasets[0].data.push(novoRegistro[0].usoDisco); // incluir uma nova medida de temperatura
+              chartData5.data.datasets[0].data.shift()
+              chartData5.data.datasets[0].data.push(novoRegistro[0].capacidadeMaxDisco - novoRegistro[0].usoDisco)
 
               var tempo_atividade = document.getElementById('tempo-atividade')
               tempo_atividade.innerHTML = `${(novoRegistro[0].tempoAtividade).replace('days', 'dias')}`
@@ -426,16 +588,6 @@
           console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
 
-    }
-
-    function converterBytes(bytes) {
-      const unidades = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB'];
-      const base = 1024;
-      if (bytes === 0) return '0 Bytes';
-      const exp = Math.floor(Math.log(bytes) / Math.log(base));
-      const tamanho = (bytes / Math.pow(base, exp)).toFixed(1);
-      const unidade = unidades[exp];
-      return tamanho + ' ' + unidade;
     }
 
   </script>
