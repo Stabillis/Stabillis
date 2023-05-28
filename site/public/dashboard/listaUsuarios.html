@@ -259,7 +259,7 @@
       alert("Complete todos os campos para inserir uma nova máquina!")
     } else {
       fetch(`/avisos/criarMaquina/`, {
-        method: "post",
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
@@ -309,14 +309,13 @@
   function desativar(idMaquina) {
     console.log("Criar função de apagar post escolhido - ID" + idMaquina);
     fetch(`/avisos/desativar/${idMaquina}`, {
-      method: "DELETE",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json"
       }
     }).then(function (resposta) {
 
       if (resposta.ok) {
-        window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
         window.location = "/dashboard/listaMaquinas.html"
       } else if (resposta.status == 404) {
         window.alert("Deu 404!");
@@ -398,10 +397,9 @@
             linhaLista.appendChild(tdHostname);
             linhaLista.appendChild(tdStatus);
             linhaLista.appendChild(tdBotoes);
-            tdBotoes.appendChild(divBotoes)
-            divBotoes.appendChild(btnEditar);
-            divBotoes.appendChild(btnDeletar);
-            console.log('final')
+            // tdBotoes.appendChild(divBotoes)
+            // divBotoes.appendChild(btnEditar);
+            // divBotoes.appendChild(btnDeletar);
             feed.appendChild(linhaLista);
           }
 

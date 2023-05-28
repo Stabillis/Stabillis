@@ -64,7 +64,7 @@
         <th>IDENTIFICAÇÃO</th>
         <th>HOSTNAME</th>
         <th>STATUS</th>
-        <th>EXCLUIR/PARAR</th>
+        <th id="colunaEdicao">EXCLUIR/PARAR</th>
       </tr>
 
     </table>
@@ -214,22 +214,65 @@
 
   }
 
-  function desativar(idMaquina) {
+  function estadoMaquina(idMaquina) {
     console.log("Criar função de apagar post escolhido - ID" + idMaquina);
-    fetch(`/avisos/desativar/${idMaquina}`, {
-      method: "DELETE",
+    fetch(`/avisos/estadoMaquina/${idMaquina}`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json"
       }
     }).then(function (resposta) {
 
       if (resposta.ok) {
-        window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+        console.log('entrei no segundo fetch')
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          var fkStatus = Number(json[0].FK_Status)
+          console.log(fkStatus)
+          var idMaquina = Number(json[0].idMaquina)
+
+          if (fkStatus == 1) {
+            fkStatus++
+          } else {
+            fkStatus--
+          }
+          fetch(`/avisos/desativarAtivar/`, { 
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            idMaquinaServer: idMaquina,
+            fkStatusServer: fkStatus
+          })
+        }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            window.alert("Máquina com sucesso pelo usuario de ID: " + idUsuario + "!");
+            // finalizarAguardar();
+          } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+          } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+          }
+        }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          // finalizarAguardar();
+        });
         window.location = "/dashboard/listaMaquinas.html"
-      } else if (resposta.status == 404) {
-        window.alert("Deu 404!");
+        });
+
       } else {
-        throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+          alert("Email e/ou Senha inválidos")
+          // finalizarAguardar(texto);
+        });
       }
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
@@ -299,7 +342,7 @@
 
             btnDeletar.className = "lista-btn-editar"
             btnDeletar.id = "btnDeletar" + publicacao.idMaquina;
-            btnDeletar.setAttribute("onclick", `desativar(${publicacao.idMaquina})`);
+            btnDeletar.setAttribute("onclick", `estadoMaquina(${publicacao.idMaquina})`);
             console.log('botoes funcionando')
 
             linhaLista.appendChild(tdIdentificacao);
