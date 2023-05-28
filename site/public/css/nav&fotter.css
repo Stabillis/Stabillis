@@ -67,6 +67,9 @@
   background-color: #22B0FC;
 }
   
+#login:hover {
+  cursor: pointer;
+}
   
   @media (max-width:600px) {
     .nav > .nav-btn {

@@ -136,9 +136,9 @@ tr:nth-child(even) {
 }
 
 #colunaEdicao {
-  display: flex;
-  justify-content: center;
-
+  /* display: flex;
+  justify-content: center; */
+  text-align: center;
 }
 
 /* .div-botoes {
@@ -148,3 +148,7 @@ tr:nth-child(even) {
 } */
 
 /* fim tabela */
+
+.lista-btn-editar:hover {
+  cursor: pointer;
+}
