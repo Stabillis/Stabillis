@@ -147,10 +147,29 @@ function editar(req, res) {
 
 }
 
-function desativar(req, res) {
+function estadoMaquina(req, res) {
     var idMaquina = req.params.idMaquina;
 
-    avisoModel.desativar(idMaquina)
+    avisoModel.estadoMaquina(idMaquina)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+function desativarAtivar(req, res) {
+    var idMaquina = req.body.idMaquinaServer
+    var fkStatus = req.body.fkStatusServer;
+
+    avisoModel.desativarAtivar(idMaquina, fkStatus)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -173,5 +192,6 @@ module.exports = {
     pesquisarDescricao,
     criarMaquina,
     editar,
-    desativar
+    estadoMaquina,
+    desativarAtivar
 }

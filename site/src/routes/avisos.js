@@ -31,8 +31,12 @@ router.put("/editar/:idAviso", function (req, res) {
     avisoController.editar(req, res);
 });
 
-router.put("/desativar/:idMaquina", function (req, res) {
-    avisoController.desativar(req, res);
+router.get("/estadoMaquina/:idMaquina", function (req, res) {
+    avisoController.estadoMaquina(req, res);
+});
+
+router.put("/desativarAtivar/", function (req, res) {
+    avisoController.desativarAtivar(req, res);
 });
 
 module.exports = router;

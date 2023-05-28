@@ -98,10 +98,17 @@ function editar(novaDescricao, idAviso) {
     return database.executar(instrucao);
 }
 
-function desativar(idMaquina) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
+function estadoMaquina(idMaquina) {
     var instrucao = `
-        UPDATE FROM Maquina SET FK_Status = 2 WHERE id = ${idMaquina};
+        select * from Maquina where idMaquina = ${idMaquina};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function desativarAtivar(idMaquina, fkStatus) {
+    var instrucao = `
+        update Maquina set FK_Status = ${fkStatus} where idMaquina = ${idMaquina};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -114,5 +121,6 @@ module.exports = {
     pesquisarDescricao,
     criarMaquina,
     editar,
-    desativar
+    estadoMaquina,
+    desativarAtivar
 }
