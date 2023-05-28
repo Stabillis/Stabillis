@@ -97,16 +97,24 @@ main {
 
 }
 
+<<<<<<< HEAD
 .container1 {
   height: 490px;
   /* height: 900px; */
+=======
+.container {
+  height: 1050px;
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
   width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 2%;
   margin-left: 7.5%;
+<<<<<<< HEAD
   overflow: auto;
+=======
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }
 
 .box1 {
@@ -116,9 +124,14 @@ main {
   justify-content: center;
   align-items: center;
   background-color: white;
+<<<<<<< HEAD
   width: 350px;
   height: 300px;
   margin-bottom: 15px;
+=======
+  width: 450px;
+  height: 300px;
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }
 
 .title {
@@ -135,10 +148,14 @@ main {
   width: 50%;
   height: 130px;
   margin-top: 3%;
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+=======
+
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }
 
 .graphic2 {
@@ -146,10 +163,14 @@ main {
   width: 50%;
   height: 130px;
   margin-top: 3%;
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+=======
+
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }
 
 .graphic3 {
@@ -158,6 +179,7 @@ main {
   height: 130px;
   margin-top: 3%;
   margin-bottom: 3%;
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -186,4 +208,6 @@ main {
 /* Estilo da trilha da barra de rolagem */
 ::-webkit-scrollbar-track {
   background-color: transparent; /* Cor da trilha */
+=======
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }

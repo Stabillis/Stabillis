@@ -149,7 +149,11 @@ main .columns-dash>div:hover {
   align-items: center;
   margin-top: 0.5rem;
   width: 30vw;
+<<<<<<< HEAD
   height: 15vh;
+=======
+  height: 25vh;
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
   margin-left: 1.5rem;
   box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem #38383873;
   border-radius: 8px;
@@ -230,10 +234,16 @@ main .columns-dash>div:hover {
   border-radius: 8px;
   display: flex;
   justify-content: space-evenly;
+<<<<<<< HEAD
   margin-top: 30px;
   margin-left: 58%;
   height: 30%;
   margin-bottom: 3%;
+=======
+  margin-left: 58%;
+  height: 30%;
+  margin-bottom: 5%;
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
   width: 32.3%;
   padding: 10px;
 }
@@ -262,19 +272,29 @@ span {
 .dashboard {
   margin: auto;
   width: 80%;
+<<<<<<< HEAD
   display: none;
   justify-content: space-between;
   margin-bottom: 25px;
   height: fit-content;
+=======
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }
 
 .status {
   margin-bottom: 10px;
+<<<<<<< HEAD
   width: 100%;
+=======
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
 }
 
 .status #grafico4 {
   margin-bottom: 35px;
+<<<<<<< HEAD
 }
 
 .status > p {
@@ -290,3 +310,6 @@ span {
   width: 23% !important;
 }
 
+=======
+}
+>>>>>>> 865fc37d36a9cb597dd40a3e8965a37f671970e4
