@@ -43,8 +43,9 @@ function buscarMedidasEmTempoReal(idMaquina) {
         usoRAM, 
         usoCPU, 
         usoDisco,
-        capacidadeMaxDisco,
-        capacidadeMaxRAM,
+        (capacidadeMaxRAM - usoRAM) as disponivelRAM, 
+        (capacidadeMaxCPU - usoCPU) as disponivelCPU, 
+        (capacidadeMaxDisco - usoDisco) as disponivelDisco,
         tempoAtividade,
         dataHora,
                         FORMAT(dataHora, 'HH:mm:ss') as dh
@@ -79,10 +80,7 @@ function buscarMedidasEmTempoRealGeral(fkEmpresa) {
             usoRAM,
             usoCPU, 
             usoDisco,
-            FK_Maquina,
-            capacidadeMaxRAM, 
-            capacidadeMaxCPU, 
-            capacidadeMaxDisco
+            FK_Maquina
         FROM (
         SELECT
             cap.usoRAM,

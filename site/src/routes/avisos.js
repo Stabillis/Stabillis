@@ -15,6 +15,22 @@ router.get("/listarMaquinas/:fkEmpresa", function (req, res) {
     avisoController.listarMaquinas(req, res);
 });
 
+router.get("/maiorCPU/:fkEmpresa", function (req, res) {
+    avisoController.maquinaComMaiorCPU(req, res);
+});
+
+router.get("/maiorRAM/:fkEmpresa", function (req, res) {
+    avisoController.maquinaComMaiorRAM(req, res);
+});
+
+router.get("/maiorDisco/:fkEmpresa", function (req, res) {
+    avisoController.maquinaComMaiorDisco(req, res);
+});
+
+router.get("/maiorSobrecarga/:fkEmpresa", function (req, res) {
+    avisoController.maquinaMaisSobrecarregada(req, res);
+});
+
 router.get("/listar/:idUsuario", function (req, res) {
     avisoController.listarPorUsuario(req, res);
 });

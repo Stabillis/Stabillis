@@ -33,6 +33,76 @@ function listarMaquinas(fkEmpresa) {
     return database.executar(instrucao);
 }
 
+
+function maquinaComMaiorCPU(fkEmpresa) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT 
+    m.nomeMaquina,
+    c.usoCPU
+    FROM Captura as c 
+    join [dbo].[Maquina] as m 
+    on m.idMaquina = c.FK_Maquina 
+    WHERE FORMAT(dataHora, 'HH:mm:ss') >= DATEADD(HOUR, -24, FORMAT(GETDATE(), 'HH:mm:ss')) and 
+    m.FK_Empresa = ${fkEmpresa}
+    order by c.usoCPU desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function maquinaComMaiorRAM(fkEmpresa) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT m.nomeMaquina, 
+    c.usoRAM
+    FROM Captura as c 
+    join [dbo].[Maquina] as m 
+    on m.idMaquina = c.FK_Maquina 
+    WHERE FORMAT(dataHora, 'HH:mm:ss') >= DATEADD(HOUR, -24, FORMAT(GETDATE(), 'HH:mm:ss')) and 
+    m.FK_Empresa = ${fkEmpresa}
+    order by c.usoRAM desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function maquinaComMaiorDisco(fkEmpresa) {
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT m.nomeMaquina, c.usoDisco, m.capacidadeMaxDisco
+    FROM Captura as c 
+    join [dbo].[Maquina] as m 
+    on m.idMaquina = c.FK_Maquina 
+    WHERE FORMAT(dataHora, 'HH:mm:ss') >= DATEADD(HOUR, -24, FORMAT(GETDATE(), 'HH:mm:ss')) and 
+    m.FK_Empresa = ${fkEmpresa}
+    order by c.usoDisco desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function maquinaMaisSobrecarregada(fkEmpresa){
+    console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
+    var instrucao = `
+    SELECT 
+    m.nomeMaquina,
+    (m.capacidadeMaxRAM - m.usoRAM) as disponivelRAM,
+    (m.capacidadeMaxCPU - m.usoCPU) as disponivelCPU,
+    (m.capacidadeMaxDisco - m.usoDisco) as disponivelDisco,
+    c.dataHora,
+    FORMAT(dataHora, 'HH:mm:ss')
+    FROM Captura as c 
+    join [dbo].[Maquina] as m 
+    on m.idMaquina = c.FK_Maquina 
+    WHERE FORMAT(dataHora, 'HH:mm:ss') >= DATEADD(HOUR, -24, FORMAT(GETDATE(), 'HH:mm:ss')) and 
+    m.FK_Empresa = ${fkEmpresa}
+    order by c.usoDisco desc;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function pesquisarDescricao(texto) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pesquisarDescricao()");
     var instrucao = `
@@ -117,6 +187,10 @@ function desativarAtivar(idMaquina, fkStatus) {
 module.exports = {
     listar,
     listarMaquinas,
+    maquinaComMaiorCPU,
+    maquinaComMaiorRAM,
+    maquinaComMaiorDisco,
+    maquinaMaisSobrecarregada,
     listarPorUsuario,
     pesquisarDescricao,
     criarMaquina,
