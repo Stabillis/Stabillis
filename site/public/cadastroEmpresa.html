@@ -204,7 +204,7 @@
     telefoneVar = telefoneVar.replace("-", "")
 
     cepVar = cepVar.replace("-", "")
-    
+
     if (nomeEmpresaVar == "" || telefoneVar == "" || cepVar == "" || complementoVar == "" ||
       cidadeVar == "" || cnpjVar == "" || logradouroVar == "" || bairroVar == "" || estadoVar == "") {
       alert("Preencha todos os campos para finalizar o cadastro!")
@@ -241,7 +241,7 @@
 
       if (resposta.ok) {
 
-        entrar()
+        entrar(nomeEmpresaVar, cnpjVar)
         setTimeout(() => {
           window.location = "cadastroUsuario.html";
         }, "500")
@@ -258,11 +258,12 @@
     return false;
   }
 
-  function entrar() {
+  function entrar(nome, cnpj) {
     // aguardar();
 
-    var nomeEmpresaVar = ipt_nomeempresa.value;
-    var cnpjVar = ipt_cnpj.value;
+    var nomeEmpresaVar = nome;
+    var cnpjVar = cnpj;
+
 
     if (nomeEmpresaVar == "" || cnpjVar == "") {
       cardErro.style.display = "block"

@@ -33,7 +33,7 @@ function entrar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        
+
         usuarioModel.entrar(email, senha)
             .then(
                 function (resultado) {
@@ -62,12 +62,13 @@ function entrar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
     var nome = req.body.nomeUsuarioServer;
     var email = req.body.emailServer;
     var telCel = req.body.telCelServer;
     var senha = req.body.senhaServer;
     var tipoUsuario = req.body.tipoUsuarioServer;
-    var fkEmpresa = req.body.fkEmpresaServer;   
+    var fkEmpresa = req.body.fkEmpresaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
