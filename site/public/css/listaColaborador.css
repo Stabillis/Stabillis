@@ -91,7 +91,7 @@ body {
 
 /* tabela */
 .containerLista {
-  display: flex;
+  /* display: flex; */
   margin: auto;
   margin-bottom: 10%;
   height: fit-content;
