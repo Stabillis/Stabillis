@@ -32,4 +32,6 @@ router.delete("/desativar/:idUsuario", function (req, res) {
     listaUsuarioController.desativar(req, res);
 });
 
+
+
 module.exports = router;

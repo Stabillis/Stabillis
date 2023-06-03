@@ -55,4 +55,6 @@ router.put("/desativarAtivar/", function (req, res) {
     avisoController.desativarAtivar(req, res);
 });
 
+
+
 module.exports = router;
