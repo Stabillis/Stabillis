@@ -11,8 +11,8 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
         usoRAM, 
         usoCPU, 
         usoDisco,
-        capacidadeMaxDisco,
-        capacidadeMaxRAM,
+        (capacidadeMaxDisco - usoDisco) as disponivelDisco,
+        (capacidadeMaxRAM - usoRAM) as disponivelRAM,
         tempoAtividade,
         dataHora,
                         FORMAT(dataHora, 'HH:mm:ss') as dh
@@ -77,26 +77,43 @@ function buscarMedidasEmTempoRealGeral(fkEmpresa) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `SELECT 
-            usoRAM,
-            usoCPU, 
-            usoDisco,
-            FK_Maquina
-        FROM (
-        SELECT
-            cap.usoRAM,
-            cap.usoCPU,
-            cap.usoDisco,
-            cap.FK_Maquina,
-            maq.capacidadeMaxRAM,
-            maq.capacidadeMaxCPU,
-            maq.capacidadeMaxDisco,
-        ROW_NUMBER() OVER (PARTITION BY FK_Maquina ORDER BY dataHora DESC) AS rn
-          FROM [dbo].[Captura] as cap
-            join [dbo].[Maquina] as maq
-            on cap.FK_Maquina = maq.idMaquina
-            where maq.FK_Empresa = ${fkEmpresa}
-        ) AS subquery
-        WHERE rn = 1;`;
+        usoRAM,
+        usoCPU, 
+        usoDisco,
+        FK_Maquina,
+        maximoRAM,
+        moderadoRAM,
+        maximoCPU,
+        moderadoCPU,
+        maximoDisco,
+        moderadoDisco
+    FROM (
+    SELECT
+        cap.usoRAM,
+        cap.usoCPU,
+        cap.usoDisco,
+        cap.FK_Maquina,
+        maq.capacidadeMaxRAM,
+        maq.capacidadeMaxCPU,
+        maq.capacidadeMaxDisco,
+        lim.maximoRAM,
+        lim.moderadoRAM,
+        lim.maximoCPU,
+        lim.moderadoCPU,
+        lim.maximoDisco,
+        lim.moderadoDisco,
+    ROW_NUMBER() OVER (PARTITION BY FK_Maquina ORDER BY dataHora DESC) AS rn
+      FROM [dbo].[Captura] as cap
+        join [dbo].[Maquina] as maq
+        on cap.FK_Maquina = maq.idMaquina
+        join [dbo].[Empresa] as emp
+        on maq.FK_Empresa = emp.idEmpresa
+        join [dbo].[Limite] as lim
+        on lim.FK_Empresa = emp.idEmpresa
+        where maq.FK_Empresa = ${fkEmpresa} and 
+        maq.FK_Status = 1
+    ) AS subquery
+    WHERE rn = 1;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select 
