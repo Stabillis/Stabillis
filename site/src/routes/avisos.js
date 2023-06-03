@@ -55,6 +55,14 @@ router.put("/desativarAtivar/", function (req, res) {
     avisoController.desativarAtivar(req, res);
 });
 
+router.get("/maquinas/:idMaquina", function (req, res) {
+    avisoController.getMaquinaById(req, res);
+});
+
+router.put("/maquinas/editar/:idMaquina", function (req, res) {
+    avisoController.editarMaquina(req, res);
+});
+
 
 
 module.exports = router;

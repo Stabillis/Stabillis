@@ -152,7 +152,7 @@ function criarMaquina(req, res) {
     var fkStatus = req.body.fkStatusServer;
     var capacidadeRAM = req.body.capacidadeRAMServer;
     var capacidadeDisco = req.body.capacidadeDiscoServer
-    var frequenciaCPU = req.body.frequenciaCPUServer
+    var capacidadeCPU = req.body.capacidadeCPUServer
     var arquitetura = req.body.arquiteturaServer
     var sistemaOperacional = req.body.sistemaOperacionalServer
     var fkEmpresa = req.body.fkEmpresaServer
@@ -165,7 +165,7 @@ function criarMaquina(req, res) {
         res.status(400).send("A capacidade da RAM está indefinido!");
     } else if (capacidadeDisco == undefined) {
         res.status(400).send("A capacidade do disco está indefinido!");
-    } else if (frequenciaCPU == undefined) {
+    } else if (capacidadeCPU == undefined) {
         res.status(400).send("A frequência da CPU está indefinido!");
     } else if (arquitetura == undefined) {
         res.status(400).send("A arquitetura está indefinido!");
@@ -174,7 +174,7 @@ function criarMaquina(req, res) {
     } else if (fkEmpresa == undefined) {
         res.status(400).send("A fkEmpresa está indefinido!");
     } else {
-        avisoModel.criarMaquina(nomeMaquina, fkStatus, capacidadeRAM, capacidadeDisco, frequenciaCPU
+        avisoModel.criarMaquina(nomeMaquina, fkStatus, capacidadeRAM, capacidadeDisco, capacidadeCPU
             , arquitetura, sistemaOperacional, fkEmpresa)
             .then(
                 function (resultado) {
@@ -248,6 +248,66 @@ function desativarAtivar(req, res) {
         );
 }
 
+function getMaquinaById(req, res) {
+    var idMaquina = req.params.idMaquina;
+
+    avisoModel.getMaquinaById(idMaquina)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o get: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function editarMaquina(req, res) {
+    var idMaquina = req.params.idMaquina;
+    var nomeMaquina = req.body.nomeMaquinaServer;
+    var capacidadeRAM = req.body.capacidadeRAMServer;
+    var capacidadeDisco = req.body.capacidadeDiscoServer
+    var capacidadeCPU = req.body.capacidadeCPUServer
+    var arquitetura = req.body.arquiteturaServer
+    var sistemaOperacional = req.body.sistemaOperacionalServer
+
+    if (nomeMaquina == undefined) {
+        res.status(400).send("O nome da máquina está indefinido!");
+    } else if (capacidadeRAM == undefined) {
+        res.status(400).send("A capacidade da RAM está indefinido!");
+    } else if (capacidadeDisco == undefined) {
+        res.status(400).send("A capacidade do disco está indefinido!");
+    } else if (capacidadeCPU == undefined) {
+        res.status(400).send("A frequência da CPU está indefinido!");
+    } else if (arquitetura == undefined) {
+        res.status(400).send("A arquitetura está indefinido!");
+    } else if (sistemaOperacional == undefined) {
+        res.status(400).send("O SO está indefinido!");
+    } else {
+        avisoModel.editarMaquina(nomeMaquina, capacidadeRAM, capacidadeDisco, capacidadeCPU
+            , arquitetura, sistemaOperacional, idMaquina)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
+
 module.exports = {
     testar,
     listar,
@@ -261,5 +321,7 @@ module.exports = {
     criarMaquina,
     editar,
     estadoMaquina,
-    desativarAtivar
+    desativarAtivar,
+    getMaquinaById,
+    editarMaquina
 }

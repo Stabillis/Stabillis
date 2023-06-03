@@ -82,7 +82,7 @@ function maquinaComMaiorDisco(fkEmpresa) {
     return database.executar(instrucao);
 }
 
-function maquinaMaisSobrecarregada(fkEmpresa){
+function maquinaMaisSobrecarregada(fkEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
     SELECT 
@@ -145,13 +145,13 @@ function listarPorUsuario(idUsuario) {
     return database.executar(instrucao);
 }
 
-function criarMaquina(nomeMaquina, fkEmpresa, capacidadeRAM, capacidadeDisco, frequenciaCPU
+function criarMaquina(nomeMaquina, fkStatus, capacidadeRAM, capacidadeDisco, capacidadeCPU
     , arquitetura, sistemaOperacional, fkEmpresa) {
     // console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", titulo, descricao, idUsuario);
     var instrucao = `
-        INSERT INTO Maquina (nomeMaquina, FK_Status, capacidadeMaxRAM, capacidadeMaxDisco, frequenciaCPU
+        INSERT INTO Maquina (nomeMaquina, FK_Status, capacidadeMaxRAM, capacidadeMaxDisco, capacidadeMaxCPU
         , Arquitetura, SistemaOperacional, FK_Empresa) VALUES (
-            '${nomeMaquina}', '${fkStatus}', '${capacidadeRAM}', '${capacidadeDisco}', '${frequenciaCPU}'
+            '${nomeMaquina}', '${fkStatus}', '${capacidadeRAM}', '${capacidadeDisco}', '${capacidadeCPU}'
             , '${arquitetura}', '${sistemaOperacional}', '${fkEmpresa}'
         );
     `;
@@ -163,6 +163,23 @@ function editar(novaDescricao, idAviso) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
     var instrucao = `
         UPDATE aviso SET descricao = '${novaDescricao}' WHERE id = ${idAviso};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function editarMaquina(nomeMaquina, capacidadeRAM, capacidadeDisco, capacidadeCPU
+    , arquitetura, sistemaOperacional, idMaquina) {
+    var instrucao = `
+        UPDATE 
+            Maquina 
+        SET nomeMaquina = '${nomeMaquina}',
+            capacidadeMaxRAM = ${capacidadeRAM}, 
+            capacidadeMaxDisco = ${capacidadeDisco} , 
+            capacidadeMaxCPU = ${capacidadeCPU},
+            arquitetura = '${arquitetura}',
+            sistemaOperacional = '${sistemaOperacional}' 
+        WHERE idMaquina = ${idMaquina};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -184,6 +201,14 @@ function desativarAtivar(idMaquina, fkStatus) {
     return database.executar(instrucao);
 }
 
+function getMaquinaById(idMaquina) {
+    var instrucao = `
+    select nomeMaquina, capacidadeMaxRAM, capacidadeMaxDisco, capacidadeMaxCPU, Arquitetura, SistemaOperacional, Fk_Empresa from Maquina where idMaquina = ${idMaquina};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listar,
     listarMaquinas,
@@ -196,5 +221,7 @@ module.exports = {
     criarMaquina,
     editar,
     estadoMaquina,
-    desativarAtivar
+    desativarAtivar,
+    getMaquinaById,
+    editarMaquina
 }
