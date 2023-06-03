@@ -33,5 +33,13 @@ router.delete("/desativar/:idUsuario", function (req, res) {
 });
 
 
+router.get("/estadoPerfilUsuario/:idUsuario", function (req, res) {
+    listaUsuarioController.estadoPerfilUsuario(req, res);
+});
+router.put("/desativarAtivar/", function (req, res) {
+    listaUsuarioController.desativarAtivar(req, res);
+});
+
+
 
 module.exports = router;

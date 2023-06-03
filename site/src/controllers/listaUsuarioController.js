@@ -108,11 +108,10 @@ function criarUsuario(req, res) {
             );
     }
 }
-function editar(req, res) {
-    var novaDescricao = req.body.descricao;
-    var idAviso = req.params.idAviso;
+function estadoPerfilUsuario(req, res) {
+    var idUsuario = req.params.idUsuario;
 
-    avisoModel.editar(novaDescricao, idAviso)
+    listaUsuarioModel.estadoPerfilUsuario( idUsuario)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -146,12 +145,32 @@ function desativar(req, res) {
         );
 }
 
+function desativarAtivar(req, res) {
+    var idUsuario = req.body.idUsuarioServer
+    var fkPerfil = req.body.fkPerfilServer;
+
+    listaUsuarioModel.desativarAtivar(idUsuario, fkPerfil)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     testar,
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     criarUsuario,
-    editar,
-    desativar
+    desativar,
+    desativarAtivar,
+    estadoPerfilUsuario
 }

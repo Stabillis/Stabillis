@@ -69,10 +69,10 @@ function criarUsuario(nome, email, telCel, senha, tipoUsuario, fkEmpresa) {
     return database.executar(instrucao);
 }
 
-function editar(novaDescricao, idAviso) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", novaDescricao, idAviso);
+function estadoPerfilUsuario( idUsuario) {
+    
     var instrucao = `
-        UPDATE aviso SET descricao = '${novaDescricao}' WHERE id = ${idAviso};
+        SELECT * FROM Usuario WHERE idUsuario = ${idUsuario};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -86,12 +86,22 @@ function desativar(idUsuario) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function desativarAtivar(idUsuario, fkPerfil) {
+    //console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function deletar():", idAviso);
+    var instrucao = `
+        UPDATE Usuario SET FK_Perfil = ${fkPerfil}  WHERE idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
     listar,
     listarPorUsuario,
     pesquisarDescricao,
     criarUsuario,
-    editar,
-    desativar
+    desativar,
+    estadoPerfilUsuario,
+    desativarAtivar
 }
