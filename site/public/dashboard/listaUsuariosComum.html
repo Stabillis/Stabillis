@@ -331,10 +331,7 @@
             var tdIdentificacao = document.createElement("td");
             var tdHostname = document.createElement("td");
             var tdStatus = document.createElement("td");
-            var tdBotoes = document.createElement("td");
-            var divBotoes = document.createElement("div")
-            var btnEditar = document.createElement("span");
-            var btnDeletar = document.createElement("span");
+            
             console.log("elemento html criado")
 
 
@@ -349,36 +346,18 @@
               console.log("entrando no else")
 
             }
-            btnEditar.innerHTML = "<img src=' https://cdn-icons-png.flaticon.com/512/98/98090.png?w=826&t=st=1680890579~exp=1680891179~hmac=22fea846a60055b34d1312f83040a9785f819033e8a2d12dcf6f6a8b1dad563c' height= '25px' >";
-            btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/1250/1250925.png?w=826&t=st=1680890678~exp=1680891278~hmac=f51dcc26fefd6e465196cc4a4265a52fe897af469d24e6407008b67593661c69' height ='25px'>";
-            console.log('elementos com conteudo criado')
+          
+            
 
             linhaLista.className = "lista-maquina";
             tdIdentificacao.id = "id-maquina" + publicacao.idUsuario;
             tdHostname.className = "lista-maquina-hostname";
             tdStatus.className = "lista-maquina-status";
-            divBotoes.id = "iconesColuna";
-
-            tdBotoes.className = "botoes-lista"
-
-            console.log('classes atribuidas aos elementos')
-
-            btnEditar.className = "lista-btn-editar"
-            btnEditar.id = "btnEditar" + publicacao.idUsuario;
-            btnEditar.setAttribute("onclick", `desativar(${publicacao.idUsuario})`);
-
-            btnDeletar.className = "lista-btn-editar"
-            btnDeletar.id = "btnDeletar" + publicacao.idUsuario;
-            btnDeletar.setAttribute("onclick", `estadoPerfilUsuario(${publicacao.idUsuario})`);
-            console.log('botoes funcionando')
 
             linhaLista.appendChild(tdIdentificacao);
             linhaLista.appendChild(tdHostname);
             linhaLista.appendChild(tdStatus);
             linhaLista.appendChild(tdBotoes);
-            tdBotoes.appendChild(divBotoes)
-            divBotoes.appendChild(btnEditar);
-            divBotoes.appendChild(btnDeletar);
             feed.appendChild(linhaLista);
           }
 

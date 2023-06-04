@@ -383,10 +383,7 @@
             var tdIdentificacao = document.createElement("td");
             var tdHostname = document.createElement("td");
             var tdStatus = document.createElement("td");
-            var tdBotoes = document.createElement("td");
-            var divBotoes = document.createElement("div")
-            var btnEditar = document.createElement("span");
-            var btnDeletar = document.createElement("span");
+            
             console.log("elemento html criado")
 
 
@@ -402,46 +399,19 @@
 
             }
 
-            btnEditar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/61/61456.png?w=360' height='25px'>"
-            btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb' height='25px'>";
+            
             console.log('elementos com conteudo criado')
-
-            if (publicacao.FK_Status == 1) {
-              btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb' height='25px'>";
-
-            } else {
-              btnDeletar.innerHTML = "<img src='https://imagensemoldes.com.br/wp-content/uploads/2020/08/Figura-Play-PNG.png' height='25px'>";
-            }
-
-
 
             linhaLista.className = "lista-maquina";
             tdIdentificacao.id = "id-maquina" + publicacao.idMaquina;
             tdHostname.className = "lista-maquina-hostname";
             tdStatus.className = "lista-maquina-status";
-            divBotoes.id = "iconesColuna";
-
-            tdBotoes.className = "botoes-lista"
-
-            console.log('classes atribuidas aos elementos')
-
-            btnEditar.className = "lista-btn-editar"
-            btnEditar.id = "btnEditar" + publicacao.idMaquina;
-            btnEditar.setAttribute("onclick", `editar(${publicacao.idMaquina})`);
-
-
-            btnDeletar.className = "lista-btn-editar"
-            btnDeletar.id = "btnDeletar" + publicacao.idMaquina;
-            btnDeletar.setAttribute("onclick", `estadoMaquina(${publicacao.idMaquina})`);
-            console.log('botoes funcionando')
 
             linhaLista.appendChild(tdIdentificacao);
             linhaLista.appendChild(tdHostname);
             linhaLista.appendChild(tdStatus);
             linhaLista.appendChild(tdBotoes);
-            tdBotoes.appendChild(divBotoes)
-            divBotoes.appendChild(btnEditar);
-            divBotoes.appendChild(btnDeletar);
+            
             console.log('final')
             feed.appendChild(linhaLista);
           }
