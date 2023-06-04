@@ -457,6 +457,31 @@
               cpuMaquina.innerHTML = `${porcentCPU}%`
               ramMaquina.innerHTML = `${porcentRAM}%`
               discoMaquina.innerHTML = `${porcentDisco}%`
+
+              if (porcentCPU >= dadosResposta.maximoCPU.toFixed(2)) {
+                cpuMaquina.style.backgroundColor = '#FF6A6A'
+              } else if (porcentCPU >= dadosResposta.moderadoCPU.toFixed(2)) {
+                cpuMaquina.style.backgroundColor = '#FFF174'
+              } else {
+                cpuMaquina.style.backgroundColor = '#93FA93'
+              }
+
+              if (porcentRAM >= dadosResposta.maximoRAM.toFixed(2)) {
+                ramMaquina.style.backgroundColor = '#FF6A6A'
+              } else if (porcentRAM >= dadosResposta.moderadoRAM.toFixed(2)) {
+                ramMaquina.style.backgroundColor = '#FFF174'
+              } else {
+                Maquina.style.backgroundColor = '#93FA93'
+              }
+
+              if (porcentDisco >= dadosResposta.maximoDisco.toFixed(2)) {
+                discoMaquina.style.backgroundColor = '#FF6A6A'
+              } else if (porcentDisco >= dadosResposta.moderadoDisco.toFixed(2)) {
+                discoMaquina.style.backgroundColor = '#FFF174'
+              } else {
+                discoMaquina.style.backgroundColor = '#93FA93'
+              }
+
             }
 
             maquinaComMaiorCPU(fkEmpresa)

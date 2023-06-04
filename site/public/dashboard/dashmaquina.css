@@ -187,7 +187,8 @@ main {
 }
 
 .content-box {
-  color: white;
+  color: black;
+  font-weight: 700;
 }
 
 ::-webkit-scrollbar {
