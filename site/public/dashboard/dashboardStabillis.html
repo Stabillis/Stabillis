@@ -450,36 +450,46 @@
               var ramMaquina = document.getElementById(`ram-maquina${dadosResposta.FK_Maquina}`)
               var discoMaquina = document.getElementById(`disco-maquina${dadosResposta.FK_Maquina}`)
               console.log(cpuMaquina)
+              
               var porcentCPU = dadosResposta.usoCPU.toFixed(2)
+              if (porcentCPU > 100.00) {
+                porcentCPU = 100.00
+              }
               var porcentRAM = dadosResposta.usoRAM.toFixed(2)
+              if (porcentRAM > 100.00) {
+                porcentRAM = 100.00
+              }
               var porcentDisco = dadosResposta.usoDisco.toFixed(2)
+              if (porcentDisco > 100.00) {
+                porcentDisco = 100.00
+              }
 
               cpuMaquina.innerHTML = `${porcentCPU}%`
               ramMaquina.innerHTML = `${porcentRAM}%`
               discoMaquina.innerHTML = `${porcentDisco}%`
 
-              if (porcentCPU >= dadosResposta.maximoCPU.toFixed(2)) {
-                cpuMaquina.style.backgroundColor = '#FF6A6A'
-              } else if (porcentCPU >= dadosResposta.moderadoCPU.toFixed(2)) {
-                cpuMaquina.style.backgroundColor = '#FFF174'
+              if (porcentCPU >= dadosResposta.maximoCPU) {
+                document.getElementById(`cpu-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FF6A6A'
+              } else if (porcentCPU >= dadosResposta.moderadoCPU) {
+                document.getElementById(`cpu-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FFF174'
               } else {
-                cpuMaquina.style.backgroundColor = '#93FA93'
+                document.getElementById(`cpu-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#93FA93'
               }
 
-              if (porcentRAM >= dadosResposta.maximoRAM.toFixed(2)) {
-                ramMaquina.style.backgroundColor = '#FF6A6A'
-              } else if (porcentRAM >= dadosResposta.moderadoRAM.toFixed(2)) {
-                ramMaquina.style.backgroundColor = '#FFF174'
+              if (porcentRAM >= dadosResposta.maximoRAM) {
+                document.getElementById(`ram-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FF6A6A'
+              } else if (porcentRAM >= dadosResposta.moderadoRAM) {
+                document.getElementById(`ram-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FFF174'
               } else {
-                Maquina.style.backgroundColor = '#93FA93'
+                document.getElementById(`ram-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#93FA93'
               }
 
-              if (porcentDisco >= dadosResposta.maximoDisco.toFixed(2)) {
-                discoMaquina.style.backgroundColor = '#FF6A6A'
-              } else if (porcentDisco >= dadosResposta.moderadoDisco.toFixed(2)) {
-                discoMaquina.style.backgroundColor = '#FFF174'
+              if (porcentDisco >= dadosResposta.maximoDisco) {
+                document.getElementById(`disco-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FF6A6A'
+              } else if (porcentDisco >= dadosResposta.moderadoDisco) {
+                document.getElementById(`disco-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FFF174'
               } else {
-                discoMaquina.style.backgroundColor = '#93FA93'
+                document.getElementById(`disco-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#93FA93'
               }
 
             }

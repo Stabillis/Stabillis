@@ -19,15 +19,24 @@ function listar(fkEmpresa) {
 function listarMaquinas(fkEmpresa) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucao = `
-        select m.idMaquina,
-        m.nomeMaquina,
-        m.FK_Status,
-        m.FK_Empresa  
-        from Maquina as m
-        inner join Empresa as e
-        on e.idEmpresa = m.FK_Empresa
-        where m.FK_Empresa = ${fkEmpresa} and 
-        FK_Status = 1;
+        select 
+            m.idMaquina,
+            m.nomeMaquina,
+            m.FK_Status,
+            m.FK_Empresa  
+        from    
+            Maquina as m
+        inner join  
+            Empresa as e
+        on  
+            e.idEmpresa = m.FK_Empresa
+        where 
+            m.FK_Empresa = ${fkEmpresa} and 
+            FK_Status = 1 and
+		    EXISTS (
+                SELECT 1
+                FROM [dbo].[Captura] as c
+                WHERE m.idMaquina = c.FK_Maquina);
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -87,15 +96,15 @@ function maquinaMaisSobrecarregada(fkEmpresa) {
     var instrucao = `
     SELECT 
     m.nomeMaquina,
-    (m.capacidadeMaxRAM - m.usoRAM) as disponivelRAM,
-    (m.capacidadeMaxCPU - m.usoCPU) as disponivelCPU,
-    (m.capacidadeMaxDisco - m.usoDisco) as disponivelDisco,
+    (m.capacidadeMaxRAM - c.usoRAM) as disponivelRAM,
+    (m.capacidadeMaxCPU - c.usoCPU) as disponivelCPU,
+    (m.capacidadeMaxDisco - c.usoDisco) as disponivelDisco,
     c.dataHora,
     FORMAT(dataHora, 'HH:mm:ss')
     FROM Captura as c 
     join [dbo].[Maquina] as m 
     on m.idMaquina = c.FK_Maquina 
-    WHERE FORMAT(dataHora, 'HH:mm:ss') >= DATEADD(HOUR, -24, FORMAT(GETDATE(), 'HH:mm:ss')) and 
+    WHERE FORMAT(c.dataHora, 'HH:mm:ss') >= DATEADD(HOUR, -24, FORMAT(GETDATE(), 'HH:mm:ss')) and 
     m.FK_Empresa = ${fkEmpresa}
     order by c.usoDisco desc;
     `;
