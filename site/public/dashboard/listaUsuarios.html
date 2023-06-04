@@ -14,7 +14,7 @@
 </head>
 
 <body onload="atualizarFeed(fkEmpresa)">
- 
+
   <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
@@ -37,11 +37,6 @@
   <!-- pesquisar -->
   <div class="containerPesquisa">
     <p>Colaboradores</p>
-
-    <div class="input-btn">
-      <input type="text" class="ipt-pesquisar" placeholder="Digitar">
-      <button class="btn-pesquisar">Pesquisar</button>
-    </div>
   </div>
   <!-- fim  -->
 
@@ -69,8 +64,8 @@
           <th id="colunaEdicao">EXCLUIR/ALTERAR</th>
         </tr>
         <tr>
-          
-          
+
+
       </table>
     </div>
   </div>
@@ -84,17 +79,50 @@
       <span class="modal-close" id="modalClose">&#10006;</span>
 
       <form class="modal-form">
-        <input type="text" class="modal-field" placeholder="Identificação do colaborador">
-        <input type="text" class="modal-field" placeholder="Nome do Colaborador">
+        <input type="text" class="modal-field" placeholder="Nome do funcionário" id="ipt_nome_usuario">
+        <input type="text" class="modal-field" placeholder="Email" id="ipt_email">
       </form>
 
       <form class="modal-form2">
-        <input type="text" class="modal-field" placeholder="Cargo do colaborador">
-        <input type="text" class="modal-field" placeholder="Permissão do colaborador">
+        <input type="text" class="modal-field" placeholder="Telefone Celular" id="ipt_telefone_celular">
+        <input type="password" class="modal-field" placeholder="Senha" id="ipt_senha">
+      </form>
+
+      <form class="modal-form">
+        <select name="" id="sel_perm">
+          <option value="2">Padrão</option>
+          <option value="1">Adminstrador</option>
+        </select>
+      </form>
+      <footer class="modal-footer">
+        <button class="saveButton" onclick="criarUsuario()">Salvar</button>
+        <button class="cancelButton">Cancelar</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalEdit">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h2>Novo Colaborador</h2>
+      </header>
+      <span class="modal-close" id="modalEditClose">&#10006;</span>
+
+      <form class="modal-form">
+        <input type="text" class="modal-field" placeholder="Nome do funcionário" id="ipt_nome_usuario_edit">
+        <input type="text" class="modal-field" placeholder="Email" id="ipt_email_edit">
+      </form>
+
+      <form class="modal-form2">
+        <input type="text" class="modal-field" placeholder="Telefone Celular" id="ipt_telefone_celular_edit">
+        <select name="" id="sel_perm_edit">
+          <option value="2">Padrão</option>
+          <option value="1">Adminstrador</option>
+        </select>
       </form>
 
       <footer class="modal-footer">
-        <button class="saveButton">Salvar</button>
+        <button class="saveButton" onclick="editarUsuario()">Salvar</button>
         <button class="cancelButton">Cancelar</button>
       </footer>
     </div>
@@ -154,72 +182,161 @@
 
 <script>
   var fkEmpresa = sessionStorage.FK_EMPRESA;
-  
+
+  // FORMATAÇÃO TELEFONE
+  const telefone = document.getElementById("ipt_telefone_celular");
+
+  telefone.addEventListener("keyup", formatarTelefone);
+
+  function formatarTelefone(e) {
+
+    var v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/^(\d\d)(\d)/g, "($1) $2");
+
+    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+
+    e.target.value = v;
+
+  }
+  // FORMATAÇÃO TELEFONE
+
+  const telefone2 = document.getElementById("ipt_telefone_celular_edit");
+
+  telefone2.addEventListener("keyup", formatarTelefone);
+
+  function formatarTelefone(e) {
+
+    var v = e.target.value.replace(/\D/g, "");
+
+    v = v.replace(/^(\d\d)(\d)/g, "($1) $2");
+
+    v = v.replace(/(\d{5})(\d)/, "$1-$2");
+
+    e.target.value = v;
+
+  }
+  // FORMATAÇÃO TELEFONE
   function limparFormulario() {
     document.getElementById("form_postagem").reset();
   }
 
-  function criarMaquina() {
-    var nomeMaquina = ipt_nome_maquina.value;
-    var fkStatus = 1
-    var capacidadeRAM = Number(ipt_capacidade_ram.value);
-    var capacidadeDisco = Number(ipt_capacidade_disco.value);
-    var frequenciaCPU = Number(ipt_frequencia_cpu.value);
-    var arquitetura = ipt_arquitetura.value;
-    var sistemaOperacional = ipt_sistema_operacional.value;
-    var fkEmpresa = sessionStorage.EMAIL_USUARIO
+  function criarUsuario() {
+    var nomeUsuarioVar = ipt_nome_usuario.value
+    var emailVar = ipt_email.value
+    var telCelVar = ipt_telefone_celular.value
+    var senhaVar = ipt_senha.value
+    var tipoUsuarioVar = Number(sel_perm.value)
+    var fkEmpresaVar = sessionStorage.FK_EMPRESA
 
-    if (nomeMaquina != null || capacidadeRAM != null || capacidadeDisco != null || frequenciaCPU != null ||
-      arquitetura != null || sistemaOperacional != null) {
-      alert("Complete todos os campos para inserir uma nova máquina!")
+    telCelVar = telCelVar.replace("(", "")
+    telCelVar = telCelVar.replace(")", "")
+    telCelVar = telCelVar.replace(" ", "")
+    telCelVar = telCelVar.replace("-", "")
+
+    if (nomeUsuarioVar == "" || emailVar == "" || telCelVar == "" || senhaVar == "") {
+      alert("Preencha todos os campos para finalizar o cadastro!")
+
+      return false;
     } else {
-      fetch(`/avisos/criarMaquina/`, {
-        method: "POST",
+      console.log("Cadastrando novo usuário")
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeUsuarioServer: nomeUsuarioVar,
+        emailServer: emailVar,
+        telCelServer: telCelVar,
+        senhaServer: senhaVar,
+        tipoUsuarioServer: tipoUsuarioVar,
+        fkEmpresaServer: fkEmpresaVar
+      })
+    }).then(function (resposta) {
+
+      console.log("resposta: ", resposta);
+
+      if (resposta.ok) {
+        alert("Usuário cadastrado!")
+        document.getElementById('modal').classList.remove('active')
+        window.location = 'listaUsuarios.html'
+
+        // limparFormulario();
+        // finalizarAguardar();
+      } else {
+        throw ("Houve um erro ao tentar realizar o cadastro!");
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+      // finalizarAguardar();
+    });
+
+    return false;
+  }
+
+  function editarUsuario() {
+    var idUsuario = sessionStorage.ID_USUARIO_EDITANDO
+    var nomeUsuario = ipt_nome_usuario_edit.value;
+    var email = ipt_email_edit.value
+    var telefone = ipt_telefone_celular_edit.value
+    var permissao = Number(sel_perm_edit.value)
+
+    console.log(idUsuario)
+    if (idUsuario == null || nomeUsuario == null || email == null ||
+      telefone == null || permissao == null) {
+      alert("Complete todos os campos para concluir a edição!")
+    } else {
+      fetch(`/usuarios/editarUsuario/${idUsuario}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          nomeMaquinaServer: nomeMaquina,
-          fkStatusServer: fkStatus,
-          capacidadeRAMServer: capacidadeRAM,
-          capacidadeDiscoServer: capacidadeDisco,
-          frequenciaCPUServer: frequenciaCPU,
-          arquiteturaServer: arquitetura,
-          sistemaOperacionalServer: sistemaOperacional,
-          fkEmpresaServer: fkEmpresa
+          nomeUsuarioServer: nomeUsuario,
+          emailServer: email,
+          telefoneServer: telefone,
+          permissaoServer: permissao
         })
       }).then(function (resposta) {
-
-        console.log("resposta: ", resposta);
-
         if (resposta.ok) {
-          window.alert("Máquina com sucesso pelo usuario de ID: " + idUsuario + "!");
-          limparFormulario();
-          // finalizarAguardar();
-        } else if (resposta.status == 404) {
-          window.alert("Deu 404!");
-        } else {
-          throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+          alert('Usuário atualizada com sucesso!')
+          document.getElementById('modalEdit').classList.remove('active')
+          window.location = 'listaUsuarios.html';
         }
-      }).catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        // finalizarAguardar();
-      });
+      })
     }
-
-
-
-    return false;
-
   }
 
   function editar(idUsuario) {
-    sessionStorage.ID_POSTAGEM_EDITANDO = idUsuario;
+    sessionStorage.ID_USUARIO_EDITANDO = idUsuario;
     console.log("cliquei em editar - " + idUsuario);
-    window.alert("Você será redirecionado à página de edição do aviso de id número: " + idUsuario);
-    window.location = "/dashboard/listaUsuarios.html"
+
+    document.getElementById('modalEdit').classList.add('active')
+
+    fetch(`/usuarios/editar/${idUsuario}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta) {
+      console.log("UsuarioById", resposta.body)
+      resposta.json().then(json => {
+
+        console.log(json)
+        document.getElementById('ipt_nome_usuario_edit').value = json.NomeUsuario
+        document.getElementById('ipt_email_edit').value = json.Email
+        document.getElementById('ipt_telefone_celular_edit').value = json.TelefoneCelular
+      })
+    })
 
   }
+
   function estadoPerfilUsuario(idUsuario) {
     console.log("Criar função de apagar post escolhido - ID" + idUsuario);
     fetch(`/listaUsuario/estadoPerfilUsuario/${idUsuario}`, {
@@ -235,7 +352,7 @@
           console.log(json);
           console.log(JSON.stringify(json));
           var fkPerfil = Number(json[0].FK_Perfil)
-          
+
           var idUsuario = Number(json[0].idUsuario)
 
           if (fkPerfil == 1) {
@@ -243,32 +360,32 @@
           } else {
             fkPerfil--
           }
-          fetch(`/listaUsuario/desativarAtivar`, { 
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            idUsuarioServer: idUsuario,
-            fkPerfilServer: fkPerfil
-          })
-        }).then(function (resposta) {
+          fetch(`/listaUsuario/desativarAtivar`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              idUsuarioServer: idUsuario,
+              fkPerfilServer: fkPerfil
+            })
+          }).then(function (resposta) {
 
-          console.log("resposta: ", resposta);
+            console.log("resposta: ", resposta);
 
-          if (resposta.ok) {
-            window.location= "listaUsuarios.html"
+            if (resposta.ok) {
+              window.location = "listaUsuarios.html"
+              // finalizarAguardar();
+            } else if (resposta.status == 404) {
+              window.alert("Deu 404!");
+            } else {
+              throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+          }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
             // finalizarAguardar();
-          } else if (resposta.status == 404) {
-            window.alert("Deu 404!");
-          } else {
-            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-          }
-        }).catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-          // finalizarAguardar();
-        });
-        window.location = "/dashboard/listaUsuarios.html"
+          });
+          window.location = "/dashboard/listaUsuarios.html"
         });
 
       } else {
@@ -338,7 +455,7 @@
             console.log("elemento html criado")
 
 
-            tdIdentificacao.innerHTML = `${publicacao.idUsuario}`
+            tdIdentificacao.innerHTML = `${i + 1}`
             tdHostname.innerHTML = `${publicacao.nomeUsuario}`
             if (publicacao.FK_Perfil == 1) {
               tdStatus.innerHTML = `Administrador`;
@@ -369,7 +486,7 @@
 
             btnDeletar.className = "lista-btn-editar"
             btnDeletar.id = "btnDeletar" + publicacao.idUsuario;
-            btnDeletar.setAttribute("onclick", `estadoPerfilUsuario(${publicacao.idUsuario})`);
+            btnDeletar.setAttribute("onclick", `editar(${publicacao.idUsuario})`);
             console.log('botoes funcionando')
 
             linhaLista.appendChild(tdIdentificacao);

@@ -12,7 +12,7 @@ function listar() {
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT * FROM Usuario WHERE Email = '${email}' AND senha = '${senha}';
+        SELECT * FROM Usuario WHERE Email = '${email}' AND Senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -30,8 +30,37 @@ function cadastrar(nome, email, telCel, senha, tipoUsuario, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function editar(idUsuario) {
+    var instrucao = `
+    SELECT
+        *
+    FROM
+        Usuario
+    WHERE
+        idUsuario = ${idUsuario};
+    `
+    return database.executar(instrucao)
+}
+
+function editarUsuario(idUsuario, nome, email, telefone, permissao) {
+    var instrucao = `
+    UPDATE
+        Usuario
+    SET
+        NomeUsuario = ${nome},
+        Email = ${email},
+        TelefoneCelular = ${telefone},
+        FK_Perfil = ${permissao}
+    WHERE
+        idUsuario = ${idUsuario}
+    `
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
+    editar,
+    editarUsuario
 };

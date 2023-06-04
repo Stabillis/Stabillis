@@ -20,4 +20,11 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.get("/editar/:idUsuario", function (req, res) {
+    usuarioController.editar(req, res);
+});
+
+router.put("/editarUsuario/:idUsuario", function(req, res) {
+    usuarioController.editarUsuario(res, req)
+})
 module.exports = router;

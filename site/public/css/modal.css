@@ -124,3 +124,25 @@
 input{
   margin: 5px;
 }
+
+#sel_perm {
+  width: 250px;
+  text-align: center;
+  padding: 5px;
+  font-size: 15px;
+  border: 1px 1px 1px rgba(0, 0, 0, 0.444);
+}
+
+#sel_perm_edit {
+  width: 300px;
+  height: 47px;
+  text-align: center;
+  padding: 5px;
+  font-size: 15px;
+  border: 1px 1px 1px rgba(0, 0, 0, 0.444);
+}
+
+#ipt_nome_usuario_edit, #ipt_telefone_celular_edit,
+#ipt_email_edit {
+  text-align: center;
+}
