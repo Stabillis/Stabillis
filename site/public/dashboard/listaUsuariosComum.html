@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/nav&fotter.css">
   <link rel="stylesheet" href="../css/listaColaborador.css">
-  <link rel="stylesheet" href="../css/modalMaq.css">
-  <script src="../js/maq.js" defer></script>
+  <link rel="stylesheet" href="../css/modal.css">
+  <script src="../js/colab.js" defer></script>
   <script src="../js/funcoes.js"></script>
-  <title>Máquinas</title>
+  <title>Colaboradores</title>
 </head>
 
 <body onload="atualizarFeed(fkEmpresa)">
+ 
   <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
@@ -35,7 +36,7 @@
 
   <!-- pesquisar -->
   <div class="containerPesquisa">
-    <p>Máquinas</p>
+    <p>Colaboradores</p>
 
     <div class="input-btn">
       <!-- <input type="text" class="ipt-pesquisar" placeholder="Digitar">
@@ -45,78 +46,64 @@
   <!-- fim  -->
 
   <!-- adicionar -->
-  <div class="containerAdicionar">
+  <!-- <div class="containerAdicionar">
     <a href="#">
-      <img id="addMaq"
+      <img id="addColab"
         src="https://cdn-icons-png.flaticon.com/512/845/845630.png?w=740&t=st=1680896121~exp=1680896721~hmac=aeb2a168c952acf12dd77a0f485a697418e73473c5f141e5ba510e55ee4431b9"
         alt="">
     </a>
 
-    <p>Adicionar máquina</p>
-  </div>
+    <p>Adicionar colaborador</p>
+  </div> -->
   <!-- fim  -->
 
 
   <div class="containerLista">
 
-    <table>
-      <tr>
-        <th>IDENTIFICAÇÃO</th>
-        <th>HOSTNAME</th>
-        <th>STATUS</th>
-        <th id="colunaEdicao">EDITAR/PARAR</th>
-      </tr>
-
-    </table>
-
-  </div>
-
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <header class="modal-header">
-        <h2>Nova Máquina</h2>
-        <span class="modal-close" id="modalClose">&#10006;</span>
-      </header>
-      <form class="modal-form">
-        <input type="text" class="modal-field" placeholder="Idenficação da Máquina" id="ipt_nome_maquina">
-        <input type="text" class="modal-field" placeholder="Capacidade Máxima RAM" id="ipt_capacidade_ram">
-        <input type="text" class="modal-field" placeholder="Capacidade Máxima disco" id="ipt_capacidade_disco">
-        <input type="text" class="modal-field" placeholder="Capacidade Máxima Processador" id="ipt_capacidade_cpu">
-        <input type="text" class="modal-field" placeholder="Arquitetura" id="ipt_arquitetura">
-        <input type="text" class="modal-field" placeholder="Sistema Operacional" id="ipt_sistema_operacional">
-
-      </form>
-      <footer class="modal-footer">
-        <button class="saveButton" onclick="criarMaquina()">Salvar</button>
-        <button class="cancelButton">Cancelar</button>
-      </footer>
+    <div>
+      <table class="containerTable">
+        <tr>
+          <th>IDENTIFICAÇÃO</th>
+          <th>NOME</th>
+          <th>STATUS/PERMISSÕES</th>
+          <!-- <th id="colunaEdicao">EXCLUIR/ALTERAR</th> -->
+        </tr>
+        <tr>
+          
+          
+      </table>
     </div>
   </div>
 
-  <div class="modal" id="modalEdit">
+  <!-- INICIO MODAL -->
+  <!-- <div class="modal" id="modal">
     <div class="modal-content">
       <header class="modal-header">
-        <h2>Editar Máquina</h2>
-        <span class="modal-close" id="modalEditClose">&#10006;</span>
+        <h2>Novo Colaborador</h2>
       </header>
-      <form class="modal-form">
-        <input type="text" class="modal-field" placeholder="Idenficação da Máquina" id="ipt_nome_maquina_edit">
-        <input type="text" class="modal-field" placeholder="Capacidade Máxima RAM" id="ipt_capacidade_ram_edit">
-        <input type="text" class="modal-field" placeholder="Capacidade Máxima disco" id="ipt_capacidade_disco_edit">
-        <input type="text" class="modal-field" placeholder="Capacidade Máxima Processador" id="ipt_capacidade_cpu_edit">
-        <input type="text" class="modal-field" placeholder="Arquitetura" id="ipt_arquitetura_edit">
-        <input type="text" class="modal-field" placeholder="Sistema Operacional" id="ipt_sistema_operacional_edit">
+      <span class="modal-close" id="modalClose">&#10006;</span>
 
+      <form class="modal-form">
+        <input type="text" class="modal-field" placeholder="Identificação do colaborador">
+        <input type="text" class="modal-field" placeholder="Nome do Colaborador">
       </form>
+
+      <form class="modal-form2">
+        <input type="text" class="modal-field" placeholder="Cargo do colaborador">
+        <input type="text" class="modal-field" placeholder="Permissão do colaborador">
+      </form>
+
       <footer class="modal-footer">
-        <button class="saveButton" onclick="editarMaquina()">Salvar</button>
+        <button class="saveButton">Salvar</button>
         <button class="cancelButton">Cancelar</button>
       </footer>
     </div>
-  </div>
+  </div> -->
+  <!-- FIM MODAL -->
+
+
 
   <!--footer inicio-->
-
   <footer class="padding_3x">
 
     <div class="flex">
@@ -166,9 +153,8 @@
 </html>
 
 <script>
-
   var fkEmpresa = sessionStorage.FK_EMPRESA;
-
+  
   function limparFormulario() {
     document.getElementById("form_postagem").reset();
   }
@@ -178,17 +164,17 @@
     var fkStatus = 1
     var capacidadeRAM = Number(ipt_capacidade_ram.value);
     var capacidadeDisco = Number(ipt_capacidade_disco.value);
-    var capacidadeCPU = Number(ipt_capacidade_cpu.value);
+    var frequenciaCPU = Number(ipt_frequencia_cpu.value);
     var arquitetura = ipt_arquitetura.value;
     var sistemaOperacional = ipt_sistema_operacional.value;
-    var fkEmpresa = sessionStorage.FK_EMPRESA
+    var fkEmpresa = sessionStorage.EMAIL_USUARIO
 
-    if (nomeMaquina == null || capacidadeRAM == null || capacidadeDisco == null || capacidadeCPU == null ||
-      arquitetura == null || sistemaOperacional == null) {
+    if (nomeMaquina != null || capacidadeRAM != null || capacidadeDisco != null || frequenciaCPU != null ||
+      arquitetura != null || sistemaOperacional != null) {
       alert("Complete todos os campos para inserir uma nova máquina!")
     } else {
       fetch(`/avisos/criarMaquina/`, {
-        method: "post",
+        method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
@@ -197,7 +183,7 @@
           fkStatusServer: fkStatus,
           capacidadeRAMServer: capacidadeRAM,
           capacidadeDiscoServer: capacidadeDisco,
-          capacidadeCPUServer: capacidadeCPU,
+          frequenciaCPUServer: frequenciaCPU,
           arquiteturaServer: arquitetura,
           sistemaOperacionalServer: sistemaOperacional,
           fkEmpresaServer: fkEmpresa
@@ -207,7 +193,7 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          window.location = 'listaMaquinas.html';
+          window.alert("Máquina com sucesso pelo usuario de ID: " + idUsuario + "!");
           limparFormulario();
           // finalizarAguardar();
         } else if (resposta.status == 404) {
@@ -227,75 +213,16 @@
 
   }
 
-  function editarMaquina() {
-    var idMaquina = sessionStorage.getItem('ID_POSTAGEM_EDITANDO')
-    var nomeMaquina = ipt_nome_maquina_edit.value;
-    var capacidadeRAM = Number(ipt_capacidade_ram_edit.value);
-    var capacidadeDisco = Number(ipt_capacidade_disco_edit.value);
-    var capacidadeCPU = Number(ipt_capacidade_cpu_edit.value);
-    var arquitetura = ipt_arquitetura_edit.value;
-    var sistemaOperacional = ipt_sistema_operacional_edit.value;
-
-    console.log(idMaquina)
-    if (nomeMaquina == null || capacidadeRAM == null || capacidadeDisco == null || capacidadeCPU == null ||
-      arquitetura == null || sistemaOperacional == null) {
-      alert("Complete todos os campos para inserir uma nova máquina!")
-    } else {
-      fetch(`/avisos/maquinas/editar/${idMaquina}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          nomeMaquinaServer: nomeMaquina,
-          capacidadeRAMServer: capacidadeRAM,
-          capacidadeDiscoServer: capacidadeDisco,
-          capacidadeCPUServer: capacidadeCPU,
-          arquiteturaServer: arquitetura,
-          sistemaOperacionalServer: sistemaOperacional
-        })
-      }).then(function (resposta) {
-        if (resposta.ok) {
-          alert('Máquina atualizada com sucesso!')
-          document.getElementById('modalEdit').classList.remove('active')
-          window.location = 'listaMaquinas.html';
-        }
-      })
-    }
-  }
-
-
-  function editar(idMaquina) {
-    sessionStorage.ID_POSTAGEM_EDITANDO = idMaquina;
-    console.log("cliquei em editar - " + idMaquina);
-
-    document.getElementById('modalEdit').classList.add('active')
-
-    fetch(`/avisos/maquinas/${idMaquina}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).then(function (resposta) {
-      console.log("MaquinaById", resposta.body)
-      resposta.json().then(json => {
-        var maquina = json[0]
-
-        console.log(json)
-        document.getElementById('ipt_nome_maquina_edit').value = maquina.nomeMaquina
-        document.getElementById('ipt_capacidade_ram_edit').value = maquina.capacidadeMaxRAM
-        document.getElementById('ipt_capacidade_disco_edit').value = maquina.capacidadeMaxDisco
-        document.getElementById('ipt_capacidade_cpu_edit').value = maquina.capacidadeMaxCPU
-        document.getElementById('ipt_sistema_operacional_edit').value = maquina.SistemaOperacional
-        document.getElementById('ipt_arquitetura_edit').value = maquina.Arquitetura
-      })
-    })
+  function editar(idUsuario) {
+    sessionStorage.ID_POSTAGEM_EDITANDO = idUsuario;
+    console.log("cliquei em editar - " + idUsuario);
+    window.alert("Você será redirecionado à página de edição do aviso de id número: " + idUsuario);
+    window.location = "/dashboard/listaUsuarios.html"
 
   }
-
-  function estadoMaquina(idMaquina) {
-    console.log("Criar função de apagar post escolhido - ID" + idMaquina);
-    fetch(`/avisos/estadoMaquina/${idMaquina}`, {
+  function estadoPerfilUsuario(idUsuario) {
+    console.log("Criar função de apagar post escolhido - ID" + idUsuario);
+    fetch(`/listaUsuario/estadoPerfilUsuario/${idUsuario}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -307,41 +234,41 @@
         resposta.json().then(json => {
           console.log(json);
           console.log(JSON.stringify(json));
-          var fkStatus = Number(json[0].FK_Status)
-          console.log(fkStatus)
-          var idMaquina = Number(json[0].idMaquina)
+          var fkPerfil = Number(json[0].FK_Perfil)
+          
+          var idUsuario = Number(json[0].idUsuario)
 
-          if (fkStatus == 1) {
-            fkStatus++
+          if (fkPerfil == 1) {
+            fkPerfil++
           } else {
-            fkStatus--
+            fkPerfil--
           }
-          fetch(`/avisos/desativarAtivar/`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              idMaquinaServer: idMaquina,
-              fkStatusServer: fkStatus
-            })
-          }).then(function (resposta) {
+          fetch(`/listaUsuario/desativarAtivar`, { 
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            idUsuarioServer: idUsuario,
+            fkPerfilServer: fkPerfil
+          })
+        }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+          console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-              window.alert("Máquina com sucesso pelo usuario de ID: " + idUsuario + "!");
-              // finalizarAguardar();
-            } else if (resposta.status == 404) {
-              window.alert("Deu 404!");
-            } else {
-              throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-          }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
+          if (resposta.ok) {
+            window.location= "listaUsuarios.html"
             // finalizarAguardar();
-          });
-          window.location = "/dashboard/listaMaquinas.html"
+          } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+          } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+          }
+        }).catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          // finalizarAguardar();
+        });
+        window.location = "/dashboard/listaUsuarios.html"
         });
 
       } else {
@@ -358,9 +285,30 @@
     });
   }
 
+  function desativar(idUsuario) {
+    console.log("Criar função de apagar post escolhido - ID" + idUsuario);
+    fetch(`/listaUsuario/desativar/${idUsuario}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(function (resposta) {
+
+      if (resposta.ok) {
+        window.location = "/dashboard/listaUsuarios.html"
+      } else if (resposta.status == 404) {
+        window.alert("Deu 404!");
+      } else {
+        throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+      }
+    }).catch(function (resposta) {
+      console.log(`#ERRO: ${resposta}`);
+    });
+  }
+
   function atualizarFeed(fkEmpresa) {
     //aguardar();
-    fetch(`/avisos/listar/${fkEmpresa}`).then(function (resposta) {
+    fetch("/listaUsuario/listar").then(function (resposta) {
       if (resposta.ok) {
         if (resposta.status == 204) {
           var feed = document.getElementsByClassName("table");
@@ -377,7 +325,7 @@
           // feed.innerHTML = "";
           for (let i = 0; i < resposta.length; i++) {
             var publicacao = resposta[i];
-            console.log(publicacao)
+
             // criando e manipulando elementos do HTML via JavaScript
             var linhaLista = document.createElement("tr");
             var tdIdentificacao = document.createElement("td");
@@ -390,33 +338,23 @@
             console.log("elemento html criado")
 
 
-            tdIdentificacao.innerHTML = `${publicacao.idMaquina}`
-            tdHostname.innerHTML = `${publicacao.nomeMaquina}`
-            if (publicacao.FK_Status == 1) {
-              tdStatus.innerHTML = `Ativo`;
+            tdIdentificacao.innerHTML = `${publicacao.idUsuario}`
+            tdHostname.innerHTML = `${publicacao.nomeUsuario}`
+            if (publicacao.FK_Perfil == 1) {
+              tdStatus.innerHTML = `Administrador`;
               console.log("entrando no if")
 
-            } else if (publicacao.FK_Status == 2) {
-              tdStatus.innerHTML = `Inativo`;
+            } else if (publicacao.FK_Perfil == 2) {
+              tdStatus.innerHTML = `Padrão`;
               console.log("entrando no else")
 
             }
-
-            btnEditar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/61/61456.png?w=360' height='25px'>"
-            btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb' height='25px'>";
+            btnEditar.innerHTML = "<img src=' https://cdn-icons-png.flaticon.com/512/98/98090.png?w=826&t=st=1680890579~exp=1680891179~hmac=22fea846a60055b34d1312f83040a9785f819033e8a2d12dcf6f6a8b1dad563c' height= '25px' >";
+            btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/1250/1250925.png?w=826&t=st=1680890678~exp=1680891278~hmac=f51dcc26fefd6e465196cc4a4265a52fe897af469d24e6407008b67593661c69' height ='25px'>";
             console.log('elementos com conteudo criado')
 
-            if (publicacao.FK_Status == 1) {
-              btnDeletar.innerHTML = "<img src='https://cdn-icons-png.flaticon.com/512/151/151859.png?w=826&t=st=1680892996~exp=1680893596~hmac=b015e23e12dbbbca373f0c1d28cc32d141540cb8f3d89725e9798b7b31fbc0eb' height='25px'>";
-
-            } else {
-              btnDeletar.innerHTML = "<img src='https://imagensemoldes.com.br/wp-content/uploads/2020/08/Figura-Play-PNG.png' height='25px'>";
-            }
-
-
-
             linhaLista.className = "lista-maquina";
-            tdIdentificacao.id = "id-maquina" + publicacao.idMaquina;
+            tdIdentificacao.id = "id-maquina" + publicacao.idUsuario;
             tdHostname.className = "lista-maquina-hostname";
             tdStatus.className = "lista-maquina-status";
             divBotoes.id = "iconesColuna";
@@ -426,13 +364,12 @@
             console.log('classes atribuidas aos elementos')
 
             btnEditar.className = "lista-btn-editar"
-            btnEditar.id = "btnEditar" + publicacao.idMaquina;
-            btnEditar.setAttribute("onclick", `editar(${publicacao.idMaquina})`);
-
+            btnEditar.id = "btnEditar" + publicacao.idUsuario;
+            btnEditar.setAttribute("onclick", `desativar(${publicacao.idUsuario})`);
 
             btnDeletar.className = "lista-btn-editar"
-            btnDeletar.id = "btnDeletar" + publicacao.idMaquina;
-            btnDeletar.setAttribute("onclick", `estadoMaquina(${publicacao.idMaquina})`);
+            btnDeletar.id = "btnDeletar" + publicacao.idUsuario;
+            btnDeletar.setAttribute("onclick", `estadoPerfilUsuario(${publicacao.idUsuario})`);
             console.log('botoes funcionando')
 
             linhaLista.appendChild(tdIdentificacao);
@@ -442,7 +379,6 @@
             tdBotoes.appendChild(divBotoes)
             divBotoes.appendChild(btnEditar);
             divBotoes.appendChild(btnDeletar);
-            console.log('final')
             feed.appendChild(linhaLista);
           }
 

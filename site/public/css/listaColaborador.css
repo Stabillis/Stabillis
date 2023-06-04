@@ -14,13 +14,14 @@ body {
   width: 100%;
   margin-bottom: 50px;
   background-color: #70C0EC;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .containerPesquisa p {
   color: #ffff;
-  font-size: 30px;
+  font-size: 50px;
+  font-weight: 700;
   padding-left: 60px;
 }
 
@@ -116,12 +117,13 @@ table {
 td,
 th {
   border: none;
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
 th {
   background-color: #70C0EC;
+  text-align: center;
 }
 
 tr:nth-child(even) {
@@ -151,4 +153,11 @@ tr:nth-child(even) {
 
 .lista-btn-editar:hover {
   cursor: pointer;
+}
+
+#table-Comum{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
 }

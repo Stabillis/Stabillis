@@ -156,17 +156,17 @@
           sessionStorage.EMAIL_USUARIO = json.Email;
           sessionStorage.NOME_USUARIO = json.NomeUsuario;
           sessionStorage.FK_EMPRESA = json.FK_Empresa;
-          sessionStorage.PERMISSAO_USUARIO = json.FK_Permissao;
+          sessionStorage.PERMISSAO_USUARIO = json.FK_Perfil;
 
-          // if (sessionStorage.PERMISSAO_USUARIO == 1) {
-          //   setTimeout(function () {
-          //     window.location = "perfilUsuario.html";
-          //   }, 1000); // apenas para exibir o loading
-          // } else {
-          //   setTimeout(function () {
-          //     window.location = "perfilUsuario.html";
-          //   }, 1000); // apenas para exibir o loading
-          // }
+          if (sessionStorage.PERMISSAO_USUARIO == 1) {
+            setTimeout(function () {
+              window.location = "perfilUsuarioAdmin.html";
+            }, 1000); // apenas para exibir o loading
+          } else {
+            setTimeout(function () {
+              window.location = "perfilUsuario.html";
+            }, 1000); // apenas para exibir o loading
+          }
 
           setTimeout(function () {
             window.location = "./dashboard/perfilUsuario.html";
