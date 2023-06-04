@@ -160,17 +160,16 @@
 
           if (sessionStorage.PERMISSAO_USUARIO == 1) {
             setTimeout(function () {
-              window.location = "perfilUsuarioAdmin.html";
+              window.location = "./dashboard/perfilUsuarioAdmin.html";
             }, 1000); // apenas para exibir o loading
           } else {
             setTimeout(function () {
-              window.location = "perfilUsuario.html";
+              window.location = "./dashboard/perfilUsuario.html";
             }, 1000); // apenas para exibir o loading
           }
 
-          setTimeout(function () {
-            window.location = "./dashboard/perfilUsuario.html";
-          }, 1000); // apenas para exibir o loading
+           
+             // apenas para exibir o loading
         });
 
       } else {

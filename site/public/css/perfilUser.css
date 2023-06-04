@@ -9,7 +9,7 @@ html,
 body {
   height: 100%;
   font-family: "Nunito", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 nav.side-menu {
@@ -89,7 +89,7 @@ body {
 }
 
 .contanier{
-  height: 400px;
+  height: 350px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -164,6 +164,7 @@ p {
   top: 0px;
   position: relative;
   max-width: 262px;
+  width: 225px;
   background-color: #f2f8f9;
   border-radius: 4px;
   padding: 32px 24px;
