@@ -47,13 +47,13 @@ function editarUsuario(idUsuario, nome, email, telefone, permissao) {
     UPDATE
         Usuario
     SET
-        NomeUsuario = ${nome},
-        Email = ${email},
-        TelefoneCelular = ${telefone},
+        NomeUsuario = '${nome}',
+        Email = '${email}',
+        TelefoneCelular = '${telefone}',
         FK_Perfil = ${permissao}
     WHERE
         idUsuario = ${idUsuario}
-    `
+    ;`
     return database.executar(instrucao)
 }
 

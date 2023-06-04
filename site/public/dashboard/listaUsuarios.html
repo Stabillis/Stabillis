@@ -281,15 +281,14 @@
   }
 
   function editarUsuario() {
-    var idUsuario = sessionStorage.ID_USUARIO_EDITANDO
+    var idUsuario = sessionStorage.getItem('ID_USUARIO_EDITANDO')
     var nomeUsuario = ipt_nome_usuario_edit.value;
     var email = ipt_email_edit.value
     var telefone = ipt_telefone_celular_edit.value
     var permissao = Number(sel_perm_edit.value)
 
     console.log(idUsuario)
-    if (idUsuario == null || nomeUsuario == null || email == null ||
-      telefone == null || permissao == null) {
+    if (nomeUsuario == null || email == null || telefone == null || permissao == null) {
       alert("Complete todos os campos para concluir a edição!")
     } else {
       fetch(`/usuarios/editarUsuario/${idUsuario}`, {
@@ -305,8 +304,10 @@
         })
       }).then(function (resposta) {
         if (resposta.ok) {
-          alert('Usuário atualizada com sucesso!')
+          alert('Usuário atualizado com sucesso!')
           document.getElementById('modalEdit').classList.remove('active')
+          window.location = 'listaUsuarios.html';
+        } else if (resposta.status == 500) {
           window.location = 'listaUsuarios.html';
         }
       })

@@ -25,6 +25,6 @@ router.get("/editar/:idUsuario", function (req, res) {
 });
 
 router.put("/editarUsuario/:idUsuario", function(req, res) {
-    usuarioController.editarUsuario(res, req)
+    usuarioController.editarUsuario(req, res)
 })
 module.exports = router;
