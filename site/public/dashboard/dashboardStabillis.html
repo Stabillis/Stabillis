@@ -451,22 +451,22 @@
               var discoMaquina = document.getElementById(`disco-maquina${dadosResposta.FK_Maquina}`)
               console.log(cpuMaquina)
               
-              var porcentCPU = dadosResposta.usoCPU.toFixed(2)
+              var porcentCPU = dadosResposta.usoCPU * 100 / dadosResposta.capacidadeMaxCPU
               if (porcentCPU > 100.00) {
                 porcentCPU = 100.00
               }
-              var porcentRAM = dadosResposta.usoRAM.toFixed(2)
+              var porcentRAM = dadosResposta.usoRAM * 100 / dadosResposta.capacidadeMaxRAM
               if (porcentRAM > 100.00) {
                 porcentRAM = 100.00
               }
-              var porcentDisco = dadosResposta.usoDisco.toFixed(2)
+              var porcentDisco = dadosResposta.usoDisco * 100 / dadosResposta.capacidadeMaxDisco
               if (porcentDisco > 100.00) {
                 porcentDisco = 100.00
               }
 
-              cpuMaquina.innerHTML = `${porcentCPU}%`
-              ramMaquina.innerHTML = `${porcentRAM}%`
-              discoMaquina.innerHTML = `${porcentDisco}%`
+              cpuMaquina.innerHTML = `${porcentCPU.toFixed(2)}%`
+              ramMaquina.innerHTML = `${porcentRAM.toFixed(2)}%`
+              discoMaquina.innerHTML = `${porcentDisco.toFixed(2)}%`
 
               if (porcentCPU >= dadosResposta.maximoCPU) {
                 document.getElementById(`cpu-caixa${dadosResposta.FK_Maquina}`).style.backgroundColor = '#FF6A6A'
