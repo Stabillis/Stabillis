@@ -40,6 +40,10 @@ function finalizarAguardar(texto) {
     }
 }
 
+function refazerLogin() {
+    sessionStorage.clear()
+    window.location = 'loginUsuario.html'
+}
 
 // modal
 function mostrarModal() {

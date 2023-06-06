@@ -20,6 +20,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.put("/alterarSenha/:idUsuario", function(req, res) {
+    usuarioController.alterarSenha(req, res)
+});
+
 router.get("/editar/:idUsuario", function (req, res) {
     usuarioController.editar(req, res);
 });

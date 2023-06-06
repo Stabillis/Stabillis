@@ -30,6 +30,18 @@ function cadastrar(nome, email, telCel, senha, tipoUsuario, fkEmpresa) {
     return database.executar(instrucao);
 }
 
+function alterarSenha(idUsuario, novaSenha) {
+    var instrucao = `
+    UPDATE
+        Usuario
+    SET
+        Senha = '${novaSenha}'
+    WHERE
+        idUsuario = ${idUsuario}
+    ;`
+    return database.executar(instrucao)
+}
+
 function editar(idUsuario) {
     var instrucao = `
     SELECT
@@ -60,6 +72,7 @@ function editarUsuario(idUsuario, nome, email, telefone, permissao) {
 module.exports = {
     entrar,
     cadastrar,
+    alterarSenha,
     listar,
     editar,
     editarUsuario

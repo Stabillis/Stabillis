@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/recuperacao.css">
   <link rel="stylesheet" href="css/nav&fotter.css">
+  <script src="./js/funcoes.js"></script>
   <title>Recuperação de senha</title>
 </head>
 
@@ -24,12 +25,6 @@
         <span></span>
       </label>
     </div>
-
-    <div class="nav-links">
-      <a href="./index.html">Home</a>
-      <a href="./sobre-nos.html">Sobre nós</a>
-      <a href="./loginUsuario.html"> <span id="login">Login</span></a>
-    </div>
   </div>
   <div class="banner">
     <div class="container">
@@ -42,34 +37,23 @@
 
 
         <div class="inputs">
-          <input type="text" placeholder="Nova senha">
+          <input type="password" placeholder="Nova senha" id="ipt_nova_senha">
 
         </div>
 
         <div class="inputs">
-          <input type="text" placeholder="Confirmar nova senha">
-
+          <input type="password" placeholder="Confirmar nova senha" id="ipt_confirmacao_senha" onkeyup="validarSenha()">
+          <p id="aviso-senha"></p>
         </div>
 
 
         <div class="botao">
-          <button class="btn">Atualizar senha</button>
+          <button class="btn" onclick="atualizarSenha()">Atualizar senha</button>
         </div>
 
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
 
   <footer class="padding_3x">
 
@@ -114,3 +98,71 @@
 </body>
 
 </html>
+<script>
+  function validarSenha() {
+    var confirmacaoSenha = document.getElementById('ipt_confirmacao_senha')
+    var novaSenha = document.getElementById('ipt_nova_senha')
+
+    var aviso = document.getElementById('aviso-senha')
+    if (confirmacaoSenha.value != novaSenha.value) {
+      confirmacaoSenha.style.border = '2px solid #FF0000'
+      aviso.innerHTML = `Este campo deve estar igual ao campo acima`
+    } else {
+      confirmacaoSenha.style.border = 'none'
+      aviso.innerHTML = ''
+    }
+  }
+
+  function atualizarSenha() {
+    var idUsuario = sessionStorage.getItem("ID_USUARIO")
+    var novaSenha = document.getElementById('ipt_nova_senha')
+    var confirmacaoSenha = document.getElementById('ipt_confirmacao_senha')
+    var aviso = document.getElementById('aviso-senha')
+
+
+    if (novaSenha.value == '' && confirmacaoSenha.value == '') {
+      alert("Preencha todos os campos!")
+      novaSenha.style.border = '2px solid #FF0000'
+      confirmacaoSenha.style.border = '2px solid #FF0000'
+      aviso.innerHTML = ''
+
+      setTimeout(() => {
+        novaSenha.style.border = 'none'
+        confirmacaoSenha.style.border = 'none'
+      }, 3000)
+    } else if (novaSenha.value == '') {
+      alert("Preencha todos os campos!")
+      novaSenha.style.border = '2px solid #FF0000'
+      aviso.innerHTML = ''
+
+      setTimeout(() => {
+        novaSenha.style.border = 'none'
+      }, 3000)
+    } else if (confirmacaoSenha.value == '') {
+      alert("Preencha todos os campos!")
+      confirmacaoSenha.style.border = '2px solid #FF0000'
+      aviso.innerHTML = ''
+
+      setTimeout(() => {
+        confirmacaoSenha.style.border = 'none'
+      }, 3000)
+    } else {
+      fetch(`/usuarios/alterarSenha/${idUsuario}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          novaSenha: novaSenha.value
+        })
+      }).then(function (resposta) {
+        if (resposta.ok) {
+          alert('Senha alterada com sucesso!')
+          refazerLogin()
+        } else {
+          throw ('Deu erro na API!')
+        }
+      })
+    }
+  }
+</script>

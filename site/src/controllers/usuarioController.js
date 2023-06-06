@@ -103,6 +103,33 @@ function cadastrar(req, res) {
     }
 }
 
+function alterarSenha(req, res) {
+    var idUsuario = req.params.idUsuario
+    var novaSenha = req.body.novaSenha
+
+    if (idUsuario == undefined) {
+        res.status(400).send("O idUsuario está undefined!")
+    } else if (novaSenha == undefined) {
+        res.status(400).send("A nova senha está undefined!")
+    } else {
+        usuarioModel.alterarSenha(idUsuario, novaSenha)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao alterar a senha! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 function editar(req, res) {
     var idUsuario = req.params.idUsuario
 
@@ -169,6 +196,7 @@ function editarUsuario(req, res) {
 module.exports = {
     entrar,
     cadastrar,
+    alterarSenha,
     listar,
     testar,
     editarUsuario,

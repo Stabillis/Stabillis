@@ -26,13 +26,13 @@
         </a>
       </li>
       <li class="itens-menu">
-        <a href="../suporte.html">
+        <a href="../suporte.html" target="_blank">
           <span class="icon"><i class="bi bi-columns-gap"></i></span>
           <span class="txt">Suporte</span>
         </a>
       </li>
       <li class="itens-menu">
-        <a href="../recuperacaoSenha.html">
+        <a href="../recuperacaoSenha.html" target="_blank">
           <span class="icon"><i class="bi bi-gear"></i></span>
           <span class="txt">Alterar Senha</span>
         </a>
@@ -232,7 +232,6 @@
               caixaCPU.id = "cpu-caixa" + publicacao.idMaquina
               tituloCPU.innerHTML = "CPU"
               tituloCPU.className = 'content-box'
-              dadoCPU.innerHTML = "teste"
               dadoCPU.className = 'content-box'
               dadoCPU.id = "cpu-maquina" + publicacao.idMaquina
 
@@ -240,7 +239,6 @@
               caixaRAM.id = 'ram-caixa' + publicacao.idMaquina
               tituloRAM.innerHTML = "RAM"
               tituloRAM.className = 'content-box'
-              dadoRAM.innerHTML = "teste"
               dadoRAM.className = 'content-box'
               dadoRAM.id = "ram-maquina" + publicacao.idMaquina
 
@@ -248,7 +246,6 @@
               caixaDisco.id = 'disco-caixa' + publicacao.idMaquina
               tituloDisco.innerHTML = "Disco"
               tituloDisco.className = 'content-box'
-              dadoDisco.innerHTML = "teste"
               dadoDisco.className = 'content-box'
               dadoDisco.id = "disco-maquina" + publicacao.idMaquina
 
@@ -450,7 +447,7 @@
               var ramMaquina = document.getElementById(`ram-maquina${dadosResposta.FK_Maquina}`)
               var discoMaquina = document.getElementById(`disco-maquina${dadosResposta.FK_Maquina}`)
               console.log(cpuMaquina)
-              
+
               var porcentCPU = dadosResposta.usoCPU * 100 / dadosResposta.capacidadeMaxCPU
               if (porcentCPU > 100.00) {
                 porcentCPU = 100.00
@@ -494,12 +491,21 @@
 
             }
 
-            maquinaComMaiorCPU(fkEmpresa)
-            maquinaComMaiorRAM(fkEmpresa)
-            maquinaComMaiorDisco(fkEmpresa)
-            maquinaMaisSobrecarregada(fkEmpresa)
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            var proxAtualizacao = setTimeout(() => atualizarDashGeral(fkEmpresa), 5000);
+            var select = document.getElementById('sel_maq')
+            var value = select.options[select.selectedIndex].value
+
+            if (value != '#') {
+              return false
+            } else {
+              maquinaComMaiorCPU(fkEmpresa)
+              maquinaComMaiorRAM(fkEmpresa)
+              maquinaComMaiorDisco(fkEmpresa)
+              maquinaMaisSobrecarregada(fkEmpresa)
+              // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+              var proxAtualizacao = setTimeout(() => atualizarDashGeral(fkEmpresa), 5000);
+            }
+
+
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
@@ -752,9 +758,17 @@
               chartData5.update();
             }
 
+            var select = document.getElementById('sel_maq')
+            var value = select.options[select.selectedIndex].value
+
+            if (value == '#') {
+              return false
+            } else {
+              proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
+                chartData4, chartData5), 5000);
+            }
             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, chartData, chartData3,
-              chartData4, chartData5), 5000);
+
           });
         } else {
           console.error('Nenhum dado encontrado ou erro na API');
